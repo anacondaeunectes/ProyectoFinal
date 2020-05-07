@@ -14,7 +14,8 @@ public class Main {
     
      public static void main(String[] args) {
         //ejecuta el controlador y este la vista
-        new Controlador_Admin( new Interfaz_Admin() ).iniciar() ;
+        new Controlador_Menu_Admin( new Interfaz_Admin() ).iniciar() ;
+        
     }
     
 }

@@ -1,5 +1,8 @@
 package vista;
 
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -99,8 +102,27 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_FechaInicio_Modificar_Proyecto = new javax.swing.JTextField();
         txt_FechaFin_Modificar_Proyecto = new javax.swing.JTextField();
         btn_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        panel_Asociar = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabla_Modificar_Empleado2 = new javax.swing.JTable();
+        txt_FiltrarNombre_Empleado_Asociar = new javax.swing.JTextField();
+        txt_FiltrarApellido_Empleado_Asociar = new javax.swing.JTextField();
+        txt_FiltrarNacimiento_Empleado_Asociar = new javax.swing.JTextField();
+        txt_FiltrarNIF_Empleado_Asociar = new javax.swing.JTextField();
+        btn_FiltrarEmpleado_Asociar = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel21 = new javax.swing.JLabel();
+        btn_FiltrarProyecto_Asociar = new javax.swing.JButton();
+        btn_Asociar_Asociar = new javax.swing.JButton();
+        btn_Cancelar_Asociar = new javax.swing.JButton();
+        txt_FiltrarTitulo_Proyecto_Asociar = new javax.swing.JTextField();
+        txt_FiltrarDescripcion_Proyecto_Asociar = new javax.swing.JTextField();
+        txt_FiltrarFechaInicio_Proyecto_Asociar = new javax.swing.JTextField();
+        txt_FiltrarFechaFin_Proyecto_Asociar = new javax.swing.JTextField();
+        txt_FiltrarId_Proyecto_Asociar = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        btn_invisible_Asociar = new javax.swing.JButton();
+        panel_Consultar = new javax.swing.JPanel();
         jMenuBar = new javax.swing.JMenuBar();
         menu_Agregar = new javax.swing.JMenu();
         menuItem_Agregar_Empleado = new javax.swing.JMenuItem();
@@ -220,7 +242,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addComponent(btn_Cancelar_Agregar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Agregar_EmpleadoLayout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
+                .addContainerGap(126, Short.MAX_VALUE)
                 .addGroup(panel_Agregar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panel_Agregar_EmpleadoLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -261,7 +283,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addGroup(panel_Agregar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(Txt_Nif_Agregar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(panel_Agregar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Agregar_Agregar_Empleado)
                     .addComponent(btn_Cancelar_Agregar_Empleado))
@@ -296,7 +318,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Agregar_ProyectoLayout.createSequentialGroup()
-                .addGap(0, 254, Short.MAX_VALUE)
+                .addGap(0, 262, Short.MAX_VALUE)
                 .addComponent(btn_Agregar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(btn_Cancelar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -343,7 +365,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(0, 100, Short.MAX_VALUE))
+                        .addGap(0, 107, Short.MAX_VALUE))
                     .addComponent(Txt_Descripcion_Agregar_Proyecto))
                 .addGap(18, 18, 18)
                 .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -372,6 +394,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_FiltrarApellido_Modificar_Empleado.setText("apellido");
 
         txt_FiltrarNacimiento_Modificar_Empleado.setText("ano_nacimiento");
+        txt_FiltrarNacimiento_Modificar_Empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_FiltrarNacimiento_Modificar_EmpleadoActionPerformed(evt);
+            }
+        });
 
         txt_FiltrarNIF_Modificar_Empleado.setText("NIF");
 
@@ -423,15 +450,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_Apellido_Modificar_Empleado))
-                            .addGroup(panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Modificar_EmpleadoLayout.createSequentialGroup()
-                                    .addComponent(jLabel16)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_Nacimiento_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txt_Nombre_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_Modificar_EmpleadoLayout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_Nacimiento_Modificar_Empleado))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_Modificar_EmpleadoLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_Nombre_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_Modificar_Modificar_Empleado)
@@ -536,7 +562,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3)
                         .addContainerGap())
                     .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -552,7 +578,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_Titulo_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 28, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(btn_ModificarDescripcion_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,36 +646,178 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                     .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(btn_ModificarDescripcion_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(panel_Modificar_Proyecto, "card3");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+        panel_Asociar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panel_Asociar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                panel_AsociarFocusGained(evt);
+            }
+        });
+
+        tabla_Modificar_Empleado2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tabla_Modificar_Empleado2);
+
+        txt_FiltrarNombre_Empleado_Asociar.setText("nombre");
+
+        txt_FiltrarApellido_Empleado_Asociar.setText("apellido");
+
+        txt_FiltrarNacimiento_Empleado_Asociar.setText("ano_nacimiento");
+
+        txt_FiltrarNIF_Empleado_Asociar.setText("NIF");
+
+        btn_FiltrarEmpleado_Asociar.setText("Filtrar");
+
+        btn_FiltrarProyecto_Asociar.setText("Filtrar");
+
+        btn_Asociar_Asociar.setText("Asociar");
+        btn_Asociar_Asociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Asociar_AsociarActionPerformed(evt);
+            }
+        });
+
+        btn_Cancelar_Asociar.setText("Cancelar");
+
+        txt_FiltrarTitulo_Proyecto_Asociar.setText("título");
+        txt_FiltrarTitulo_Proyecto_Asociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_FiltrarTitulo_Proyecto_AsociarActionPerformed(evt);
+            }
+        });
+
+        txt_FiltrarDescripcion_Proyecto_Asociar.setText("contenido descripción");
+
+        txt_FiltrarFechaInicio_Proyecto_Asociar.setText("fecha inicio");
+
+        txt_FiltrarFechaFin_Proyecto_Asociar.setText("fecha fin");
+
+        txt_FiltrarId_Proyecto_Asociar.setText("id proyecto");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btn_invisible_Asociar.setText("jButton3");
+        btn_invisible_Asociar.setBorderPainted(false);
+        btn_invisible_Asociar.setFocusPainted(false);
+        btn_invisible_Asociar.setFocusable(false);
+        btn_invisible_Asociar.setSelected(true);
+
+        javax.swing.GroupLayout panel_AsociarLayout = new javax.swing.GroupLayout(panel_Asociar);
+        panel_Asociar.setLayout(panel_AsociarLayout);
+        panel_AsociarLayout.setHorizontalGroup(
+            panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator3)
+            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(btn_Asociar_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_Cancelar_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(btn_FiltrarEmpleado_Asociar)
+                                .addGap(204, 204, 204))))
+                    .addGroup(panel_AsociarLayout.createSequentialGroup()
+                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(txt_FiltrarNombre_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarApellido_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarNacimiento_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarNIF_Empleado_Asociar))
+                            .addComponent(jScrollPane5)
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(0, 0, 0)
+                                .addComponent(txt_FiltrarDescripcion_Proyecto_Asociar)
+                                .addGap(19, 19, 19)
+                                .addComponent(btn_FiltrarProyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(txt_FiltrarTitulo_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                        .addComponent(txt_FiltrarFechaInicio_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_FiltrarFechaFin_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_invisible_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_FiltrarId_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+        panel_AsociarLayout.setVerticalGroup(
+            panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_FiltrarNombre_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarApellido_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarNacimiento_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarNIF_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_FiltrarEmpleado_Asociar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_invisible_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_FiltrarTitulo_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarFechaInicio_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarFechaFin_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_FiltrarId_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_FiltrarProyecto_Asociar)
+                    .addComponent(txt_FiltrarDescripcion_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Asociar_Asociar)
+                    .addComponent(btn_Cancelar_Asociar))
+                .addContainerGap())
         );
 
-        jLayeredPane1.add(jPanel3, "card3");
+        jLayeredPane1.add(panel_Asociar, "card3");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 472, Short.MAX_VALUE)
+        javax.swing.GroupLayout panel_ConsultarLayout = new javax.swing.GroupLayout(panel_Consultar);
+        panel_Consultar.setLayout(panel_ConsultarLayout);
+        panel_ConsultarLayout.setHorizontalGroup(
+            panel_ConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 348, Short.MAX_VALUE)
+        panel_ConsultarLayout.setVerticalGroup(
+            panel_ConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 355, Short.MAX_VALUE)
         );
 
-        jLayeredPane1.add(jPanel4, "card3");
+        jLayeredPane1.add(panel_Consultar, "card3");
 
         menu_Agregar.setText("Agregar");
 
@@ -682,6 +850,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jMenuBar.add(menu_Modificar);
 
         menu_Asociar.setText("Asociar");
+        menu_Asociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_AsociarActionPerformed(evt);
+            }
+        });
         jMenuBar.add(menu_Asociar);
 
         menu_Consultar.setText("Consultar");
@@ -733,6 +906,27 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_FiltrarTitulo_Modificar_ProyectoActionPerformed
 
+    private void menu_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_AsociarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_menu_AsociarActionPerformed
+
+    private void txt_FiltrarNacimiento_Modificar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FiltrarNacimiento_Modificar_EmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FiltrarNacimiento_Modificar_EmpleadoActionPerformed
+
+    private void panel_AsociarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_panel_AsociarFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel_AsociarFocusGained
+
+    private void txt_FiltrarTitulo_Proyecto_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FiltrarTitulo_Proyecto_AsociarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FiltrarTitulo_Proyecto_AsociarActionPerformed
+
+    private void btn_Asociar_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Asociar_AsociarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Asociar_AsociarActionPerformed
+
     /*private void switchPanels (JPanel panel){
         jLayeredPane1.removeAll();
         jLayeredPane1.add(panel);
@@ -777,27 +971,33 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Txt_Apellido_Agregar_Empleado;
-    private javax.swing.JTextField Txt_Descripcion_Agregar_Proyecto;
-    private javax.swing.JTextField Txt_FechaFin_Agregar_Proyecto;
-    private javax.swing.JTextField Txt_FechaInicio_Agregar_Proyecto;
-    private javax.swing.JTextField Txt_Nacimiento_Agregar_Empleado;
-    private javax.swing.JTextField Txt_Nif_Agregar_Empleado;
-    private javax.swing.JTextField Txt_Nombre_Agregar_Empleado;
-    private javax.swing.JTextField Txt_Titulo_Agregar_Proyecto;
-    private javax.swing.JButton btn_Agregar_Agregar_Empleado;
+    public javax.swing.JTextField Txt_Apellido_Agregar_Empleado;
+    public javax.swing.JTextField Txt_Descripcion_Agregar_Proyecto;
+    public javax.swing.JTextField Txt_FechaFin_Agregar_Proyecto;
+    public javax.swing.JTextField Txt_FechaInicio_Agregar_Proyecto;
+    public javax.swing.JTextField Txt_Nacimiento_Agregar_Empleado;
+    public javax.swing.JTextField Txt_Nif_Agregar_Empleado;
+    public javax.swing.JTextField Txt_Nombre_Agregar_Empleado;
+    public javax.swing.JTextField Txt_Titulo_Agregar_Proyecto;
+    public javax.swing.JButton btn_Agregar_Agregar_Empleado;
     public javax.swing.JButton btn_Agregar_Agregar_Proyecto;
-    private javax.swing.JButton btn_Cancelar_Agregar_Empleado;
-    private javax.swing.JButton btn_Cancelar_Agregar_Proyecto;
-    private javax.swing.JButton btn_Cancelar_Modificar_Empleado;
-    private javax.swing.JButton btn_Cancelar_Modificar_Proyecto;
-    private javax.swing.JButton btn_Filtrar_Modificar_Empleado;
-    private javax.swing.JButton btn_Filtrar_Modificar_Proyecto;
-    private javax.swing.JButton btn_ModificarDescripcion_Modificar_Proyecto;
-    private javax.swing.JButton btn_Modificar_Modificar_Empleado;
-    private javax.swing.JButton btn_Modificar_Modificar_Proyecto;
+    public javax.swing.JButton btn_Asociar_Asociar;
+    public javax.swing.JButton btn_Cancelar_Agregar_Empleado;
+    public javax.swing.JButton btn_Cancelar_Agregar_Proyecto;
+    public javax.swing.JButton btn_Cancelar_Asociar;
+    public javax.swing.JButton btn_Cancelar_Modificar_Empleado;
+    public javax.swing.JButton btn_Cancelar_Modificar_Proyecto;
+    public javax.swing.JButton btn_FiltrarEmpleado_Asociar;
+    public javax.swing.JButton btn_FiltrarProyecto_Asociar;
+    public javax.swing.JButton btn_Filtrar_Modificar_Empleado;
+    public javax.swing.JButton btn_Filtrar_Modificar_Proyecto;
+    public javax.swing.JButton btn_ModificarDescripcion_Modificar_Proyecto;
+    public javax.swing.JButton btn_Modificar_Modificar_Empleado;
+    public javax.swing.JButton btn_Modificar_Modificar_Proyecto;
+    private javax.swing.JButton btn_invisible_Asociar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -810,6 +1010,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -818,14 +1019,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    public javax.swing.JMenuBar jMenuBar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -834,29 +1035,41 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JMenuItem menuItem_Modificar_Empleado;
     public javax.swing.JMenuItem menuItem_Modificar_Proyecto;
     private javax.swing.JMenu menu_Agregar;
-    private javax.swing.JMenu menu_Asociar;
+    public javax.swing.JMenu menu_Asociar;
     private javax.swing.JMenu menu_Consultar;
     private javax.swing.JMenu menu_Gestión;
     private javax.swing.JMenu menu_Modificar;
     private javax.swing.JPanel menu_Test;
     public javax.swing.JPanel panel_Agregar_Empleado;
     public javax.swing.JPanel panel_Agregar_Proyecto;
+    public javax.swing.JPanel panel_Asociar;
+    private javax.swing.JPanel panel_Consultar;
     public javax.swing.JPanel panel_Modificar_Empleado;
     public javax.swing.JPanel panel_Modificar_Proyecto;
-    private javax.swing.JTable tabla_Modificar_Empleado;
+    public javax.swing.JTable tabla_Modificar_Empleado;
     private javax.swing.JTable tabla_Modificar_Empleado1;
+    private javax.swing.JTable tabla_Modificar_Empleado2;
     private javax.swing.JTextField txt_Apellido_Modificar_Empleado;
     private javax.swing.JTextField txt_FechaFin_Modificar_Proyecto;
     private javax.swing.JTextField txt_FechaInicio_Modificar_Proyecto;
+    public javax.swing.JTextField txt_FiltrarApellido_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarApellido_Modificar_Empleado;
     private javax.swing.JTextField txt_FiltrarDescripcion_Modificar_Proyecto;
+    private javax.swing.JTextField txt_FiltrarDescripcion_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarFechaFin_Modificar_Proyecto;
+    private javax.swing.JTextField txt_FiltrarFechaFin_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarFechaInicio_Modificar_Proyecto;
+    private javax.swing.JTextField txt_FiltrarFechaInicio_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarId_Modificar_Proyecto;
+    private javax.swing.JTextField txt_FiltrarId_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarNIF_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarNIF_Modificar_Empleado;
+    public javax.swing.JTextField txt_FiltrarNacimiento_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarNacimiento_Modificar_Empleado;
+    public javax.swing.JTextField txt_FiltrarNombre_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarNombre_Modificar_Empleado;
     private javax.swing.JTextField txt_FiltrarTitulo_Modificar_Proyecto;
+    private javax.swing.JTextField txt_FiltrarTitulo_Proyecto_Asociar;
     private javax.swing.JTextField txt_Nacimiento_Modificar_Empleado;
     private javax.swing.JTextField txt_Nombre_Modificar_Empleado;
     private javax.swing.JTextField txt_Titulo_Modificar_Proyecto;
