@@ -14,6 +14,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import javax.swing.text.JTextComponent;
 import modelo.Modelo;
 import modelo.Proyecto;
 import vista.Interfaz_Admin;
@@ -42,6 +44,7 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     Modelo modelo = new Modelo();
     
     static ArrayList <Proyecto> List_ComboBox_Asociar = null;
+    static JTextComponent editor = null;
     
     /**
      * Constructor de este controlador. Requiere de un objeto "Interfaz_Admin" el cual asignara a la instanciación "vista" anterior. Se trata de la interfaz con la que va a operar este controlador
@@ -49,6 +52,7 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
      */
     public Controlador_Menu_Admin (Interfaz_Admin vista){
         this.vista = vista;
+        
     }
     
     /**
@@ -262,6 +266,8 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     @Override
     public void menuSelected(MenuEvent e) {
         switchPanels(this.vista.panel_Asociar);
+        editor = (JTextComponent) this.vista.ComboBox_Asociar.getEditor().getEditorComponent();
+
 
         //Eti_ComboBox_Asociar
         //Este condicional se encarga de actualizar los items del jComboBox segun los datos que extraiga de la BBDD. La logica de ponerlo aqui es que de esta forma se actualiza cada vez que vuelva a este panel, por si se ha agregado o eliminado algun proyecto 
@@ -271,7 +277,8 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
             //MutableComboBoxModel<Proyecto> proy_Model = new DefaultComboBoxModel<>();
             //this.vista.ComboBox_Asociar.setModel(proy_Model);
             List_ComboBox_Asociar = modelo.cargarProyectos();
-            List_ComboBox_Asociar.stream().forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
+            //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
+            List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
             System.out.println("finish");
         }else{
             System.out.println("esta empty");
@@ -329,16 +336,30 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     }
 
 
-    
     //Eti_ComboBox_Asociar
     @Override
     public void keyReleased(KeyEvent e) {
         //El evento ha de reaccionar tras soltar la tecla ya que asi si que consigue recoger el ultimo caracter escrito. De otra forma, solo recogeria el los caracteres anteriores al ultima caracter escrito
         
-        String str = ((JTextField)this.vista.ComboBox_Asociar.getEditor().getEditorComponent()).getText();
+        String str = editor.getText();
+        System.out.println(str);
         
-        //String ff = List_ComboBox_Asociar.stream().sorted().filter(x-> x.startsWith(str)).findFirst().toString();
-        
+        if (str.length() == 0) {
+            System.out.println("vacio");
+            this.vista.ComboBox_Asociar.setSelectedIndex(0);
+        }else if (e.getExtendedKeyCode() == 16){
+            System.out.println("shift");
+        }else if(e.getExtendedKeyCode() == 8){
+            System.out.println("backspace");
+        }else{
+            this.vista.ComboBox_Asociar.setSelectedItem(List_ComboBox_Asociar.stream().filter(x-> x.getTitulo().startsWith(str)).findFirst().get());
+            String sel_Item_Text = this.vista.ComboBox_Asociar.getSelectedItem().toString();
+            editor.setText(sel_Item_Text);
+            System.out.println(str);
+            editor.setSelectionStart(str.length());
+            editor.setSelectionEnd(sel_Item_Text.length());
+        }
+
         
         
         //this.vista.ComboBox_Asociar.setSelectedIndex(1);

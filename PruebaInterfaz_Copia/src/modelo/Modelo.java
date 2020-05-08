@@ -109,6 +109,7 @@ public class Modelo extends database{
             while(rset.next()){
                 arrLi.add(new Proyecto(rset.getString("titulo"), LocalDate.parse(rset.getString("fecha_inicio")), LocalDate.parse(rset.getString("fecha_fin")), rset.getString("descripcion"), rset.getInt("id_proyecto")));
             }
+            //arrLi.add(new Proyecto(""));
             
             pstm.close();
         } catch (SQLException e) {
