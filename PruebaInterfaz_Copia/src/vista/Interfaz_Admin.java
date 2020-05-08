@@ -2,6 +2,7 @@ package vista;
 
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -120,7 +121,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_FiltrarFechaInicio_Proyecto_Asociar = new javax.swing.JTextField();
         txt_FiltrarFechaFin_Proyecto_Asociar = new javax.swing.JTextField();
         txt_FiltrarId_Proyecto_Asociar = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBox_Asociar = new javax.swing.JComboBox<>();
         btn_invisible_Asociar = new javax.swing.JButton();
         panel_Consultar = new javax.swing.JPanel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -707,7 +708,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         txt_FiltrarId_Proyecto_Asociar.setText("id proyecto");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBox_Asociar.setEditable(true);
+        ComboBox_Asociar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jorge", "Ester", "Pepe", "Jordi", "Palmira" }));
+        ComboBox_Asociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBox_AsociarActionPerformed(evt);
+            }
+        });
 
         btn_invisible_Asociar.setText("jButton3");
         btn_invisible_Asociar.setBorderPainted(false);
@@ -759,7 +766,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                         .addComponent(txt_FiltrarFechaInicio_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(txt_FiltrarFechaFin_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(ComboBox_Asociar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn_invisible_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -784,7 +791,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_invisible_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboBox_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_FiltrarTitulo_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -927,6 +934,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Asociar_AsociarActionPerformed
 
+    private void ComboBox_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_AsociarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBox_AsociarActionPerformed
+
     /*private void switchPanels (JPanel panel){
         jLayeredPane1.removeAll();
         jLayeredPane1.add(panel);
@@ -971,6 +982,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JComboBox<String> ComboBox_Asociar;
     public javax.swing.JTextField Txt_Apellido_Agregar_Empleado;
     public javax.swing.JTextField Txt_Descripcion_Agregar_Proyecto;
     public javax.swing.JTextField Txt_FechaFin_Agregar_Proyecto;
@@ -994,10 +1006,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JButton btn_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JButton btn_Modificar_Modificar_Empleado;
     public javax.swing.JButton btn_Modificar_Modificar_Proyecto;
-    private javax.swing.JButton btn_invisible_Asociar;
+    public javax.swing.JButton btn_invisible_Asociar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1055,13 +1066,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JTextField txt_FiltrarApellido_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarApellido_Modificar_Empleado;
     private javax.swing.JTextField txt_FiltrarDescripcion_Modificar_Proyecto;
-    private javax.swing.JTextField txt_FiltrarDescripcion_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarDescripcion_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarFechaFin_Modificar_Proyecto;
-    private javax.swing.JTextField txt_FiltrarFechaFin_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarFechaFin_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarFechaInicio_Modificar_Proyecto;
-    private javax.swing.JTextField txt_FiltrarFechaInicio_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarFechaInicio_Proyecto_Asociar;
     private javax.swing.JTextField txt_FiltrarId_Modificar_Proyecto;
-    private javax.swing.JTextField txt_FiltrarId_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarId_Proyecto_Asociar;
     public javax.swing.JTextField txt_FiltrarNIF_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarNIF_Modificar_Empleado;
     public javax.swing.JTextField txt_FiltrarNacimiento_Empleado_Asociar;
@@ -1069,7 +1080,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JTextField txt_FiltrarNombre_Empleado_Asociar;
     private javax.swing.JTextField txt_FiltrarNombre_Modificar_Empleado;
     private javax.swing.JTextField txt_FiltrarTitulo_Modificar_Proyecto;
-    private javax.swing.JTextField txt_FiltrarTitulo_Proyecto_Asociar;
+    public javax.swing.JTextField txt_FiltrarTitulo_Proyecto_Asociar;
     private javax.swing.JTextField txt_Nacimiento_Modificar_Empleado;
     private javax.swing.JTextField txt_Nombre_Modificar_Empleado;
     private javax.swing.JTextField txt_Titulo_Modificar_Proyecto;

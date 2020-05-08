@@ -1108,7 +1108,7 @@
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="txt_FiltrarFechaFin_Proyecto_Asociar" min="-2" pref="101" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jComboBox1" max="32767" attributes="0"/>
+                                          <Component id="ComboBox_Asociar" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1143,7 +1143,7 @@
                           <Component id="btn_invisible_Asociar" min="-2" pref="0" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComboBox_Asociar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_FiltrarTitulo_Proyecto_Asociar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1304,18 +1304,17 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="ComboBox_Asociar">
               <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Jorge&quot;, &quot;Ester&quot;, &quot;Pepe&quot;, &quot;Jordi&quot;, &quot;Palmira&quot; })" type="code"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBox_AsociarActionPerformed"/>
+              </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ComboBox_Asociar.setEditable(true);"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
