@@ -96,18 +96,18 @@ public class Modelo extends database{
     
     }
     
-    public ArrayList<String> cargarProyectos(){
+    public ArrayList<Proyecto> cargarProyectos(){
         
-        ArrayList <String> arrLi = new ArrayList<>();
+        ArrayList <Proyecto> arrLi = new ArrayList<>();
         
         try {
-            //OJO, la columna titulo en la bbdd es UNIQUE KEY
-            String query = "SELECT titulo FROM proyecto";
+            //Coge cada proyecto y forma un objeto "Proyecto"
+            String query = "SELECT * FROM proyecto";
             PreparedStatement pstm = this.getConexion().prepareStatement(query);
             ResultSet rset = pstm.executeQuery();
             
             while(rset.next()){
-                arrLi.add(rset.getString("titulo"));
+                arrLi.add(new Proyecto(rset.getString("titulo"), LocalDate.parse(rset.getString("fecha_inicio")), LocalDate.parse(rset.getString("fecha_fin")), rset.getString("descripcion"), rset.getInt("id_proyecto")));
             }
             
             pstm.close();

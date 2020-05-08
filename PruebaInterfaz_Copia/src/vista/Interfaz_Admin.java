@@ -3,6 +3,7 @@ package vista;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
+import modelo.Proyecto;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -121,7 +122,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_FiltrarFechaInicio_Proyecto_Asociar = new javax.swing.JTextField();
         txt_FiltrarFechaFin_Proyecto_Asociar = new javax.swing.JTextField();
         txt_FiltrarId_Proyecto_Asociar = new javax.swing.JTextField();
-        ComboBox_Asociar = new javax.swing.JComboBox<>();
+        ComboBox_Asociar = new javax.swing.JComboBox<Proyecto>();
         btn_invisible_Asociar = new javax.swing.JButton();
         panel_Consultar = new javax.swing.JPanel();
         jMenuBar = new javax.swing.JMenuBar();
@@ -709,7 +710,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_FiltrarId_Proyecto_Asociar.setText("id proyecto");
 
         ComboBox_Asociar.setEditable(true);
-        ComboBox_Asociar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jorge", "Ester", "Pepe", "Jordi", "Palmira" }));
+        ComboBox_Asociar.setModel(new javax.swing.DefaultComboBoxModel<>());
         ComboBox_Asociar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBox_AsociarActionPerformed(evt);
@@ -982,7 +983,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> ComboBox_Asociar;
+    public javax.swing.JComboBox<Proyecto> ComboBox_Asociar;
     public javax.swing.JTextField Txt_Apellido_Agregar_Empleado;
     public javax.swing.JTextField Txt_Descripcion_Agregar_Proyecto;
     public javax.swing.JTextField Txt_FechaFin_Agregar_Proyecto;

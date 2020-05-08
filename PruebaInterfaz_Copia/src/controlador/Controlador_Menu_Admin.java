@@ -14,16 +14,19 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.MutableComboBoxModel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import modelo.Modelo;
+import modelo.Proyecto;
 import vista.Interfaz_Admin;
 
 /**
@@ -37,6 +40,8 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     
     //Instancia el modelo con el que este controlador se va a comunicar
     Modelo modelo = new Modelo();
+    
+    static ArrayList <Proyecto> List_ComboBox_Asociar = null;
     
     /**
      * Constructor de este controlador. Requiere de un objeto "Interfaz_Admin" el cual asignara a la instanciación "vista" anterior. Se trata de la interfaz con la que va a operar este controlador
@@ -263,7 +268,10 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
         //Es decir, si NO esta vacio
         if (!modelo.isProyectoEmpty()) {
             this.vista.ComboBox_Asociar.removeAllItems();
-            modelo.cargarProyectos().stream().forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
+            //MutableComboBoxModel<Proyecto> proy_Model = new DefaultComboBoxModel<>();
+            //this.vista.ComboBox_Asociar.setModel(proy_Model);
+            List_ComboBox_Asociar = modelo.cargarProyectos();
+            List_ComboBox_Asociar.stream().forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
             System.out.println("finish");
         }else{
             System.out.println("esta empty");
@@ -326,6 +334,12 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     @Override
     public void keyReleased(KeyEvent e) {
         //El evento ha de reaccionar tras soltar la tecla ya que asi si que consigue recoger el ultimo caracter escrito. De otra forma, solo recogeria el los caracteres anteriores al ultima caracter escrito
+        
+        String str = ((JTextField)this.vista.ComboBox_Asociar.getEditor().getEditorComponent()).getText();
+        
+        //String ff = List_ComboBox_Asociar.stream().sorted().filter(x-> x.startsWith(str)).findFirst().toString();
+        
+        
         
         //this.vista.ComboBox_Asociar.setSelectedIndex(1);
         //System.out.println(((JTextField)this.vista.ComboBox_Asociar.getEditor().getEditorComponent()).getText());
