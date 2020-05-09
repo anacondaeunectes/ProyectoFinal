@@ -46,25 +46,21 @@ public class Modelo extends database{
         
     }
     
-    public boolean agregarProyecto(String titulo, LocalDate fecha_inicio, LocalDate fecha_fin, String descripcion){
+    public boolean agregarProyecto(LocalDate fecha_inicio, LocalDate fecha_fin, String titulo, String descripcion){
         
         try {
             
-            String query = "INSERT INTO proyecto VALUES (NULL, ?, ?, ?, ?)";
+            String query = "INSERT INTO proyecto VALUES (?, ?, ?, ?, NULL)";
             PreparedStatement pstm = this.getConexion().prepareStatement(query);
-            pstm.setString(1, titulo);
-            //pstm.setString(2, fecha_inicio);
-            //pstm.setInt(3, fecha_fin);
+            pstm.setString(1, fecha_inicio.toString());
+            System.out.println(fecha_inicio.toString());
+            pstm.setString(2, fecha_fin.toString());
+            System.out.println(fecha_fin.toString());
+            pstm.setString(3, titulo);
             pstm.setString(4, descripcion);
             pstm.execute();
             pstm.close();
-            /*PreparedStatement statement = this.getConexion().prepareStatement(query);
-            statement.setString(1, nombre);
-            statement.setString(2, apellido);
-            statement.setInt(3, Integer.parseInt(ano_nacimiento.toString()));
-            statement.setString(4, NIF);*/
-            
-            //statement.executeQuery();
+
             return true;
         } catch (SQLException ex) {
             System.err.println("sql: " + ex.getMessage());
