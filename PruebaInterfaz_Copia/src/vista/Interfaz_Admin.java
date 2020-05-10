@@ -518,6 +518,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         });
 
         btn_Cancelar_Modificar_Empleado.setText("Cancelar");
+        btn_Cancelar_Modificar_Empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Cancelar_Modificar_EmpleadoActionPerformed(evt);
+            }
+        });
 
         btn_Eliminar_Modificar_Empleado.setText("Eliminar");
 
@@ -1631,6 +1636,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private void btn_Asociar_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Asociar_AsociarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Asociar_AsociarActionPerformed
+
+    private void btn_Cancelar_Modificar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cancelar_Modificar_EmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Cancelar_Modificar_EmpleadoActionPerformed
 
     /*private void switchPanels (JPanel panel){
         jLayeredPane1.removeAll();

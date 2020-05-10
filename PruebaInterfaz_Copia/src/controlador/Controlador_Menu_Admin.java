@@ -36,7 +36,7 @@ import vista.Interfaz_Admin;
  *
  * @author anaco
  */
-public class Controlador_Menu_Admin implements ActionListener, MenuListener, MouseListener, KeyListener{
+public class Controlador_Menu_Admin implements ActionListener, MenuListener, MouseListener, KeyListener, FocusListener{
     
     //Instancia la interfaz de la vista con la que va a trabajar este controlador
     Interfaz_Admin vista;
@@ -390,6 +390,16 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
         //this.vista.ComboBox_Asociar.setSelectedIndex(1);
         //System.out.println(((JTextField)this.vista.ComboBox_Asociar.getEditor().getEditorComponent()).getText());
         
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
  
