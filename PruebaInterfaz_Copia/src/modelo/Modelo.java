@@ -118,46 +118,84 @@ public class Modelo extends database{
        return arrLi;
     }
     
-    public static String getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano, String NIF){
+    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
         DefaultTableModel tableModel;
         ResultSet rSet;
         String query = "";
+        String whr = "";
         String[] nombreColumnas;
     
         /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
         if ((nombreChecked == true && apellidoChecked == true && ano_NacimientoChecked == true && NIFChecked == true) || (nombreChecked == false && apellidoChecked == false && ano_NacimientoChecked == false && NIFChecked == false)) {
             nombreColumnas = new String[] {"nombre", "apellido", "ano_nacimiento", "NIF"};
             
-            if (nombre != null) {
+            //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
+            tableModel = new DefaultTableModel(null, nombreColumnas){
+            @Override
+            public boolean isCellEditable(int row, int column){return false;}};
+            
+            query = "SELECT * FROM empleado";
+            
+            
+            if (nombre != "" || apellido != "" || ano_nacimiento != "" || NIF != "") {
+                
+                query = query + " WHERE ";
+                
+                whr = whr + " nombre LIKE '" + nombre + "%' AND ";
+                   
+                whr = whr + " apellido LIKE '" + apellido + "%' AND ";
+                    
+                whr = whr + " ano_nacimiento LIKE '" + ano_nacimiento + "%' AND ";
+                
+                whr = whr + " NIF LIKE '" + NIF + "%'";
+                
+                query = query + whr;
                 
             }
-            /*try {
+            
+            try {
+                
                 Statement sentencia = this.getConexion().createStatement();
-                rSet = sentencia.executeQuery("SELECT * FROM empleado");
+                rSet = sentencia.executeQuery(query);
+                
+                String[] fila = new String[4];
+                while (rSet.next()){
+
+                    fila[0] = rSet.getString(1);
+                    fila[1] = rSet.getString(2);
+                    fila[2] = rSet.getString(3);
+                    fila[3] = rSet.getString(4);
+                    tableModel.addRow(fila);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
-            }*/
+            }
+            
+            
            
         }else{
+           
             
-            List <String> list = new ArrayList<>();
-            
+            List <String> listNombreColumnas = new ArrayList<>();
+            //Si los CheckBox estan marcados, se buscara tambien esa columna
             if (nombreChecked) {
-                list.add("nombre");
+                listNombreColumnas.add("nombre");
             }
             if (apellidoChecked) {
-                list.add("apellido");
+                listNombreColumnas.add("apellido");
             }
             if (ano_NacimientoChecked) {
-                list.add("ano_nacimiento");
+                listNombreColumnas.add("ano_nacimiento");
             }
             if (NIFChecked) {
-                list.add("NIF");
+                listNombreColumnas.add("NIF");
             }
             
             //Se transforma el Arraylist "list" a un Array de cara a poder introducirlo en el DefaultTableModel
-            nombreColumnas = new String[list.size()];
-            list.toArray(nombreColumnas);
+            nombreColumnas = new String[listNombreColumnas.size()];
+            listNombreColumnas.toArray(nombreColumnas);
+            
+             tableModel = new DefaultTableModel(null, nombreColumnas);
             
             //Creamos el String con los campos a seleccionar en la consulta a la BBDD
             String select = "";
@@ -174,31 +212,31 @@ public class Modelo extends database{
                 first = false;
             }
             
-            return select;
-            /*try {
-                String query = "SELECT" + select + "FROM empleado";
+           // return query;
+            try {
+               // String query = "SELECT" + select + "FROM empleado";
                 PreparedStatement pstm = this.getConexion().prepareStatement(query);
-                rSet = sentencia.
+               // rSet = sentencia.
             } catch (Exception e) {
-            }*/
+            }
            
         }
     
-        tableModel = new DefaultTableModel(null, nombreColumnas);
+       
         
         /*------------------------ Obtencion Datos BBDD segun las columnas elegidas ------------------------*/
         
         String fila[] = new String[nombreColumnas.length];
         
         
-        return "";
+        return tableModel;
         //return nombreColumnas;
     }
     
     
     public static void main(String args[]) {
             
-            
+            //System.out.println(getTablaEmpleado(true, true, true, true, "Pepe", "Viyuela", "1970", "123"));
         
     }
     

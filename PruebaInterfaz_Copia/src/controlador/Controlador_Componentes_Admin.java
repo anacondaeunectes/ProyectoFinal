@@ -142,7 +142,11 @@ public class Controlador_Componentes_Admin implements ActionListener, MouseListe
                 
             //Modificar Empleado
             case "accion_Btn_Filtrar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok5");
+                this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true,
+                        this.vista.txt_FiltrarNombre_Modificar_Empleado.getText(),
+                        this.vista.txt_FiltrarApellido_Modificar_Empleado.getText(), 
+                        this.vista.txt_FiltrarNacimiento_Modificar_Empleado.getText(),
+                        this.vista.txt_FiltrarNIF_Modificar_Empleado.getText()));
                 break;
                 
             case "accion_Btn_Modificar_Modificar_Empleado":

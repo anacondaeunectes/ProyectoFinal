@@ -71,6 +71,8 @@ public class Controlador_Menu_Admin implements ActionListener,  FocusListener{
        
         this.vista.menuItem_Modificar_Empleado.setActionCommand( "vista_Modificar_Empleado" );
         this.vista.menuItem_Modificar_Empleado.addActionListener(this);
+        //Carga por defecto el jTable del panel "panel_Modificar_Empleado" con todos los registros de la tabla empleado
+        this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
         
         this.vista.menuItem_Modificar_Proyecto.setActionCommand("vista_Modificar_Proyecto");
         this.vista.menuItem_Modificar_Proyecto.addActionListener(this);
