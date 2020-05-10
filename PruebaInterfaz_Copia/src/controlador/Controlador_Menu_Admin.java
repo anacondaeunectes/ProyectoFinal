@@ -36,7 +36,7 @@ import vista.Interfaz_Admin;
  *
  * @author anaco
  */
-public class Controlador_Menu_Admin implements ActionListener, MenuListener, MouseListener, KeyListener, FocusListener{
+public class Controlador_Menu_Admin implements ActionListener,  FocusListener{
     
     //Instancia la interfaz de la vista con la que va a trabajar este controlador
     Interfaz_Admin vista;
@@ -44,8 +44,8 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     //Instancia el modelo con el que este controlador se va a comunicar
     Modelo modelo = new Modelo();
     
-    static ArrayList <Proyecto> List_ComboBox_Asociar = null;
-    static JTextComponent editor = null;
+/*    ArrayList <Proyecto> List_ComboBox_Asociar = null;
+    JTextComponent editor = null;*/
     
     /**
      * Constructor de este controlador. Requiere de un objeto "Interfaz_Admin" el cual asignara a la instanciación "vista" anterior. Se trata de la interfaz con la que va a operar este controlador
@@ -62,16 +62,6 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     
     public void iniciar()
     {
-        // Skin tipo WINDOWS
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            //com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
-            //com.sun.java.swing.plaf.windows.WindowsLookAndFeel
-            SwingUtilities.updateComponentTreeUI(vista);
-            vista.setVisible(true);
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {}
-
-        
         
         this.vista.menuItem_Agregar_Empleado.setActionCommand( "vista_Agregar_Empleado" );
         this.vista.menuItem_Agregar_Empleado.addActionListener(this);
@@ -85,8 +75,8 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
         this.vista.menuItem_Modificar_Proyecto.setActionCommand("vista_Modificar_Proyecto");
         this.vista.menuItem_Modificar_Proyecto.addActionListener(this);
 
-        this.vista.menu_Asociar.setActionCommand("vista_Asociar");
-        this.vista.menu_Asociar.addMenuListener(this);
+        this.vista.menuItem_Asociar.setActionCommand("vista_Asociar");
+        this.vista.menuItem_Asociar.addActionListener(this);
         
         this.vista.menuItem_EmpleadoEnProyecto_Consultar.setActionCommand("vista_EmpleadoEnProyecto_Consultar");
         this.vista.menuItem_EmpleadoEnProyecto_Consultar.addActionListener(this);
@@ -102,59 +92,7 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
         
         /*-----------------------------------Fin referente a Menu - Comienzo referente a botones y acciones------------------------------------------*/
         
-        //Agregar Empleado
-        this.vista.btn_Agregar_Agregar_Empleado.setActionCommand( "accion_Btn_Agregar_Agregar_Empleado" );
-        this.vista.btn_Agregar_Agregar_Empleado.addActionListener(this);
         
-        this.vista.btn_Cancelar_Agregar_Empleado.setActionCommand( "accion_Btn_Cancelar_Agregar_Empleado" );
-        this.vista.btn_Cancelar_Agregar_Empleado.addActionListener(this);
-        
-        //Agregar Proyecto
-        this.vista.btn_Agregar_Agregar_Proyecto.setActionCommand( "accion_Btn_Agregar_Agregar_Proyecto" );
-        this.vista.btn_Agregar_Agregar_Proyecto.addActionListener(this);
-        
-        this.vista.btn_Cancelar_Agregar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Agregar_Proyecto" );
-        this.vista.btn_Cancelar_Agregar_Proyecto.addActionListener(this);
-        
-        //Modificar Empleado
-        this.vista.btn_Filtrar_Modificar_Empleado.setActionCommand( "accion_Btn_Filtrar_Modificar_Empleado" );
-        this.vista.btn_Filtrar_Modificar_Empleado.addActionListener(this);
-        
-        this.vista.btn_Modificar_Modificar_Empleado.setActionCommand( "accion_Btn_Modificar_Modificar_Empleado" );
-        this.vista.btn_Modificar_Modificar_Empleado.addActionListener(this);
-        
-        this.vista.btn_Cancelar_Modificar_Empleado.setActionCommand( "accion_Btn_Cancelar_Modificar_Empleado" );
-        this.vista.btn_Cancelar_Modificar_Empleado.addActionListener(this);
-        
-        //Modificar Proyecto
-        this.vista.btn_Filtrar_Modificar_Proyecto.setActionCommand( "accion_Btn_Filtrar_Modificar_Proyecto" );
-        this.vista.btn_Filtrar_Modificar_Proyecto.addActionListener(this);
-        
-        this.vista.btn_ModificarDescripcion_Modificar_Proyecto.setActionCommand( "accion_Btn_ModificarDescripcion_Modificar_Proyecto" );
-        this.vista.btn_ModificarDescripcion_Modificar_Proyecto.addActionListener(this);
-        
-        this.vista.btn_Modificar_Modificar_Proyecto.setActionCommand( "accion_Btn_Modificar_Modificar_Proyecto" );
-        this.vista.btn_Modificar_Modificar_Proyecto.addActionListener(this);
-        
-        this.vista.btn_Cancelar_Modificar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Modificar_Proyecto" );
-        this.vista.btn_Cancelar_Modificar_Proyecto.addActionListener(this);
-        
-        //Asociar
-        this.vista.btn_FiltrarEmpleado_Asociar.setActionCommand( "accion_Btn_FiltrarEmpleado_Asociar" );
-        this.vista.btn_FiltrarEmpleado_Asociar.addActionListener(this);
-        
-        this.vista.btn_FiltrarProyecto_Asociar.setActionCommand( "accion_Btn_FiltrarProyecto_Asociar" );
-        this.vista.btn_FiltrarProyecto_Asociar.addActionListener(this);
-        
-        this.vista.btn_Asociar_Asociar.setActionCommand( "accion_Btn_Asociar_Asociar" );
-        this.vista.btn_Asociar_Asociar.addActionListener(this);
-       
-        this.vista.btn_Cancelar_Asociar.setActionCommand( "accion_Btn_Cancelar_Asociar" );
-        this.vista.btn_Cancelar_Asociar.addActionListener(this);
-        
-        //Eti_ComboBox_Asociar
-        this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addMouseListener(this);
-        this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addKeyListener(this);
         
         
         //añade e inicia el jtable con un DefaultTableModel vacio
@@ -191,13 +129,32 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
                 switchPanels(this.vista.panel_Modificar_Proyecto);break;
                 
             case "vista_Asociar":
-                switchPanels(this.vista.panel_Asociar);break;
+                switchPanels(this.vista.panel_Asociar);
+                
+                //Realmente, por temas organizativos esto deberia estar en la clase "Controlador_Componentes_Admin" donde se ejecutaría este codigo a traves de un listener sobre este metodo. A implementar en un futuro
+                
+                Controlador_Componentes_Admin.editor = (JTextComponent) this.vista.ComboBox_Asociar.getEditor().getEditorComponent();
+                
+                if (!modelo.isProyectoEmpty()) {
+                    this.vista.ComboBox_Asociar.removeAllItems();
+                    Controlador_Componentes_Admin.List_ComboBox_Asociar = modelo.cargarProyectos();
+                    //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
+                    Controlador_Componentes_Admin.List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
+                    System.out.println("finish");
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se ha encontrado ningun proyecto");
+                }
+                
+                
+                        
+                break;
+                
                 
             case "vista_EmpleadoEnProyecto_Consultar":
-                switchPanels(this.vista.panel_Asociar);break;
+                switchPanels(this.vista.panel_EmpleadoEnProyecto_Consultar);break;
                 
             case "vista_ProyectoDeEmpleado_Consultar":
-                switchPanels(this.vista.panel_Asociar);break;
+                switchPanels(this.vista.panel_ProyectoDeEmpleado_Consultar);break;
                 
             case "vista_ListaEmpleado_Consultar":
                 switchPanels(this.vista.panel_ListaEmpleado_Consultar);break;
@@ -207,121 +164,15 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
                 
               /*-----------------------------------Fin referente a Menu - Comienzo referente a botones y acciones------------------------------------------*/  
                 
-             //Agregar Empleado
-            case "accion_Btn_Agregar_Agregar_Empleado":
-                if (this.modelo.agregarEmpleado(this.vista.Txt_Nombre_Agregar_Empleado.getText(),
-                        this.vista.Txt_Apellido_Agregar_Empleado.getText(),
-                        Integer.parseInt(this.vista.Txt_Nacimiento_Agregar_Empleado.getText()),
-                        this.vista.Txt_Nif_Agregar_Empleado.getText())){
-                    JOptionPane.showMessageDialog(null, "Registro de empleado introducido");
-                }else{
-                    JOptionPane.showMessageDialog(null, "ERROR - Se ha producido un error. Registro de empleado no introducido","Error", JOptionPane.ERROR_MESSAGE);
-                }break;
-                
-            case "accion_Btn_Cancelar_Agregar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok2");
-                break;
             
-            //Agregar Proyecto
-            case "accion_Btn_Agregar_Agregar_Proyecto":
-                if (this.modelo.agregarProyecto(LocalDate.parse(this.vista.Txt_FechaInicio_Agregar_Proyecto.getText()),
-                        LocalDate.parse(this.vista.Txt_FechaFin_Agregar_Proyecto.getText()),
-                        this.vista.Txt_Titulo_Agregar_Proyecto.getText(),
-                        this.vista.Txt_Descripcion_Agregar_Proyecto.getText())){
-                    JOptionPane.showMessageDialog(null, "Registro de proyecto introducido");
-                }else{
-                    JOptionPane.showMessageDialog(null, "ERROR - Se ha producido un error. Registro de proyecto no introducido","Error", JOptionPane.ERROR_MESSAGE);
-                }break;
-                
-            case "accion_Btn_Cancelar_Agregar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok4");
-                break;
-                
-            //Modificar Empleado
-            case "accion_Btn_Filtrar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok5");
-                break;
-                
-            case "accion_Btn_Modificar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok6");
-                break;
-                
-            case "accion_Btn_Cancelar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok7");
-                break;
-             
-            //Modificar Proyecto
-            case "accion_Btn_Filtrar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok8");
-                break;
-            
-            case "accion_Btn_ModificarDescripcion_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok9");
-                break;
-                
-            case "accion_Btn_Modificar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok10");
-                break;
-                
-            case "accion_Btn_Cancelar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok11");
-                break;
-                
-            //Asociar
-            case "accion_Btn_FiltrarEmpleado_Asociar":
-                JOptionPane.showMessageDialog(null, "ok12");
-                break;
-                
-            case "accion_Btn_FiltrarProyecto_Asociar":
-                JOptionPane.showMessageDialog(null, "ok13");
-                break;
-                
-            case "accion_Btn_Asociar_Asociar":
-                JOptionPane.showMessageDialog(null, "ok14");
-                break;
-                
-            case "accion_Btn_Cancelar_Asociar":
-                JOptionPane.showMessageDialog(null, "ok15");
-                break;
             
             
         }
     }
     
-    /*-------------Accion MENU_EVENT-------------*/
-    @Override
-    public void menuSelected(MenuEvent e) {
-        switchPanels(this.vista.panel_Asociar);
-        editor = (JTextComponent) this.vista.ComboBox_Asociar.getEditor().getEditorComponent();
-
-
-        //Eti_ComboBox_Asociar
-        //Este condicional se encarga de actualizar los items del jComboBox segun los datos que extraiga de la BBDD. La logica de ponerlo aqui es que de esta forma se actualiza cada vez que vuelva a este panel, por si se ha agregado o eliminado algun proyecto 
-        //Es decir, si NO esta vacio
-        if (!modelo.isProyectoEmpty()) {
-            this.vista.ComboBox_Asociar.removeAllItems();
-            List_ComboBox_Asociar = modelo.cargarProyectos();
-            //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
-            List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
-            System.out.println("finish");
-        }else{
-            JOptionPane.showMessageDialog(null, "No se ha encontrado ningun proyecto");
-        }
-       
-    }
-    
-    @Override
-    public void menuDeselected(MenuEvent e) {
-      
-    }
-
-    @Override
-    public void menuCanceled(MenuEvent e) {
-        
-    }
 
     /*-------------Accion MOUSE_EVENT-------------*/
-    @Override
+/*    @Override
     public void mouseClicked(MouseEvent e) {
        
     }
@@ -349,7 +200,7 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     }
     
     /*-------------Accion KEY_EVENT-------------*/
-    @Override
+    /*@Override
     public void keyTyped(KeyEvent e) {
         
     }
@@ -357,14 +208,14 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
     @Override
     public void keyPressed(KeyEvent e) {
         
-    }
+    }*/
 
 
     //Eti_ComboBox_Asociar
-    @Override
+/*   @Override
     public void keyReleased(KeyEvent e) {
         //El evento ha de reaccionar tras soltar la tecla ya que asi si que consigue recoger el ultimo caracter escrito. De otra forma, solo recogeria el los caracteres anteriores al ultima caracter escrito
-        
+        System.out.println("llega");
         String str = editor.getText();
         System.out.println(str);
         
@@ -390,7 +241,7 @@ public class Controlador_Menu_Admin implements ActionListener, MenuListener, Mou
         //this.vista.ComboBox_Asociar.setSelectedIndex(1);
         //System.out.println(((JTextField)this.vista.ComboBox_Asociar.getEditor().getEditorComponent()).getText());
         
-    }
+    }*/
 
     @Override
     public void focusGained(FocusEvent e) {

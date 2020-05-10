@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -113,6 +116,90 @@ public class Modelo extends database{
         }
         
        return arrLi;
+    }
+    
+    public static String getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano, String NIF){
+        DefaultTableModel tableModel;
+        ResultSet rSet;
+        String query = "";
+        String[] nombreColumnas;
+    
+        /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
+        if ((nombreChecked == true && apellidoChecked == true && ano_NacimientoChecked == true && NIFChecked == true) || (nombreChecked == false && apellidoChecked == false && ano_NacimientoChecked == false && NIFChecked == false)) {
+            nombreColumnas = new String[] {"nombre", "apellido", "ano_nacimiento", "NIF"};
+            
+            if (nombre != null) {
+                
+            }
+            /*try {
+                Statement sentencia = this.getConexion().createStatement();
+                rSet = sentencia.executeQuery("SELECT * FROM empleado");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
+           
+        }else{
+            
+            List <String> list = new ArrayList<>();
+            
+            if (nombreChecked) {
+                list.add("nombre");
+            }
+            if (apellidoChecked) {
+                list.add("apellido");
+            }
+            if (ano_NacimientoChecked) {
+                list.add("ano_nacimiento");
+            }
+            if (NIFChecked) {
+                list.add("NIF");
+            }
+            
+            //Se transforma el Arraylist "list" a un Array de cara a poder introducirlo en el DefaultTableModel
+            nombreColumnas = new String[list.size()];
+            list.toArray(nombreColumnas);
+            
+            //Creamos el String con los campos a seleccionar en la consulta a la BBDD
+            String select = "";
+            boolean first = true;
+            
+            for(String a : nombreColumnas){
+                
+                if (!first) {
+                     select = select + ",";
+                }
+                 
+                select = select + a;
+                
+                first = false;
+            }
+            
+            return select;
+            /*try {
+                String query = "SELECT" + select + "FROM empleado";
+                PreparedStatement pstm = this.getConexion().prepareStatement(query);
+                rSet = sentencia.
+            } catch (Exception e) {
+            }*/
+           
+        }
+    
+        tableModel = new DefaultTableModel(null, nombreColumnas);
+        
+        /*------------------------ Obtencion Datos BBDD segun las columnas elegidas ------------------------*/
+        
+        String fila[] = new String[nombreColumnas.length];
+        
+        
+        return "";
+        //return nombreColumnas;
+    }
+    
+    
+    public static void main(String args[]) {
+            
+            
+        
     }
     
     
