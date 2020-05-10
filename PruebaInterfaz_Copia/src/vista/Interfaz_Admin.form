@@ -664,29 +664,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNombre_Modificar_Empleado" min="-2" pref="79" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarApellido_Modificar_Empleado" min="-2" pref="79" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarNacimiento_Modificar_Empleado" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarNIF_Modificar_Empleado" min="-2" pref="79" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="btn_Filtrar_Modificar_Empleado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" pref="484" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="487" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
@@ -715,6 +695,22 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNombre_Modificar_Empleado" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarApellido_Modificar_Empleado" min="-2" pref="106" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNacimiento_Modificar_Empleado" min="-2" pref="103" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txt_FiltrarNIF_Modificar_Empleado" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                              <Component id="btn_Filtrar_Modificar_Empleado" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -731,7 +727,7 @@
                           <Component id="txt_FiltrarNacimiento_Modificar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_FiltrarNIF_Modificar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btn_Filtrar_Modificar_Empleado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -757,7 +753,7 @@
                           </Group>
                           <Component id="btn_Modificar_Modificar_Empleado" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -790,25 +786,19 @@
             </Container>
             <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Modificar_Empleado">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="name" type="java.lang.String" value="Nombre_name" noResource="true"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="PlaceHolder placeHolderEj = new PlaceHolder(txt_FiltrarNombre_Modificar_Empleado, new Color(189, 189, 189), Color.BLACK,&quot;Nombre&quot;, false, &quot;Tahoma&quot;, 11);"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Modificar_Empleado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="apellido"/>
-              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Modificar_Empleado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" ano_nacimiento"/>
-              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarNacimiento_Modificar_EmpleadoActionPerformed"/>
               </Events>
@@ -817,9 +807,6 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Modificar_Empleado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NIF"/>
-              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -1498,7 +1485,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txt_FiltrarTitulo_Proyecto_Asociar1" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar1" min="-2" pref="95" max="-2" attributes="0"/>
@@ -1508,10 +1495,7 @@
                                   <Component id="ComboBox_EmpleadoEnProyecto_Asociar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btn_invisible_Asociar3" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarId_Proyecto_Asociar1" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txt_FiltrarId_Proyecto_Asociar1" min="-2" pref="108" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1538,10 +1522,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btn_FiltrarEmpleado_Asociar3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator4" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="btn_invisible_Asociar3" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ComboBox_EmpleadoEnProyecto_Asociar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -1720,18 +1701,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_invisible_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panel_ProyectoDeEmpleado_Consultar">
@@ -1765,15 +1734,6 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btn_Cancelar_Asociar4" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txt_FiltrarNombre_Empleado_Asociar5" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarApellido_Empleado_Asociar5" min="-2" pref="95" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNacimiento_Empleado_Asociar5" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNIF_Empleado_Asociar5" max="32767" attributes="0"/>
-                          </Group>
                           <Component id="jScrollPane10" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
@@ -1784,7 +1744,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txt_FiltrarTitulo_Proyecto_Asociar2" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar2" min="-2" pref="95" max="-2" attributes="0"/>
@@ -1794,10 +1754,7 @@
                                   <Component id="ComboBox_ProyectoDeEmpleado_Consultar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btn_invisible_Asociar4" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarId_Proyecto_Asociar2" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="txt_FiltrarId_Proyecto_Asociar2" min="-2" pref="108" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1807,6 +1764,34 @@
                       <Component id="btn_FiltrarEmpleado_Asociar5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txt_FiltrarNombre_Modificar_Empleado1" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt_FiltrarApellido_Modificar_Empleado1" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt_FiltrarNacimiento_Modificar_Empleado1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txt_FiltrarNIF_Modificar_Empleado1" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="100" max="32767" attributes="0"/>
+                                  <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1814,20 +1799,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane10" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_FiltrarNombre_Empleado_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarApellido_Empleado_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNacimiento_Empleado_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNIF_Empleado_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="btn_FiltrarEmpleado_Asociar5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator6" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="btn_invisible_Asociar4" alignment="0" min="-2" pref="0" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="ComboBox_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -1850,6 +1825,35 @@
                           <Component id="btn_Cancelar_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txt_FiltrarNombre_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarApellido_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNacimiento_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNIF_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="153" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1876,38 +1880,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Empleado_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="nombre"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Empleado_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="apellido"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Empleado_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ano_nacimiento"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Empleado_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NIF"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JButton" name="btn_FiltrarEmpleado_Asociar5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filtrar"/>
@@ -2006,17 +1978,39 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_invisible_Asociar4">
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Modificar_Empleado1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="selected" type="boolean" value="true"/>
+                <Property name="name" type="java.lang.String" value="Nombre_name" noResource="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Modificar_Empleado1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Modificar_Empleado1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarNacimiento_Modificar_Empleado1ActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Modificar_Empleado1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
             </Component>
           </SubComponents>
         </Container>
@@ -2057,8 +2051,7 @@
                                       <Component id="btn_Cancelar_Asociar5" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_invisible_Asociar5" min="-2" pref="0" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txt_FiltrarNombre_Empleado_Asociar4" min="-2" pref="106" max="-2" attributes="0"/>
@@ -2088,8 +2081,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane9" min="-2" pref="214" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="btn_invisible_Asociar5" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_FiltrarNombre_Empleado_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2188,18 +2179,6 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_invisible_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panel_ListaProyecto_Consultar">
@@ -2239,8 +2218,7 @@
                                       <Component id="btn_Cancelar_Asociar6" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_invisible_Asociar6" min="-2" pref="0" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txt_FiltrarNombre_Empleado_Asociar6" min="-2" pref="106" max="-2" attributes="0"/>
@@ -2270,8 +2248,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane11" min="-2" pref="214" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="btn_invisible_Asociar6" min="-2" pref="0" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_FiltrarNombre_Empleado_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2370,18 +2346,6 @@
             <Component class="javax.swing.JButton" name="btn_Cancelar_Asociar6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_invisible_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton3"/>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="focusPainted" type="boolean" value="false"/>
-                <Property name="focusable" type="boolean" value="false"/>
-                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

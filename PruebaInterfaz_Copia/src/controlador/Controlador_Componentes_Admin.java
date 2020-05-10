@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import com.TextPrompt;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -102,7 +104,23 @@ public class Controlador_Componentes_Admin implements ActionListener, MouseListe
         this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addKeyListener(this);
         this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addMouseListener(this);
         
-    
+        //Coloca unos placeHolder a los jTextField del filtrado
+        this.vista.placeHolder_FiltrarNombre_Modificar_Empleado = new TextPrompt("Nombre", this.vista.txt_FiltrarNombre_Modificar_Empleado, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNombre_Modificar_Empleado.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNombre_Modificar_Empleado.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarApellido_Modificar_Empleado = new TextPrompt("Apellido", this.vista.txt_FiltrarApellido_Modificar_Empleado, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarApellido_Modificar_Empleado.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarApellido_Modificar_Empleado.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarNacimiento_Modificar_Empleado = new TextPrompt("Ano nacimiento", this.vista.txt_FiltrarNacimiento_Modificar_Empleado, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNacimiento_Modificar_Empleado.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNacimiento_Modificar_Empleado.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarNIF_Modificar_Empleado = new TextPrompt("NIF", this.vista.txt_FiltrarNIF_Modificar_Empleado, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNIF_Modificar_Empleado.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNIF_Modificar_Empleado.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+
     }
 
     @Override
@@ -142,6 +160,7 @@ public class Controlador_Componentes_Admin implements ActionListener, MouseListe
                 
             //Modificar Empleado
             case "accion_Btn_Filtrar_Modificar_Empleado":
+                
                 this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true,
                         this.vista.txt_FiltrarNombre_Modificar_Empleado.getText(),
                         this.vista.txt_FiltrarApellido_Modificar_Empleado.getText(), 
