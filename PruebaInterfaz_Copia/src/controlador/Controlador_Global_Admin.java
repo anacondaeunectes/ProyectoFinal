@@ -9,24 +9,30 @@ package controlador;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modelo.Modelo;
 import vista.Interfaz_Admin;
 /**
  *
  * @author anaco
  */
-public class Controlador_Global_Admin {
+public class Controlador_Global_Admin extends Controlador implements ControladorInterfaz{
     
-    Interfaz_Admin vista;
-    Controlador_Menu_Admin control_Menu;
-    Controlador_Componentes_Admin control_Componentes;
+    Controlador_Agregar_Admin control_Agregar_Admin;
+    Controlador_Modificar_Admin control_Modificar_Componentes;
+    Controlador_Asociar_Admin control_Asociar_Componentes;
+    Controlador_Consultar_Admin control_Consultar_Componentes;
 
-    public Controlador_Global_Admin(Interfaz_Admin vista) {
-        this.vista = vista;
-        this.control_Menu = new Controlador_Menu_Admin(vista);
-        this.control_Componentes = new Controlador_Componentes_Admin(vista);
+    public Controlador_Global_Admin(Interfaz_Admin vista, Modelo modelo) {
+        
+        super(vista, modelo);
+        this.control_Agregar_Admin = new Controlador_Agregar_Admin(vista, modelo);
+        this.control_Modificar_Componentes = new Controlador_Modificar_Admin(vista, modelo);
+        this.control_Asociar_Componentes = new Controlador_Asociar_Admin(vista, modelo);   
+        this.control_Consultar_Componentes = new Controlador_Consultar_Admin(vista, modelo);
     }
     
-    public void iniciarControladores(){
+    @Override
+    public void iniciar() {
         
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -36,9 +42,10 @@ public class Controlador_Global_Admin {
             this.vista.setVisible(true);
         } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {}
         
-        control_Menu.iniciar();
-        control_Componentes.iniciar();
-        
+        control_Agregar_Admin.iniciar();
+        control_Modificar_Componentes.iniciar();
+        control_Asociar_Componentes.iniciar();
+        control_Consultar_Componentes.iniciar();
         
     }
     

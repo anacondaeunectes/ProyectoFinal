@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.time.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -125,10 +126,10 @@ public class Modelo extends database{
         String whr = "";
         String[] nombreColumnas;
     
-        /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
+            /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
         if ((nombreChecked == true && apellidoChecked == true && ano_NacimientoChecked == true && NIFChecked == true) || (nombreChecked == false && apellidoChecked == false && ano_NacimientoChecked == false && NIFChecked == false)) {
             nombreColumnas = new String[] {"nombre", "apellido", "ano_nacimiento", "NIF"};
-            
+            System.out.println("if");
             //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
             tableModel = new DefaultTableModel(null, nombreColumnas){
             @Override
@@ -153,6 +154,8 @@ public class Modelo extends database{
                 
             }
             
+            System.out.println(query);
+            
             try {
                 
                 Statement sentencia = this.getConexion().createStatement();
@@ -167,76 +170,277 @@ public class Modelo extends database{
                     fila[3] = rSet.getString(4);
                     tableModel.addRow(fila);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
             }
-            
-            
-           
+ 
         }else{
            
+            System.out.println("else");
             
             List <String> listNombreColumnas = new ArrayList<>();
+            List <String> listVariables = new ArrayList<>();
             //Si los CheckBox estan marcados, se buscara tambien esa columna
             if (nombreChecked) {
                 listNombreColumnas.add("nombre");
+                listVariables.add(nombre);
             }
             if (apellidoChecked) {
                 listNombreColumnas.add("apellido");
+                listVariables.add(apellido);
             }
             if (ano_NacimientoChecked) {
                 listNombreColumnas.add("ano_nacimiento");
+                listVariables.add(ano_nacimiento);
             }
             if (NIFChecked) {
                 listNombreColumnas.add("NIF");
+                listVariables.add(NIF);
             }
+            
+            listVariables.stream().forEach(System.out::println);
             
             //Se transforma el Arraylist "list" a un Array de cara a poder introducirlo en el DefaultTableModel
             nombreColumnas = new String[listNombreColumnas.size()];
             listNombreColumnas.toArray(nombreColumnas);
             
-             tableModel = new DefaultTableModel(null, nombreColumnas);
+            //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
+            tableModel = new DefaultTableModel(null, nombreColumnas){
+            @Override
+            public boolean isCellEditable(int row, int column){return false;}};
             
             //Creamos el String con los campos a seleccionar en la consulta a la BBDD
-            String select = "";
+            String select = "SELECT ";
             boolean first = true;
+            Iterator itVariables = listVariables.iterator();
             
             for(String a : nombreColumnas){
                 
+                //Menos la primera vez, todas
                 if (!first) {
-                     select = select + ",";
+                    select = select + ",";
+                    if (itVariables.hasNext()) {
+                        whr = whr + "AND " + a + " LIKE '" + itVariables.next() + "%'";
+                        System.out.println(whr);
+                    }
+                   
+                }else{
+                    whr = whr + " WHERE " + a + " LIKE '" + itVariables.next() + "%'" ;
+                    System.out.println(whr);
                 }
-                 
+ 
                 select = select + a;
                 
                 first = false;
             }
             
-           // return query;
+            query = select + " FROM empleado " + whr;
+
+            System.out.println(query);
+            
             try {
-               // String query = "SELECT" + select + "FROM empleado";
                 PreparedStatement pstm = this.getConexion().prepareStatement(query);
-               // rSet = sentencia.
-            } catch (Exception e) {
+                rSet = pstm.executeQuery(query);
+                
+                String[] fila = new String[listNombreColumnas.size()];
+                while (rSet.next()){
+                    if (listNombreColumnas.size() >= 1) {
+                        System.out.println(rSet.getString(1));
+                        fila[0] = rSet.getString(1);
+                        
+                    }
+                    if (listNombreColumnas.size() >= 2) {
+                        System.out.println(rSet.getString(2));
+                        fila[1] = rSet.getString(2);
+                    }
+                    if (listNombreColumnas.size() >= 3) {
+                        System.out.println(rSet.getString(3));
+                        fila[2] = rSet.getString(3);
+                    }
+                    if (listNombreColumnas.size() >= 4) {
+                        System.out.println(rSet.getString(4));
+                        fila[3] = rSet.getString(4);
+                    }
+                    tableModel.addRow(fila);
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
             }
-           
+             
         }
-    
-       
-        
-        /*------------------------ Obtencion Datos BBDD segun las columnas elegidas ------------------------*/
-        
-        String fila[] = new String[nombreColumnas.length];
-        
-        
+
         return tableModel;
-        //return nombreColumnas;
+    }
+    
+    
+    public DefaultTableModel getTablaProyecto(boolean tituloChecked, boolean fechaInicioChecked, boolean fechaFinChecked, boolean idChecked, boolean descripcionChecked, String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
+        DefaultTableModel tableModel;
+        ResultSet rSet;
+        String query = "";
+        String whr = "";
+        String[] nombreColumnas;
+    
+            /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
+        if ((tituloChecked == true && fechaInicioChecked == true && fechaFinChecked == true && idChecked == true && descripcionChecked == true) || (tituloChecked == false && fechaInicioChecked == false && fechaFinChecked == false && idChecked == false && descripcionChecked == false)) {
+            nombreColumnas = new String[] {"titulo", "fecha_inicio", "fecha_fin", "id_proyecto", "descripcion"};
+            System.out.println("if");
+            //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
+            tableModel = new DefaultTableModel(null, nombreColumnas){
+            @Override
+            public boolean isCellEditable(int row, int column){return false;}};
+            
+            query = "SELECT titulo, fecha_inicio, fecha_fin, id_proyecto, descripcion FROM proyecto";
+            
+            
+            if (titulo != "" || fechaInicio != "" || fechaFin != "" || id != "" || descripcion != "") {
+                
+                query = query + " WHERE ";
+                
+                whr = whr + " titulo LIKE '" + titulo + "%' AND ";
+                   
+                whr = whr + " fecha_inicio LIKE '" + fechaInicio + "%' AND ";
+                    
+                whr = whr + " fecha_fin LIKE '" + fechaFin + "%' AND ";
+                
+                whr = whr + " id_proyecto LIKE '" + id + "%' AND ";
+                
+                whr = whr + " descripcion LIKE '" + descripcion + "%'";
+                
+                query = query + whr;
+                
+            }
+            
+            System.out.println(query);
+            
+            try {
+                
+                Statement sentencia = this.getConexion().createStatement();
+                rSet = sentencia.executeQuery(query);
+                
+                String[] fila = new String[5];
+                while (rSet.next()){
+
+                    fila[0] = rSet.getString(1);
+                    fila[1] = rSet.getString(2);
+                    fila[2] = rSet.getString(3);
+                    fila[3] = rSet.getString(4);
+                    fila[4] = rSet.getString(5);
+                    tableModel.addRow(fila);
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+ 
+        }else{
+           
+            System.out.println("else");
+            
+            List <String> listNombreColumnas = new ArrayList<>();
+            List <String> listVariables = new ArrayList<>();
+            //Si los CheckBox estan marcados, se buscara tambien esa columna
+            if (tituloChecked) {
+                listNombreColumnas.add("titulo");
+                listVariables.add(titulo);
+            }
+            if (fechaInicioChecked) {
+                listNombreColumnas.add("fecha_inicio");
+                listVariables.add(fechaInicio);
+            }
+            if (fechaFinChecked) {
+                listNombreColumnas.add("fecha_fin");
+                listVariables.add(fechaFin);
+            }
+            if (idChecked) {
+                listNombreColumnas.add("id_proyecto");
+                listVariables.add(id);
+            }
+            if (descripcionChecked) {
+                listNombreColumnas.add("descripcion");
+                listVariables.add(descripcion);
+            }
+            
+            listVariables.stream().forEach(System.out::println);
+            
+            //Se transforma el Arraylist "list" a un Array de cara a poder introducirlo en el DefaultTableModel
+            nombreColumnas = new String[listNombreColumnas.size()];
+            listNombreColumnas.toArray(nombreColumnas);
+            
+            //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
+            tableModel = new DefaultTableModel(null, nombreColumnas){
+            @Override
+            public boolean isCellEditable(int row, int column){return false;}};
+            
+            //Creamos el String con los campos a seleccionar en la consulta a la BBDD
+            String select = "SELECT ";
+            boolean first = true;
+            Iterator itVariables = listVariables.iterator();
+            
+            for(String a : nombreColumnas){
+                
+                //Menos la primera vez, todas
+                if (!first) {
+                    select = select + ",";
+                    if (itVariables.hasNext()) {
+                        whr = whr + "AND " + a + " LIKE '" + itVariables.next() + "%'";
+                        System.out.println(whr);
+                    }
+                   
+                }else{
+                    whr = whr + " WHERE " + a + " LIKE '" + itVariables.next() + "%'" ;
+                    System.out.println(whr);
+                }
+ 
+                select = select + a;
+                
+                first = false;
+            }
+            
+            query = select + " FROM proyecto " + whr;
+
+            System.out.println(query);
+            
+            try {
+                PreparedStatement pstm = this.getConexion().prepareStatement(query);
+                rSet = pstm.executeQuery(query);
+                
+                String[] fila = new String[listNombreColumnas.size()];
+                while (rSet.next()){
+                    if (listNombreColumnas.size() >= 1) {
+                        System.out.println(rSet.getString(1));
+                        fila[0] = rSet.getString(1);
+                        
+                    }
+                    if (listNombreColumnas.size() >= 2) {
+                        System.out.println(rSet.getString(2));
+                        fila[1] = rSet.getString(2);
+                    }
+                    if (listNombreColumnas.size() >= 3) {
+                        System.out.println(rSet.getString(3));
+                        fila[2] = rSet.getString(3);
+                    }
+                    if (listNombreColumnas.size() >= 4) {
+                        System.out.println(rSet.getString(4));
+                        fila[3] = rSet.getString(4);
+                    }
+                    if (listNombreColumnas.size() >= 5) {
+                        System.out.println(rSet.getString(5));
+                        fila[4] = rSet.getString(5);
+                    }
+                    tableModel.addRow(fila);
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+             
+        }
+
+        return tableModel;
     }
     
     
     public static void main(String args[]) {
             
-            //System.out.println(getTablaEmpleado(true, true, true, true, "Pepe", "Viyuela", "1970", "123"));
+            //getTablaEmpleado(true, false, false, true, "Pepe", "", "1970", "123");
         
     }
     
