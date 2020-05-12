@@ -39,6 +39,7 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
             //com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel
             //com.sun.java.swing.plaf.windows.WindowsLookAndFeel
             SwingUtilities.updateComponentTreeUI(this.vista);
+            SwingUtilities.updateComponentTreeUI(this.vista.dialog_ModificarDescripcion_Modificar_Proyecto);
             this.vista.setVisible(true);
         } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {}
         

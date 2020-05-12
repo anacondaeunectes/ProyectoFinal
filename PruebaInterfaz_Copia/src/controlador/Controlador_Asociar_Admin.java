@@ -5,14 +5,20 @@
  */
 package controlador;
 
+import com.TextPrompt;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 import modelo.Modelo;
@@ -34,15 +40,9 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
 
     @Override
     public void iniciar() {
-
+            /*------------------------------ Vista y comun ------------------------------*/
         this.vista.menuItem_Asociar.setActionCommand("vista_Asociar");
         this.vista.menuItem_Asociar.addActionListener(this);
-        
-        this.vista.btn_FiltrarEmpleado_Asociar.setActionCommand( "accion_Btn_FiltrarEmpleado_Asociar" );
-        this.vista.btn_FiltrarEmpleado_Asociar.addActionListener(this);
-        
-        this.vista.btn_FiltrarProyecto_Asociar.setActionCommand( "accion_Btn_FiltrarProyecto_Asociar" );
-        this.vista.btn_FiltrarProyecto_Asociar.addActionListener(this);
         
         this.vista.btn_Asociar_Asociar.setActionCommand( "accion_Btn_Asociar_Asociar" );
         this.vista.btn_Asociar_Asociar.addActionListener(this);
@@ -50,9 +50,62 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         this.vista.btn_Cancelar_Asociar.setActionCommand( "accion_Btn_Cancelar_Asociar" );
         this.vista.btn_Cancelar_Asociar.addActionListener(this);
         
+        /*------------------------------ Parte superior - Empleado ------------------------------*/
+        
+        this.vista.tabla_Empleado_Asociar.setModel(this.modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+        
+        this.vista.btn_FiltrarEmpleado_Asociar.setActionCommand( "accion_Btn_FiltrarEmpleado_Asociar" );
+        this.vista.btn_FiltrarEmpleado_Asociar.addActionListener(this);
+        
+        //PlaceHolders
+        this.vista.placeHolder_FiltrarNombre_Empleado_Asociar = new TextPrompt("Nombre", this.vista.txt_FiltrarNombre_Empleado_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNombre_Empleado_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNombre_Empleado_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarApellido_Empleado_Asociar = new TextPrompt("Apellido", this.vista.txt_FiltrarApellido_Empleado_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarApellido_Empleado_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarApellido_Empleado_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarNacimiento_Empleado_Asociar = new TextPrompt("Ano nacimiento", this.vista.txt_FiltrarNacimiento_Empleado_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNacimiento_Empleado_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNacimiento_Empleado_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarNIF_Empleado_Asociar = new TextPrompt("NIF", this.vista.txt_FiltrarNIF_Empleado_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarNIF_Empleado_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarNIF_Empleado_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        /*------------------------------ Parte inferior - Proyecto ------------------------------*/
+        
         //Eti_ComboBox_Asociar
         this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addKeyListener(this);
         this.vista.ComboBox_Asociar.getEditor().getEditorComponent().addMouseListener(this);
+        
+        this.vista.btn_FiltrarProyecto_Asociar.setActionCommand( "accion_Btn_FiltrarProyecto_Asociar" );
+        this.vista.btn_FiltrarProyecto_Asociar.addActionListener(this);
+        
+        this.vista.placeHolder_FiltrarTitulo_Proyecto_Asociar = new TextPrompt("Titulo", this.vista.txt_FiltrarTitulo_Proyecto_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarTitulo_Proyecto_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarTitulo_Proyecto_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarFechaInicio_Proyecto_Asociar = new TextPrompt("Fecha inicio", this.vista.txt_FiltrarFechaInicio_Proyecto_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarFechaInicio_Proyecto_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarFechaInicio_Proyecto_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarFechaFin_Proyecto_Asociar = new TextPrompt("Fecha Fin", this.vista.txt_FiltrarFechaFin_Proyecto_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarFechaFin_Proyecto_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarFechaFin_Proyecto_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarId_Proyecto_Asociar = new TextPrompt("Id", this.vista.txt_FiltrarId_Proyecto_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarId_Proyecto_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarId_Proyecto_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FiltrarDescripcion_Proyecto_Asociar = new TextPrompt("Palabra clave Descripcion", this.vista.txt_FiltrarDescripcion_Proyecto_Asociar, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FiltrarDescripcion_Proyecto_Asociar.changeAlpha(0.5f);
+        this.vista.placeHolder_FiltrarDescripcion_Proyecto_Asociar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        
+        
+        
         
     }
 
@@ -69,7 +122,7 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                 
                 if (!modelo.isProyectoEmpty()) {
                     this.vista.ComboBox_Asociar.removeAllItems();
-                    List_ComboBox_Asociar = modelo.cargarProyectos();
+                    List_ComboBox_Asociar = modelo.cargarProyectos("", "", "", "", "");
                     //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
                     List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
                     System.out.println("finish");
@@ -81,17 +134,65 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
             
             //Accion btn_FiltrarEmpleado_Asociar
             case "accion_Btn_FiltrarEmpleado_Asociar":
-                JOptionPane.showMessageDialog(null, "ok12");
+                this.vista.tabla_Empleado_Asociar.setModel(modelo.getTablaEmpleado(true, true, true, true,
+                        this.vista.txt_FiltrarNombre_Empleado_Asociar.getText(),
+                        this.vista.txt_FiltrarApellido_Empleado_Asociar.getText(), 
+                        this.vista.txt_FiltrarNacimiento_Empleado_Asociar.getText(),
+                        this.vista.txt_FiltrarNIF_Empleado_Asociar.getText()));
                 break;
                 
             //Accion btn_FiltrarProyecto_Asociar
             case "accion_Btn_FiltrarProyecto_Asociar":
-                JOptionPane.showMessageDialog(null, "ok13");
+                this.vista.ComboBox_Asociar.removeAllItems();
+                List_ComboBox_Asociar = modelo.cargarProyectos(this.vista.txt_FiltrarTitulo_Proyecto_Asociar.getText(),
+                    this.vista.txt_FiltrarFechaInicio_Proyecto_Asociar.getText(),
+                    this.vista.txt_FiltrarFechaFin_Proyecto_Asociar.getText(),
+                    this.vista.txt_FiltrarId_Proyecto_Asociar.getText(),
+                    this.vista.txt_FiltrarDescripcion_Proyecto_Asociar.getText());
+                //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
+                List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
                 break;
             
             //Accion btn_Asociar_Asociar
             case "accion_Btn_Asociar_Asociar":
-                JOptionPane.showMessageDialog(null, "ok14");
+                List <Integer> listEmpleados = new ArrayList<>();
+                System.out.println("La tabla Asociar debería contener " + this.vista.tabla_Empleado_Asociar.getRowCount() + "filas");
+                for (int i = 0; i < this.vista.tabla_Empleado_Asociar.getRowCount(); i++) {
+                    
+                    for (int j = 0; j < this.vista.tabla_Empleado_Asociar.getSelectedRows().length; j++) {
+                     
+                        if (i == this.vista.tabla_Empleado_Asociar.getSelectedRows()[j]) {
+                            
+                            listEmpleados.add( Integer.parseInt((String)this.vista.tabla_Empleado_Asociar.getValueAt(i, 3)) );
+                        }
+                        
+                    }  
+                    
+                }
+                
+                listEmpleados.stream().forEach(System.out::println);
+                
+                int[] empleadosSeleccionados = new int[listEmpleados.size()];
+                
+                for (int i = 0; i < empleadosSeleccionados.length; i++) {
+                    empleadosSeleccionados[i] = listEmpleados.get(i);
+                    System.out.println(empleadosSeleccionados[i]);
+                }
+                
+                //Finalmente, tanto con el array que contiene la clave de los empleados seleccionados como con el objeto Proyecto elegido en el comboBox, se llama al metodo "asociarEmpleadoProyecto" el cual tira SQLException por lo que se engloba en un try/catch que, en caso de errar, muestra un jOptionPane con el mensaje de error.              
+                try {
+                    modelo.asociarEmpleadoProyecto(empleadosSeleccionados, (Proyecto) this.vista.ComboBox_Asociar.getSelectedItem());
+                } catch (SQLException ex) {
+                   JOptionPane.showMessageDialog(null, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                   /*this.modelo = new Modelo();
+                    try {
+                        modelo.asociarEmpleadoProyecto(empleadosSeleccionados, (Proyecto) this.vista.ComboBox_Asociar.getSelectedItem());
+                    } catch (SQLException ex1) {
+                        JOptionPane.showMessageDialog(null, "sql: " + ex1.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                    }*/
+                   
+                }
+        
                 break;
                 
             //Accion btn_Asociar_Asociar

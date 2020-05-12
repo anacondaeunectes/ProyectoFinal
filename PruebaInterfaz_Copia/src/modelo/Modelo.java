@@ -73,6 +73,24 @@ public class Modelo extends database{
         
     }
     
+    public void asociarEmpleadoProyecto(int[] NifEmpleados, Proyecto proyecto) throws SQLException{
+        
+        String query = "";
+        
+            PreparedStatement pstm = null;
+            
+            for(int emp : NifEmpleados){
+            
+                query = "INSERT INTO trabaja VALUES (?, ?)";
+                pstm = this.getConexion().prepareStatement(query);
+                pstm.setInt(1, emp);
+                pstm.setInt(2, proyecto.getId_Proyecto());
+                pstm.execute();
+            }
+            pstm.close();
+        
+    }
+    
     public boolean isProyectoEmpty(){
         
         PreparedStatement pstm = null;
@@ -96,20 +114,25 @@ public class Modelo extends database{
     
     }
     
-    public ArrayList<Proyecto> cargarProyectos(){
+    public ArrayList<Proyecto> cargarProyectos(String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
         
         ArrayList <Proyecto> arrLi = new ArrayList<>();
         
         try {
             //Coge cada proyecto y forma un objeto "Proyecto"
-            String query = "SELECT * FROM proyecto";
+            String query = "SELECT * FROM proyecto WHERE titulo LIKE ? AND fecha_inicio LIKE ? AND fecha_fin LIKE ? AND id_proyecto LIKE ? AND descripcion LIKE ?";
             PreparedStatement pstm = this.getConexion().prepareStatement(query);
+            pstm.setString(1, titulo + "%");
+            pstm.setString(2, fechaInicio + "%");
+            pstm.setString(3, fechaFin + "%");
+            pstm.setString(4, id + "%");
+            pstm.setString(5, "%" + descripcion + "%");
+            System.out.println(query);
             ResultSet rset = pstm.executeQuery();
             
             while(rset.next()){
                 arrLi.add(new Proyecto(rset.getString("titulo"), LocalDate.parse(rset.getString("fecha_inicio")), LocalDate.parse(rset.getString("fecha_fin")), rset.getString("descripcion"), rset.getInt("id_proyecto")));
             }
-            //arrLi.add(new Proyecto(""));
             
             pstm.close();
         } catch (SQLException e) {
@@ -118,8 +141,8 @@ public class Modelo extends database{
         
        return arrLi;
     }
-    
-    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
+
+        public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
         DefaultTableModel tableModel;
         ResultSet rSet;
         String query = "";
@@ -272,7 +295,6 @@ public class Modelo extends database{
         return tableModel;
     }
     
-    
     public DefaultTableModel getTablaProyecto(boolean tituloChecked, boolean fechaInicioChecked, boolean fechaFinChecked, boolean idChecked, boolean descripcionChecked, String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
         DefaultTableModel tableModel;
         ResultSet rSet;
@@ -406,24 +428,24 @@ public class Modelo extends database{
                 String[] fila = new String[listNombreColumnas.size()];
                 while (rSet.next()){
                     if (listNombreColumnas.size() >= 1) {
-                        System.out.println(rSet.getString(1));
+                        //System.out.println(rSet.getString(1));
                         fila[0] = rSet.getString(1);
                         
                     }
                     if (listNombreColumnas.size() >= 2) {
-                        System.out.println(rSet.getString(2));
+                        //System.out.println(rSet.getString(2));
                         fila[1] = rSet.getString(2);
                     }
                     if (listNombreColumnas.size() >= 3) {
-                        System.out.println(rSet.getString(3));
+                        //System.out.println(rSet.getString(3));
                         fila[2] = rSet.getString(3);
                     }
                     if (listNombreColumnas.size() >= 4) {
-                        System.out.println(rSet.getString(4));
+                        //System.out.println(rSet.getString(4));
                         fila[3] = rSet.getString(4);
                     }
                     if (listNombreColumnas.size() >= 5) {
-                        System.out.println(rSet.getString(5));
+                        //System.out.println(rSet.getString(5));
                         fila[4] = rSet.getString(5);
                     }
                     tableModel.addRow(fila);
@@ -436,7 +458,6 @@ public class Modelo extends database{
 
         return tableModel;
     }
-    
     
     public static void main(String args[]) {
             

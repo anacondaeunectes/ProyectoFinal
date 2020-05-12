@@ -9,7 +9,10 @@ import com.TextPrompt;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import modelo.Modelo;
 import vista.Interfaz_Admin;
 
@@ -17,7 +20,7 @@ import vista.Interfaz_Admin;
  *
  * @author anaco
  */
-public class Controlador_Modificar_Admin extends Controlador implements ControladorInterfaz, ActionListener{
+public class Controlador_Modificar_Admin extends Controlador implements ControladorInterfaz, ActionListener, ListSelectionListener{
 
     public Controlador_Modificar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);
@@ -32,6 +35,8 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         
         //Carga por defecto el jTable del panel "panel_Modificar_Empleado" con todos los registros de la tabla empleado
         this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+        
+        this.vista.tabla_Modificar_Empleado.getSelectionModel().addListSelectionListener(this);
         
         this.vista.btn_Filtrar_Modificar_Empleado.setActionCommand( "accion_Btn_Filtrar_Modificar_Empleado" );
         this.vista.btn_Filtrar_Modificar_Empleado.addActionListener(this);
@@ -69,6 +74,8 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         
         this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
         
+        this.vista.tabla_Modificar_Proyecto.getSelectionModel().addListSelectionListener(this);
+        
         this.vista.btn_Filtrar_Modificar_Proyecto.setActionCommand( "accion_Btn_Filtrar_Modificar_Proyecto" );
         this.vista.btn_Filtrar_Modificar_Proyecto.addActionListener(this);
         
@@ -84,6 +91,14 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         this.vista.btn_Cancelar_Modificar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Modificar_Proyecto" );
         this.vista.btn_Cancelar_Modificar_Proyecto.addActionListener(this);
         
+        //Botones del jDialog "dialog_ModificarDescripcion_Modificar_Proyecto" asociado al boton "Modificar Descripcion" de este panel
+        this.vista.btn_Guardar_ModificarDescripcion_Modificar_Proyecto.setActionCommand("accion_Btn_Guardar_ModificarDescripcion_Modificar_Proyecto");
+        this.vista.btn_Guardar_ModificarDescripcion_Modificar_Proyecto.addActionListener(this);
+        
+        this.vista.btn_Cancelar_ModificarDescripcion_Modificar_Proyecto.setActionCommand("accion_Btn_Cancelar_ModificarDescripcion_Modificar_Proyecto");
+        this.vista.btn_Cancelar_ModificarDescripcion_Modificar_Proyecto.addActionListener(this);
+        
+        //PlaceHolder para los campos de filtrado de proyectos
         this.vista.placeHolder_FiltrarTitulo_Modificar_Proyecto = new TextPrompt("Titulo", this.vista.txt_FiltrarTitulo_Modificar_Proyecto, TextPrompt.Show.FOCUS_LOST);
         this.vista.placeHolder_FiltrarTitulo_Modificar_Proyecto.changeAlpha(0.5f);
         this.vista.placeHolder_FiltrarTitulo_Modificar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
@@ -120,7 +135,7 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Filtrar_Modificar_Empleado":
-                
+                //Aplica al jTable de empleados el modelo resultado de llamar al metodo "getTablaProyecto" de la clase Modelo con todas las columnas (true) y con los filtros para esta recogidos de los jTextField respectivos
                 this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true,
                         this.vista.txt_FiltrarNombre_Modificar_Empleado.getText(),
                         this.vista.txt_FiltrarApellido_Modificar_Empleado.getText(), 
@@ -147,6 +162,7 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Filtrar_Modificar_Proyecto":
+                //Aplica al jTable de proyectos el modelo resultado de llamar al metodo "getTablaProyecto" de la clase Modelo con todas las columnas (true) y con los filtros para esta recogidos de los jTextField respectivos
                 this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true,
                         this.vista.txt_FiltrarTitulo_Modificar_Proyecto.getText(),
                         this.vista.txt_FiltrarFechaInicio_Modificar_Proyecto.getText(), 
@@ -157,11 +173,27 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                
             
             case "accion_Btn_ModificarDescripcion_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok9");
+                //Rellena el jTextArea con la descripcion del registro seleccionado
+                this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
+                //Coloca el cursor al final del texto
+                this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setCaretPosition(this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText().length());
+                //Muestra la ventana (modal)
+                this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.setVisible(true);
+                break;
+                
+            case "accion_Btn_Guardar_ModificarDescripcion_Modificar_Proyecto":
+                //Sencillamente, se cierra la pestana ya que el jTextArea va a seguir guardando los cambios
+                this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.dispose();
+                break;
+                
+            case "accion_Btn_Cancelar_ModificarDescripcion_Modificar_Proyecto":
+                //Primero se restaura el campo con el valor actual del registro y despues se cierra el jDialog
+                this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
+                this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.dispose();
                 break;
                 
             case "accion_Btn_Modificar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok10");
+                JOptionPane.showMessageDialog(this.vista, "ok10");
                 break;
                 
             case "accion_Btn_Eliminar_Modificar_Proyecto":
@@ -173,6 +205,38 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
         }
                 
+    }
+
+    /**
+     * Listener que es invocado al seleccionar algun registro en una de las tablas de los dos paneles asociados a la funcionalidad "Modificar"
+     * @param e Evento producido
+     */
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        
+        int rowSelected;
+        
+        //Rellena los respectivos jTextField con los valores del registro seleccionado la tabla
+        //Ya que este controlador es el encargado de toda la funcionalidad de "Modificar" y los dos paneles que se asocian a esta en la vista, se ha deferenciar entre las tablas de ambas. Para ello se usa un condicional para ver si el componente que invoca el evento es una u otra tabla.
+        if (e.getSource().equals(this.vista.tabla_Modificar_Empleado.getSelectionModel())){
+            
+            rowSelected = this.vista.tabla_Modificar_Empleado.getSelectedRow();
+
+            this.vista.txt_Nombre_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 0).toString());
+            this.vista.txt_Apellido_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 1).toString());
+            this.vista.txt_Nacimiento_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 2).toString());
+        
+        } else if (e.getSource().equals(this.vista.tabla_Modificar_Proyecto.getSelectionModel())){
+            
+            rowSelected = this.vista.tabla_Modificar_Proyecto.getSelectedRow();
+
+            this.vista.txt_Titulo_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 0).toString());
+            this.vista.txt_FechaInicio_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 1).toString());
+            this.vista.txt_FechaFin_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 2).toString());
+            
+        
+        }
+        
     }
     
     

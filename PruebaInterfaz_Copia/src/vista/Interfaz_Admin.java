@@ -9,6 +9,7 @@ import javax.swing.ListSelectionModel;
 import com.TextPrompt;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 import javax.swing.text.JTextComponent;
 
 /*
@@ -52,6 +53,13 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        dialog_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JDialog();
+        panel_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtArea_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JTextArea();
+        btn_Cancelar_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JButton();
+        btn_Guardar_ModificarDescripcion_Modificar_Proyecto = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         panel_Agregar_Empleado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,9 +82,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         Txt_Titulo_Agregar_Proyecto = new javax.swing.JTextField();
         Txt_FechaInicio_Agregar_Proyecto = new javax.swing.JTextField();
         Txt_FechaFin_Agregar_Proyecto = new javax.swing.JTextField();
-        Txt_Descripcion_Agregar_Proyecto = new javax.swing.JTextArea();
         btn_Agregar_Agregar_Proyecto = new javax.swing.JButton();
         btn_Cancelar_Agregar_Proyecto = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Txt_Descripcion_Agregar_Proyecto = new javax.swing.JTextArea();
         panel_Modificar_Empleado = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_Modificar_Empleado = new javax.swing.JTable();
@@ -96,7 +105,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         txt_Nacimiento_Modificar_Empleado = new javax.swing.JTextField();
         btn_Eliminar_Modificar_Empleado = new javax.swing.JButton();
         panel_Modificar_Proyecto = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         tabla_Modificar_Proyecto = new javax.swing.JTable();
         txt_FiltrarTitulo_Modificar_Proyecto = new javax.swing.JTextField();
         txt_FiltrarFechaInicio_Modificar_Proyecto = new javax.swing.JTextField();
@@ -117,7 +126,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         btn_Eliminar_Modificar_Proyecto = new javax.swing.JButton();
         panel_Asociar = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tabla_Modificar_Empleado2 = new javax.swing.JTable();
+        tabla_Empleado_Asociar = new javax.swing.JTable();
         txt_FiltrarNombre_Empleado_Asociar = new javax.swing.JTextField();
         txt_FiltrarApellido_Empleado_Asociar = new javax.swing.JTextField();
         txt_FiltrarNacimiento_Empleado_Asociar = new javax.swing.JTextField();
@@ -290,6 +299,71 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        dialog_ModificarDescripcion_Modificar_Proyecto.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialog_ModificarDescripcion_Modificar_Proyecto.setMinimumSize(new java.awt.Dimension(400, 300));
+        dialog_ModificarDescripcion_Modificar_Proyecto.setModal(true);
+        dialog_ModificarDescripcion_Modificar_Proyecto.setResizable(false);
+        dialog_ModificarDescripcion_Modificar_Proyecto.setType(java.awt.Window.Type.POPUP);
+        dialog_ModificarDescripcion_Modificar_Proyecto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel_ModificarDescripcion_Modificar_Proyecto.setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar descripcion"));
+
+        txtArea_ModificarDescripcion_Modificar_Proyecto.setColumns(20);
+        txtArea_ModificarDescripcion_Modificar_Proyecto.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        txtArea_ModificarDescripcion_Modificar_Proyecto.setLineWrap(true);
+        txtArea_ModificarDescripcion_Modificar_Proyecto.setRows(5);
+        txtArea_ModificarDescripcion_Modificar_Proyecto.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(txtArea_ModificarDescripcion_Modificar_Proyecto);
+
+        btn_Cancelar_ModificarDescripcion_Modificar_Proyecto.setText("Cancelar");
+        btn_Cancelar_ModificarDescripcion_Modificar_Proyecto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Cancelar_ModificarDescripcion_Modificar_ProyectoActionPerformed(evt);
+            }
+        });
+
+        btn_Guardar_ModificarDescripcion_Modificar_Proyecto.setText("Guardar cambios");
+
+        jLabel20.setText("<html><left>Guardar los cambios no los modificará.<br>Deberá pulsar <i>Modificar</i> a continuación</html>");
+
+        javax.swing.GroupLayout panel_ModificarDescripcion_Modificar_ProyectoLayout = new javax.swing.GroupLayout(panel_ModificarDescripcion_Modificar_Proyecto);
+        panel_ModificarDescripcion_Modificar_Proyecto.setLayout(panel_ModificarDescripcion_Modificar_ProyectoLayout);
+        panel_ModificarDescripcion_Modificar_ProyectoLayout.setHorizontalGroup(
+            panel_ModificarDescripcion_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6)
+                    .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Guardar_ModificarDescripcion_Modificar_Proyecto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Cancelar_ModificarDescripcion_Modificar_Proyecto, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+        );
+        panel_ModificarDescripcion_Modificar_ProyectoLayout.setVerticalGroup(
+            panel_ModificarDescripcion_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ModificarDescripcion_Modificar_ProyectoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ModificarDescripcion_Modificar_ProyectoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Guardar_ModificarDescripcion_Modificar_Proyecto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Cancelar_ModificarDescripcion_Modificar_Proyecto)
+                        .addContainerGap())))
+        );
+
+        dialog_ModificarDescripcion_Modificar_Proyecto.getContentPane().add(panel_ModificarDescripcion_Modificar_Proyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 370, 250));
+
+        dialog_ModificarDescripcion_Modificar_Proyecto.setLocationRelativeTo(null);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setResizable(false);
@@ -411,49 +485,54 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             }
         });
 
-        Txt_Descripcion_Agregar_Proyecto.setColumns(20);
-        Txt_Descripcion_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        Txt_Descripcion_Agregar_Proyecto.setRows(5);
-        Txt_Descripcion_Agregar_Proyecto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         btn_Agregar_Agregar_Proyecto.setText("Agregar");
 
         btn_Cancelar_Agregar_Proyecto.setText("Cancelar");
+
+        Txt_Descripcion_Agregar_Proyecto.setColumns(20);
+        Txt_Descripcion_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Txt_Descripcion_Agregar_Proyecto.setLineWrap(true);
+        Txt_Descripcion_Agregar_Proyecto.setRows(5);
+        Txt_Descripcion_Agregar_Proyecto.setBorder(null);
+        Txt_Descripcion_Agregar_Proyecto.setHighlighter(null);
+        jScrollPane3.setViewportView(Txt_Descripcion_Agregar_Proyecto);
 
         javax.swing.GroupLayout panel_Agregar_ProyectoLayout = new javax.swing.GroupLayout(panel_Agregar_Proyecto);
         panel_Agregar_Proyecto.setLayout(panel_Agregar_ProyectoLayout);
         panel_Agregar_ProyectoLayout.setHorizontalGroup(
             panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Agregar_ProyectoLayout.createSequentialGroup()
-                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addComponent(btn_Agregar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(btn_Cancelar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+            .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
+                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
-                        .addComponent(btn_Agregar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addComponent(btn_Cancelar_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel9))
-                        .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
-                            .addGap(148, 148, 148)
-                            .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
-                                    .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel10))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Txt_Titulo_Agregar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                        .addComponent(Txt_FechaInicio_Agregar_Proyecto)))
-                                .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
-                                    .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel13)
-                                        .addComponent(jLabel12))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Txt_FechaFin_Agregar_Proyecto)
-                                        .addComponent(Txt_Descripcion_Agregar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))))))
-                .addGap(58, 58, 58))
+                        .addContainerGap()
+                        .addComponent(jLabel9))
+                    .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
+                                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Txt_Titulo_Agregar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .addComponent(Txt_FechaInicio_Agregar_Proyecto)))
+                            .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
+                                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Txt_FechaFin_Agregar_Proyecto))))
+                    .addGroup(panel_Agregar_ProyectoLayout.createSequentialGroup()
+                        .addGap(216, 216, 216)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(106, 106, 106))
         );
         panel_Agregar_ProyectoLayout.setVerticalGroup(
             panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,10 +552,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(Txt_FechaFin_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(Txt_Descripcion_Agregar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(panel_Agregar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Agregar_Agregar_Proyecto)
                     .addComponent(btn_Cancelar_Agregar_Proyecto))
@@ -487,23 +566,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         tabla_Modificar_Empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane2.setViewportView(tabla_Modificar_Empleado);
         tabla_Modificar_Empleado.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -549,6 +617,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(btn_Filtrar_Modificar_Empleado)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
                         .addGroup(panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
@@ -569,22 +641,17 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                 .addGroup(panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btn_Modificar_Modificar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btn_Cancelar_Modificar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Eliminar_Modificar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())
-                    .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(txt_FiltrarNombre_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_FiltrarApellido_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_FiltrarNacimiento_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(txt_FiltrarNIF_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(btn_Filtrar_Modificar_Empleado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btn_Eliminar_Modificar_Empleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(panel_Modificar_EmpleadoLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txt_FiltrarNombre_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarApellido_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarNacimiento_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(txt_FiltrarNIF_Modificar_Empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         panel_Modificar_EmpleadoLayout.setVerticalGroup(
             panel_Modificar_EmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -625,18 +692,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         tabla_Modificar_Proyecto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        tabla_Modificar_Proyecto.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(tabla_Modificar_Proyecto);
-        tabla_Modificar_Proyecto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane4.setViewportView(tabla_Modificar_Proyecto);
+        tabla_Modificar_Empleado.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         txt_FiltrarTitulo_Modificar_Proyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -683,7 +746,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             }
         });
 
-        btn_ModificarDescripcion_Modificar_Proyecto.setText("<html>Modificar<br>descripcion</html>");
+        btn_ModificarDescripcion_Modificar_Proyecto.setText("<html><center>Modificar<br>descripcion</center></html>");
 
         btn_Eliminar_Modificar_Proyecto.setText("Eliminar");
 
@@ -695,6 +758,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_Modificar_ProyectoLayout.createSequentialGroup()
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
@@ -702,13 +766,12 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(txt_FiltrarFechaInicio_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txt_FiltrarFechaFin_Modificar_Proyecto))
+                                .addComponent(txt_FiltrarFechaFin_Modificar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                             .addComponent(txt_FiltrarDescripcion_Modificar_Proyecto))
                         .addGap(29, 29, 29)
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_FiltrarId_Modificar_Proyecto)
                             .addComponent(btn_Filtrar_Modificar_Proyecto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
@@ -723,7 +786,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txt_FechaInicio_Modificar_Proyecto)))
-                        .addGap(34, 34, 34)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_ModificarDescripcion_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -736,8 +799,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_Modificar_ProyectoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addGroup(panel_Modificar_ProyectoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_FiltrarTitulo_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_FiltrarFechaInicio_Modificar_Proyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -789,7 +852,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             }
         });
 
-        tabla_Modificar_Empleado2.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_Empleado_Asociar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -800,15 +863,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(tabla_Modificar_Empleado2);
+        tabla_Empleado_Asociar.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(tabla_Empleado_Asociar);
 
-        txt_FiltrarNombre_Empleado_Asociar.setText("nombre");
-
-        txt_FiltrarApellido_Empleado_Asociar.setText("apellido");
-
-        txt_FiltrarNacimiento_Empleado_Asociar.setText("ano_nacimiento");
-
-        txt_FiltrarNIF_Empleado_Asociar.setText("NIF");
+        txt_FiltrarNacimiento_Empleado_Asociar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_FiltrarNacimiento_Empleado_AsociarActionPerformed(evt);
+            }
+        });
 
         btn_FiltrarEmpleado_Asociar.setText("Filtrar");
 
@@ -823,20 +885,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
 
         btn_Cancelar_Asociar.setText("Cancelar");
 
-        txt_FiltrarTitulo_Proyecto_Asociar.setText("título");
         txt_FiltrarTitulo_Proyecto_Asociar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_FiltrarTitulo_Proyecto_AsociarActionPerformed(evt);
             }
         });
-
-        txt_FiltrarDescripcion_Proyecto_Asociar.setText("contenido descripción");
-
-        txt_FiltrarFechaInicio_Proyecto_Asociar.setText("fecha inicio");
-
-        txt_FiltrarFechaFin_Proyecto_Asociar.setText("fecha fin");
-
-        txt_FiltrarId_Proyecto_Asociar.setText("id proyecto");
 
         ComboBox_Asociar.setEditable(true);
         ComboBox_Asociar.setModel(new javax.swing.DefaultComboBoxModel<>());
@@ -854,42 +907,44 @@ public class Interfaz_Admin extends javax.swing.JFrame {
             .addGroup(panel_AsociarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(txt_FiltrarTitulo_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ComboBox_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                        .addComponent(txt_FiltrarFechaInicio_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txt_FiltrarFechaFin_Proyecto_Asociar))))
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(0, 0, 0)
+                                .addComponent(txt_FiltrarDescripcion_Proyecto_Asociar, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))
+                        .addGap(19, 19, 19)
+                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_FiltrarId_Proyecto_Asociar)
+                            .addComponent(btn_FiltrarProyecto_Asociar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
                         .addComponent(btn_Asociar_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_Cancelar_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_AsociarLayout.createSequentialGroup()
-                        .addComponent(txt_FiltrarNombre_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_FiltrarApellido_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
+                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btn_FiltrarEmpleado_Asociar))
+                            .addGroup(panel_AsociarLayout.createSequentialGroup()
+                                .addComponent(txt_FiltrarNombre_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_FiltrarApellido_Empleado_Asociar)))
                         .addGap(18, 18, 18)
                         .addComponent(txt_FiltrarNacimiento_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_FiltrarNIF_Empleado_Asociar))
-                    .addComponent(jScrollPane5)
-                    .addGroup(panel_AsociarLayout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addGap(0, 0, 0)
-                        .addComponent(txt_FiltrarDescripcion_Proyecto_Asociar)
-                        .addGap(19, 19, 19)
-                        .addComponent(btn_FiltrarProyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_AsociarLayout.createSequentialGroup()
-                        .addComponent(txt_FiltrarTitulo_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 42, Short.MAX_VALUE)
-                        .addGroup(panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panel_AsociarLayout.createSequentialGroup()
-                                .addComponent(txt_FiltrarFechaInicio_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_FiltrarFechaFin_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ComboBox_Asociar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_FiltrarId_Proyecto_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_FiltrarNIF_Empleado_Asociar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(panel_AsociarLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(btn_FiltrarEmpleado_Asociar)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         panel_AsociarLayout.setVerticalGroup(
             panel_AsociarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1723,6 +1778,14 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Filtrar_Modificar_ProyectoActionPerformed
 
+    private void txt_FiltrarNacimiento_Empleado_AsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_FiltrarNacimiento_Empleado_AsociarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_FiltrarNacimiento_Empleado_AsociarActionPerformed
+
+    private void btn_Cancelar_ModificarDescripcion_Modificar_ProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cancelar_ModificarDescripcion_Modificar_ProyectoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Cancelar_ModificarDescripcion_Modificar_ProyectoActionPerformed
+
     /*private void switchPanels (JPanel panel){
         jLayeredPane1.removeAll();
         jLayeredPane1.add(panel);
@@ -1792,6 +1855,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JButton btn_Cancelar_Asociar5;
     public javax.swing.JButton btn_Cancelar_Asociar6;
     public javax.swing.JButton btn_Cancelar_Asociar7;
+    public javax.swing.JButton btn_Cancelar_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JButton btn_Cancelar_Modificar_Empleado;
     public javax.swing.JButton btn_Cancelar_Modificar_Proyecto;
     public javax.swing.JButton btn_Eliminar_Modificar_Empleado;
@@ -1806,6 +1870,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JButton btn_Filtrar_Modificar_Empleado;
     public javax.swing.JButton btn_Filtrar_Modificar_Proyecto;
     public javax.swing.JButton btn_Filtrar_ProyectoDeEmpleado_Consultar;
+    public javax.swing.JButton btn_Guardar_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JButton btn_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JButton btn_Modificar_Modificar_Empleado;
     public javax.swing.JButton btn_Modificar_Modificar_Proyecto;
@@ -1813,6 +1878,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JCheckBox checkBox_NIF_EmpleadoEnProyecto_Consultar;
     public javax.swing.JCheckBox checkBox_Nacimiento_EmpleadoEnProyecto_Consultar;
     public javax.swing.JCheckBox checkBox_Nombre_EmpleadoEnProyecto_Consultar;
+    public javax.swing.JDialog dialog_ModificarDescripcion_Modificar_Proyecto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public javax.swing.JCheckBox jCheckBox5;
@@ -1831,6 +1897,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1851,7 +1918,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -1882,17 +1951,19 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JPanel panel_EmpleadoEnProyecto_Consultar;
     public javax.swing.JPanel panel_ListaEmpleado_Consultar;
     public javax.swing.JPanel panel_ListaProyecto_Consultar;
+    private javax.swing.JPanel panel_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JPanel panel_Modificar_Empleado;
     public javax.swing.JPanel panel_Modificar_Proyecto;
     public javax.swing.JPanel panel_ProyectoDeEmpleado_Consultar;
     private javax.swing.JPopupMenu.Separator separator_MenuItem_Consultar;
     public javax.swing.JTable tabla_EmpleadoEnProyecto_Consultar;
+    public javax.swing.JTable tabla_Empleado_Asociar;
     public javax.swing.JTable tabla_Modificar_Empleado;
-    private javax.swing.JTable tabla_Modificar_Empleado2;
     private javax.swing.JTable tabla_Modificar_Empleado6;
     private javax.swing.JTable tabla_Modificar_Empleado7;
     private javax.swing.JTable tabla_Modificar_Empleado8;
     public javax.swing.JTable tabla_Modificar_Proyecto;
+    public javax.swing.JTextArea txtArea_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JTextField txt_Apellido_Modificar_Empleado;
     public javax.swing.JTextField txt_FechaFin_Modificar_Proyecto;
     public javax.swing.JTextField txt_FechaInicio_Modificar_Proyecto;
@@ -1944,17 +2015,31 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JTextField txt_Nombre_Modificar_Empleado;
     public javax.swing.JTextField txt_Titulo_Modificar_Proyecto;
     // End of variables declaration//GEN-END:variables
+   
     public TextPrompt placeHolder_FiltrarNombre_Modificar_Empleado;
     public TextPrompt placeHolder_FiltrarApellido_Modificar_Empleado;
     public TextPrompt placeHolder_FiltrarNacimiento_Modificar_Empleado;
     public TextPrompt placeHolder_FiltrarNIF_Modificar_Empleado;
+    
     public TextPrompt placeHolder_FiltrarNombre_EmpleadoEnProyecto_Consultar;
     public TextPrompt placeHolder_FiltrarNacimiento_EmpleadoEnProyecto_Consultar;
     public TextPrompt placeHolder_FiltrarNIF_EmpleadoEnProyecto_Consultar;
     public TextPrompt placeHolder_FiltrarApellido_EmpleadoEnProyecto_Consultar;
+    
     public TextPrompt placeHolder_FiltrarTitulo_Modificar_Proyecto;
     public TextPrompt placeHolder_FiltrarFechaInicio_Modificar_Proyecto;
     public TextPrompt placeHolder_FiltrarFechaFin_Modificar_Proyecto;
     public TextPrompt placeHolder_FiltrarDescripcion_Modificar_Proyecto;
     public TextPrompt placeHolder_FiltrarId_Modificar_Proyecto;
+    
+    public TextPrompt placeHolder_FiltrarNombre_Empleado_Asociar;
+    public TextPrompt placeHolder_FiltrarApellido_Empleado_Asociar;
+    public TextPrompt placeHolder_FiltrarNacimiento_Empleado_Asociar;
+    public TextPrompt placeHolder_FiltrarNIF_Empleado_Asociar;
+    
+    public TextPrompt placeHolder_FiltrarTitulo_Proyecto_Asociar;
+    public TextPrompt placeHolder_FiltrarFechaInicio_Proyecto_Asociar;
+    public TextPrompt placeHolder_FiltrarFechaFin_Proyecto_Asociar;
+    public TextPrompt placeHolder_FiltrarDescripcion_Proyecto_Asociar;
+    public TextPrompt placeHolder_FiltrarId_Proyecto_Asociar;
 }
