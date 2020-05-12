@@ -141,8 +141,23 @@ public class Modelo extends database{
         
        return arrLi;
     }
+    
+    public boolean modificarEmpleado(String nombre, String apellido, String anoNacimiento, String Nif) throws SQLException{
+        
+        PreparedStatement pstm = this.getConexion().prepareCall("{call doUpdate(?, ?, ?, ?)}");
+        pstm.setString(1, nombre);
+        pstm.setString(2, apellido);
+        pstm.setString(3, anoNacimiento);
+        pstm.setString(4, Nif);
 
-        public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
+        pstm.execute();
+        pstm.close();
+        
+        return true;
+    }
+
+    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
+        
         DefaultTableModel tableModel;
         ResultSet rSet;
         String query = "";

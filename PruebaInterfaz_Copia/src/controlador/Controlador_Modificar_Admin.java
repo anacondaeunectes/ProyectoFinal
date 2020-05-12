@@ -9,6 +9,9 @@ import com.TextPrompt;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -144,7 +147,22 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Modificar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok6");
+                
+        
+                try {
+                    if (modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
+                            this.vista.txt_Apellido_Modificar_Empleado.getText(),
+                            this.vista.txt_Nacimiento_Modificar_Empleado.getText(),
+                            this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString())
+                        )
+                    {
+                        JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                }
+        
                 break;
                 
             case "accion_Btn_Eliminar_Modificar_Empleado":
