@@ -155,7 +155,7 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
             
             //Accion btn_Asociar_Asociar
             case "accion_Btn_Asociar_Asociar":
-                List <Integer> listEmpleados = new ArrayList<>();
+                List <String> listEmpleados = new ArrayList<>();
                 System.out.println("La tabla Asociar debería contener " + this.vista.tabla_Empleado_Asociar.getRowCount() + "filas");
                 for (int i = 0; i < this.vista.tabla_Empleado_Asociar.getRowCount(); i++) {
                     
@@ -163,7 +163,7 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                      
                         if (i == this.vista.tabla_Empleado_Asociar.getSelectedRows()[j]) {
                             
-                            listEmpleados.add( Integer.parseInt((String)this.vista.tabla_Empleado_Asociar.getValueAt(i, 3)) );
+                            listEmpleados.add( this.vista.tabla_Empleado_Asociar.getValueAt(i, 3).toString() );
                         }
                         
                     }  
@@ -172,7 +172,7 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                 
                 listEmpleados.stream().forEach(System.out::println);
                 
-                int[] empleadosSeleccionados = new int[listEmpleados.size()];
+                String[] empleadosSeleccionados = new String[listEmpleados.size()];
                 
                 for (int i = 0; i < empleadosSeleccionados.length; i++) {
                     empleadosSeleccionados[i] = listEmpleados.get(i);

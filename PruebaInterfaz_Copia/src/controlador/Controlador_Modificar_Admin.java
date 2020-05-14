@@ -9,10 +9,11 @@ import com.TextPrompt;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -23,7 +24,7 @@ import vista.Interfaz_Admin;
  *
  * @author anaco
  */
-public class Controlador_Modificar_Admin extends Controlador implements ControladorInterfaz, ActionListener, ListSelectionListener{
+public class Controlador_Modificar_Admin extends Controlador implements ControladorInterfaz, ActionListener, ListSelectionListener, MouseListener, WindowListener{
 
     public Controlador_Modificar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);
@@ -39,7 +40,8 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         //Carga por defecto el jTable del panel "panel_Modificar_Empleado" con todos los registros de la tabla empleado
         this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
         
-        this.vista.tabla_Modificar_Empleado.getSelectionModel().addListSelectionListener(this);
+        //this.vista.tabla_Modificar_Empleado.getSelectionModel().addListSelectionListener(this);
+        this.vista.tabla_Modificar_Empleado.addMouseListener(this);
         
         this.vista.btn_Filtrar_Modificar_Empleado.setActionCommand( "accion_Btn_Filtrar_Modificar_Empleado" );
         this.vista.btn_Filtrar_Modificar_Empleado.addActionListener(this);
@@ -77,7 +79,8 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         
         this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
         
-        this.vista.tabla_Modificar_Proyecto.getSelectionModel().addListSelectionListener(this);
+        //this.vista.tabla_Modificar_Proyecto.getSelectionModel().addListSelectionListener(this);
+        this.vista.tabla_Modificar_Proyecto.addMouseListener(this);
         
         this.vista.btn_Filtrar_Modificar_Proyecto.setActionCommand( "accion_Btn_Filtrar_Modificar_Proyecto" );
         this.vista.btn_Filtrar_Modificar_Proyecto.addActionListener(this);
@@ -122,7 +125,7 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         this.vista.placeHolder_FiltrarDescripcion_Modificar_Proyecto.changeAlpha(0.5f);
         this.vista.placeHolder_FiltrarDescripcion_Modificar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
         
-        
+        this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.addWindowListener(this);
         
     }
 
@@ -152,11 +155,12 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 try {
                     if (modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
                             this.vista.txt_Apellido_Modificar_Empleado.getText(),
-                            this.vista.txt_Nacimiento_Modificar_Empleado.getText(),
+                            Integer.parseInt(this.vista.txt_Nacimiento_Modificar_Empleado.getText()),
                             this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString())
                         )
                     {
                         JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                        this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
                     }
                     
                 } catch (SQLException ex) {
@@ -192,10 +196,11 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
             
             case "accion_Btn_ModificarDescripcion_Modificar_Proyecto":
                 //Rellena el jTextArea con la descripcion del registro seleccionado
-                this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
+                //this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
                 //Coloca el cursor al final del texto
                 this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setCaretPosition(this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText().length());
-                //Muestra la ventana (modal)
+                //Muestra la ventana (modal)pero antes provoca que esta se centre con respecto a la vista
+                this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.setLocationRelativeTo(vista);
                 this.vista.dialog_ModificarDescripcion_Modificar_Proyecto.setVisible(true);
                 break;
                 
@@ -211,7 +216,25 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Modificar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(this.vista, "ok10");
+                try {
+                    modelo.modificarProyecto(this.vista.txt_Titulo_Modificar_Proyecto.getText(),
+                        this.vista.txt_FechaInicio_Modificar_Proyecto.getText(),
+                        this.vista.txt_FechaFin_Modificar_Proyecto.getText(),
+                        Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()),
+                        this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText());
+                    
+                    this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true,
+                        this.vista.txt_FiltrarTitulo_Modificar_Proyecto.getText(),
+                        this.vista.txt_FiltrarFechaInicio_Modificar_Proyecto.getText(), 
+                        this.vista.txt_FiltrarFechaFin_Modificar_Proyecto.getText(),
+                        this.vista.txt_FiltrarId_Modificar_Proyecto.getText(),
+                        this.vista.txt_FiltrarDescripcion_Modificar_Proyecto.getText()));
+                    
+                    
+                
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                }
                 break;
                 
             case "accion_Btn_Eliminar_Modificar_Proyecto":
@@ -225,18 +248,20 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
     }
 
+    
     /**
      * Listener que es invocado al seleccionar algun registro en una de las tablas de los dos paneles asociados a la funcionalidad "Modificar"
      * @param e Evento producido
+     * @deprecated Debido a que, pese a funcionar bie, lanzaba IndexOutOfBoundsException -> Listener mouseClicked misma implementacion.
      */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         
-        int rowSelected;
+        //int rowSelected;
         
         //Rellena los respectivos jTextField con los valores del registro seleccionado la tabla
         //Ya que este controlador es el encargado de toda la funcionalidad de "Modificar" y los dos paneles que se asocian a esta en la vista, se ha deferenciar entre las tablas de ambas. Para ello se usa un condicional para ver si el componente que invoca el evento es una u otra tabla.
-        if (e.getSource().equals(this.vista.tabla_Modificar_Empleado.getSelectionModel())){
+        /*if (e.getSource().equals(this.vista.tabla_Modificar_Empleado.getSelectionModel())){
             
             rowSelected = this.vista.tabla_Modificar_Empleado.getSelectedRow();
 
@@ -244,7 +269,7 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
             this.vista.txt_Apellido_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 1).toString());
             this.vista.txt_Nacimiento_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 2).toString());
         
-        } else if (e.getSource().equals(this.vista.tabla_Modificar_Proyecto.getSelectionModel())){
+        }else if (e.getSource().equals(this.vista.tabla_Modificar_Proyecto.getSelectionModel())){
             
             rowSelected = this.vista.tabla_Modificar_Proyecto.getSelectedRow();
 
@@ -253,7 +278,90 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
             this.vista.txt_FechaFin_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 2).toString());
             
         
+        }*/
+        
+    }
+
+    /**
+     * Listener invocado al seleccionar algun registro en una de las tablas de los dos paneles asociados a la funcionalidad "Modificar". En funcion de que tabla se use, se rellenaran unos jTextField u otros con la info del registro seleccionado en la tabla
+     * @param e Evento producido
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+        int rowSelected;
+        
+        if (e.getSource().equals(this.vista.tabla_Modificar_Empleado)) {
+            rowSelected = this.vista.tabla_Modificar_Empleado.getSelectedRow();
+
+            this.vista.txt_Nombre_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 0).toString());
+            this.vista.txt_Apellido_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 1).toString());
+            this.vista.txt_Nacimiento_Modificar_Empleado.setText(this.vista.tabla_Modificar_Empleado.getValueAt(rowSelected, 2).toString());
+            
+        }else if (e.getSource().equals(this.vista.tabla_Modificar_Proyecto)){
+            rowSelected = this.vista.tabla_Modificar_Proyecto.getSelectedRow();
+
+            this.vista.txt_Titulo_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 0).toString());
+            this.vista.txt_FechaInicio_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 1).toString());
+            this.vista.txt_FechaFin_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 2).toString());
+            this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(rowSelected, 4).toString());
+            
         }
+    }
+    
+    @Override
+    public void windowClosed(WindowEvent e) {
+        
+        this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
         
     }
     

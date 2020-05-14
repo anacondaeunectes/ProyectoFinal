@@ -137,7 +137,9 @@
         </Property>
       </Properties>
       <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleParent" postCode="dialog_ModificarDescripcion_Modificar_Proyecto.setLocationRelativeTo(null);"/>
+        <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor" postCode="dialog_ModificarDescripcion_Modificar_Proyecto.setLocationRelativeTo(null);">
+          <ComponentRef name="null"/>
+        </Property>
       </AccessibilityProperties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -170,7 +172,7 @@
                           <Component id="jScrollPane6" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="40" max="32767" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btn_Guardar_ModificarDescripcion_Modificar_Proyecto" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="btn_Cancelar_ModificarDescripcion_Modificar_Proyecto" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -246,11 +248,32 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;left&gt;Guardar los cambios no los modificar&#xe1;.&lt;br&gt;Deber&#xe1; pulsar &lt;i&gt;Modificar&lt;/i&gt; a continuaci&#xf3;n&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;left&gt;Guardar los cambios no los modificar&#xe1;.&lt;br&gt;Deber&#xe1; pulsar &lt;i&gt;Modificar&lt;/i&gt; a continuaci&#xf3;n.&lt;/html&gt;"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable1">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar">
@@ -339,17 +362,17 @@
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItem_EmpleadoEnProyecto_Consultar">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItem_ProyectoDeEmpleado_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Empleados segun Proyecto"/>
+                <Property name="text" type="java.lang.String" value="Proyectos de un Empleado"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItem_ProyectoDeEmpleado_Consultar">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItem_EmpleadoEnProyecto_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proyectos de un Empleado"/>
+                <Property name="text" type="java.lang.String" value="Empleados seg&#xfa;n Proyecto"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -406,7 +429,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,120,0,0,1,-8"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,123,0,0,2,9"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -510,7 +533,7 @@
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Txt_Nif_Agregar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_Agregar_Agregar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_Cancelar_Agregar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -560,6 +583,9 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="Txt_Nacimiento_Agregar_Empleado">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Txt_Nacimiento_Agregar_EmpleadoActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -685,7 +711,7 @@
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane3" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="35" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn_Agregar_Agregar_Proyecto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_Cancelar_Agregar_Proyecto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -778,6 +804,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Txt_Descripcion_Agregar_Proyecto.setWrapStyleWord(true);"/>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
@@ -890,7 +917,7 @@
                           </Group>
                           <Component id="btn_Modificar_Modificar_Empleado" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1046,7 +1073,7 @@
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Component id="txt_FiltrarFechaInicio_Modificar_Proyecto" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarFechaFin_Modificar_Proyecto" pref="100" max="32767" attributes="0"/>
+                                      <Component id="txt_FiltrarFechaFin_Modificar_Proyecto" pref="113" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="txt_FiltrarDescripcion_Modificar_Proyecto" max="32767" attributes="0"/>
                               </Group>
@@ -1173,7 +1200,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tabla_Modificar_Empleado.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tabla_Modificar_Proyecto.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);"/>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
@@ -1339,7 +1366,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarDescripcion_Proyecto_Asociar" pref="378" max="32767" attributes="0"/>
+                                      <Component id="txt_FiltrarDescripcion_Proyecto_Asociar" pref="403" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
@@ -1577,6 +1604,211 @@
             </Component>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="panel_ProyectoDeEmpleado_Consultar">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Por defecto"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="panel_ProyectoDeEmpleado_ConsultarFocusGained"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card3"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                      <Component id="btn_Filtrar_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNombre_ProyectoDeEmpleado_Consultar" min="-2" pref="110" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarApellido_ProyectoDeEmpleado_Consultar" min="-2" pref="111" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNacimiento_ProyectoDeEmpleado_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarNIF_ProyectoDeEmpleado_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane12" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane8" alignment="0" pref="501" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane12" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_FiltrarNombre_ProyectoDeEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarApellido_ProyectoDeEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarNacimiento_ProyectoDeEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarNIF_ProyectoDeEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_Filtrar_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane8" min="-2" pref="130" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane12">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tabla_ProyectoDeEmpleado_Consultar">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="btn_Filtrar_ProyectoDeEmpleado_Consultar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Filtrar"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator7">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel28">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_ProyectoDeEmpleado_Consultar">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="Nombre_name" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_ProyectoDeEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_ProyectoDeEmpleado_Consultar">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarNacimiento_ProyectoDeEmpleado_ConsultarActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_ProyectoDeEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane8">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="&lt;html&gt;&lt;strong&gt;Proyectos asociados:&lt;/strong&gt;&lt;/html&gt;"/>
+                  </Border>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tabla_Asociados_ProyectoDeEmpleado_Consultar">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="panel_EmpleadoEnProyecto_Consultar">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -1598,71 +1830,37 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Component id="jScrollPane10" alignment="0" pref="501" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="jScrollPane13" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_Asociar_Asociar7" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_Cancelar_Asociar7" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane12" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarDescripcion_Proyecto_Asociar3" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="btn_FiltrarProyecto_Asociar4" min="-2" pref="79" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txt_FiltrarTitulo_Proyecto_Asociar3" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar3" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarFechaFin_Proyecto_Asociar3" min="-2" pref="101" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="ComboBox_ProyectoDeEmpleado_Consultar1" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarId_Proyecto_Asociar3" min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar" min="-2" pref="400" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                      <Component id="checkBox_Apellido_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="checkBox_Nacimiento_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jSeparator6" alignment="1" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNombre_EmpleadoEnProyecto_Consultar" min="-2" pref="110" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarApellido_EmpleadoEnProyecto_Consultar" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNacimiento_EmpleadoEnProyecto_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNIF_EmpleadoEnProyecto_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="checkBox_Nombre_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="checkBox_NIF_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" min="-2" pref="98" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" pref="153" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1672,65 +1870,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane12" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jScrollPane10" min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBox_Nacimiento_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBox_Apellido_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace min="127" pref="127" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane13" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ComboBox_ProyectoDeEmpleado_Consultar1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_FiltrarTitulo_Proyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaFin_Proyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarId_Proyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_FiltrarProyecto_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarDescripcion_Proyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_Asociar_Asociar7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_Cancelar_Asociar7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_FiltrarNombre_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarApellido_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNacimiento_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNIF_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="checkBox_NIF_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Component id="checkBox_Nombre_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="153" max="32767" attributes="0"/>
+                          <EmptySpace pref="247" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane12">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane10">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -1785,101 +1959,18 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filtrar"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator7">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_FiltrarProyecto_Asociar4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Filtrar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_Asociar_Asociar7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Asociar"/>
-              </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Asociar_Asociar7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Filtrar_EmpleadoEnProyecto_ConsultarActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_Cancelar_Asociar7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
+            <Component class="javax.swing.JSeparator" name="jSeparator6">
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarTitulo_Proyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="t&#xed;tulo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarTitulo_Proyecto_Asociar3ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
+            <Component class="javax.swing.JLabel" name="jLabel26">
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarDescripcion_Proyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="contenido descripci&#xf3;n"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaInicio_Proyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="fecha inicio"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaFin_Proyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="fecha fin"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarId_Proyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="id proyecto"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="ComboBox_ProyectoDeEmpleado_Consultar1">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;()" type="code"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBox_ProyectoDeEmpleado_Consultar1ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;Proyecto&gt;()"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ComboBox_ProyectoDeEmpleado_Consultar.setEditable(true);"/>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Proyecto&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_EmpleadoEnProyecto_Consultar">
+            <Component class="javax.swing.JTextField" name="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar">
               <Properties>
                 <Property name="name" type="java.lang.String" value="Nombre_name" noResource="true"/>
               </Properties>
@@ -1887,228 +1978,39 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="checkBox_Nombre_EmpleadoEnProyecto_Consultar">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_EmpleadoEnProyecto_Consultar">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="checkBox_Apellido_EmpleadoEnProyecto_Consultar">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBox_Apellido_EmpleadoEnProyecto_ConsultarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarFechaFin_EmpleadoEnProyecto_ConsultarActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_EmpleadoEnProyecto_Consultar">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarNacimiento_EmpleadoEnProyecto_ConsultarActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarId_EmpleadoEnProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="checkBox_Nacimiento_EmpleadoEnProyecto_Consultar">
+            <Container class="javax.swing.JScrollPane" name="jScrollPane13">
               <Properties>
-                <Property name="selected" type="boolean" value="true"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="&lt;html&gt;&lt;strong&gt;Empleados asociados:&lt;/strong&gt;&lt;/html&gt;"/>
+                  </Border>
+                </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBox_Nacimiento_EmpleadoEnProyecto_ConsultarActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_EmpleadoEnProyecto_Consultar">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="checkBox_NIF_EmpleadoEnProyecto_Consultar">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="panel_ProyectoDeEmpleado_Consultar">
-          <Properties>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Por defecto"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="panel_ProyectoDeEmpleado_ConsultarFocusGained"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card3"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator6" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_Asociar_Asociar5" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btn_Cancelar_Asociar4" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane10" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarDescripcion_Proyecto_Asociar2" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Component id="btn_FiltrarProyecto_Asociar3" min="-2" pref="79" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txt_FiltrarTitulo_Proyecto_Asociar2" min="-2" pref="102" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" pref="42" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar2" min="-2" pref="95" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarFechaFin_Proyecto_Asociar2" min="-2" pref="101" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="ComboBox_ProyectoDeEmpleado_Consultar" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarId_Proyecto_Asociar2" min="-2" pref="108" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
-                      <Component id="btn_Filtrar_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNombre_Modificar_Empleado1" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarApellido_Modificar_Empleado1" min="-2" pref="98" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNacimiento_Modificar_Empleado1" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txt_FiltrarNIF_Modificar_Empleado1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="100" max="32767" attributes="0"/>
-                                  <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane10" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="btn_Filtrar_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ComboBox_ProyectoDeEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_FiltrarTitulo_Proyecto_Asociar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaInicio_Proyecto_Asociar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaFin_Proyecto_Asociar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarId_Proyecto_Asociar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_FiltrarProyecto_Asociar3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarDescripcion_Proyecto_Asociar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_Asociar_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_Cancelar_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_FiltrarNombre_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarApellido_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNacimiento_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarNIF_Modificar_Empleado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="153" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane10">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tabla_Modificar_Empleado7">
+                <Component class="javax.swing.JTable" name="tabla_Asociados_EmpleadoEnProyecto_Consultar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -2118,177 +2020,15 @@
                         <Column editable="true" title="Title 4" type="java.lang.Object"/>
                       </Table>
                     </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btn_Filtrar_ProyectoDeEmpleado_Consultar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Filtrar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator6">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel26">
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_FiltrarProyecto_Asociar3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Filtrar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_Asociar_Asociar5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Asociar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Asociar_Asociar5ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_Cancelar_Asociar4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarTitulo_Proyecto_Asociar2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="t&#xed;tulo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarTitulo_Proyecto_Asociar2ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarDescripcion_Proyecto_Asociar2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="contenido descripci&#xf3;n"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaInicio_Proyecto_Asociar2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="fecha inicio"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaFin_Proyecto_Asociar2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="fecha fin"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarId_Proyecto_Asociar2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="id proyecto"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="ComboBox_ProyectoDeEmpleado_Consultar">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;()" type="code"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBox_ProyectoDeEmpleado_ConsultarActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;Proyecto&gt;()"/>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ComboBox_ProyectoDeEmpleado_Consultar.setEditable(true);"/>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Proyecto&gt;"/>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Modificar_Empleado1">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="Nombre_name" noResource="true"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox5">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Modificar_Empleado1">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox6">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Modificar_Empleado1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarNacimiento_Modificar_Empleado1ActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox7">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Modificar_Empleado1">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+            <Component class="javax.swing.JTextField" name="txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -2327,28 +2067,27 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_Asociar_Asociar4" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarNombre_ListaEmpleado_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_Cancelar_Asociar5" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarApellido_ListaEmpleado_Consultar" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarNacimiento_ListaEmpleado_Consultar" min="-2" pref="101" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarNIF_ListaEmpleado_Consultar" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txt_FiltrarNombre_Empleado_Asociar4" min="-2" pref="106" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarApellido_Empleado_Asociar4" min="-2" pref="95" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarNacimiento_Empleado_Asociar4" min="-2" pref="101" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarNIF_Empleado_Asociar4" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
-                                              <Component id="btn_FiltrarEmpleado_Asociar4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="checkBox_Nombre_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="checkBox_Apellido_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="btn_Filtrar_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="checkBox_Nacimiento_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="checkBox_NIF_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -2364,19 +2103,20 @@
                       <Component id="jScrollPane9" min="-2" pref="214" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_FiltrarNombre_Empleado_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarApellido_Empleado_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNacimiento_Empleado_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNIF_Empleado_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarNombre_ListaEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarApellido_ListaEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarNacimiento_ListaEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarNIF_ListaEmpleado_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_FiltrarEmpleado_Asociar4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_Asociar_Asociar4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_Cancelar_Asociar5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="checkBox_NIF_ListaEmpleado_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBox_Nombre_ListaEmpleado_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBox_Apellido_ListaEmpleado_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBox_Nacimiento_ListaEmpleado_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Filtrar_ListaEmpleado_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2390,7 +2130,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tabla_Modificar_Empleado6">
+                <Component class="javax.swing.JTable" name="tabla_ListaEmpleado_Consultar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Title 1&quot;, &quot;Title 2&quot;, &quot;Title 3&quot;, &quot;Title 4&quot;&#xa;    }&#xa;)&#xa;{public boolean isCellEditable(int row, int column){return false;}}&#xa;" type="code"/>
@@ -2402,42 +2142,54 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Empleado_Asociar4">
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_ListaEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_ListaEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_ListaEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_ListaEmpleado_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel25">
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkBox_Nombre_ListaEmpleado_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="nombre"/>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Empleado_Asociar4">
+            <Component class="javax.swing.JCheckBox" name="checkBox_Apellido_ListaEmpleado_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="apellido"/>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBox_Apellido_ListaEmpleado_ConsultarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Empleado_Asociar4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ano_nacimiento"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Empleado_Asociar4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NIF"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_FiltrarEmpleado_Asociar4">
+            <Component class="javax.swing.JButton" name="btn_Filtrar_ListaEmpleado_Consultar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filtrar"/>
               </Properties>
@@ -2445,22 +2197,20 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel25">
-            </Component>
-            <Component class="javax.swing.JButton" name="btn_Asociar_Asociar4">
+            <Component class="javax.swing.JCheckBox" name="checkBox_Nacimiento_ListaEmpleado_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Asociar"/>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Asociar_Asociar4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBox_Nacimiento_ListaEmpleado_ConsultarActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_Cancelar_Asociar5">
+            <Component class="javax.swing.JCheckBox" name="checkBox_NIF_ListaEmpleado_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -2489,37 +2239,55 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="230" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane11" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btn_Asociar_Asociar6" min="-2" pref="80" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btn_Cancelar_Asociar6" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jScrollPane11" pref="501" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txt_FiltrarNombre_Empleado_Asociar6" min="-2" pref="106" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarApellido_Empleado_Asociar6" min="-2" pref="95" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarNacimiento_Empleado_Asociar6" min="-2" pref="101" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_FiltrarNIF_Empleado_Asociar6" max="32767" attributes="0"/>
+                                              <Component id="txt_FiltrarDescripcion_ListaProyecto_Consultar" max="32767" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="checkBox_Descripcion_ListaProyecto_Consultar" min="-2" pref="21" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Component id="btn_Filtrar_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
-                                              <Component id="btn_FiltrarEmpleado_Asociar6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                                      <Component id="checkBox_Titulo_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                                      <Component id="checkBox_FechaInicio_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                                      <Component id="checkBox_FechaFin_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="txt_FiltrarTitulo_ListaProyecto_Consultar" max="32767" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txt_FiltrarFechaInicio_ListaProyecto_Consultar" min="-2" pref="95" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txt_FiltrarFechaFin_ListaProyecto_Consultar" min="-2" pref="101" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                                      <Component id="checkBox_Id_ListaProyecto_Consultar" min="-2" pref="21" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="txt_FiltrarID_ListaProyecto_Consultar" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -2535,21 +2303,29 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane11" min="-2" pref="214" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_FiltrarNombre_Empleado_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarApellido_Empleado_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNacimiento_Empleado_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarNIF_Empleado_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarTitulo_ListaProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaInicio_ListaProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarID_ListaProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaFin_ListaProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="checkBox_FechaFin_ListaProyecto_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkBox_Id_ListaProyecto_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="checkBox_FechaInicio_ListaProyecto_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBox_Titulo_ListaProyecto_Consultar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btn_FiltrarEmpleado_Asociar6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn_Asociar_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btn_Cancelar_Asociar6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txt_FiltrarDescripcion_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_Filtrar_ListaProyecto_Consultar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkBox_Descripcion_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2563,7 +2339,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tabla_Modificar_Empleado8">
+                <Component class="javax.swing.JTable" name="tabla_ListaProyecto_Consultar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -2601,42 +2377,36 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNombre_Empleado_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="nombre"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarTitulo_ListaProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarApellido_Empleado_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="apellido"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaInicio_ListaProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNacimiento_Empleado_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ano_nacimiento"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarFechaFin_ListaProyecto_Consultar">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_FiltrarFechaFin_ListaProyecto_ConsultarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_FiltrarNIF_Empleado_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NIF"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarID_ListaProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_FiltrarEmpleado_Asociar6">
+            <Component class="javax.swing.JButton" name="btn_Filtrar_ListaProyecto_Consultar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filtrar"/>
               </Properties>
@@ -2646,20 +2416,46 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
             </Component>
-            <Component class="javax.swing.JButton" name="btn_Asociar_Asociar6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Asociar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Asociar_Asociar6ActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="txt_FiltrarDescripcion_ListaProyecto_Consultar">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_Cancelar_Asociar6">
+            <Component class="javax.swing.JCheckBox" name="checkBox_Titulo_ListaProyecto_Consultar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="selected" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkBox_FechaInicio_ListaProyecto_Consultar">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkBox_FechaFin_ListaProyecto_Consultar">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkBox_Id_ListaProyecto_Consultar">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="checkBox_Descripcion_ListaProyecto_Consultar">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
