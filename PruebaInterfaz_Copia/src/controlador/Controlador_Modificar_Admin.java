@@ -170,7 +170,14 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Eliminar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok6.5");
+                //Llama al metodo eliminarEmpleado() pasandole como parametro el NIF del registro seleccionado.Si lo elimina correctamente se informa y se actualiza el modelo de la tabla En caso de dar error la eliminacion, se informa. 
+                try {
+                    modelo.eliminarEmpleado(this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString());
+                    JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
+                    this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                }
                 break;
                 
             case "accion_Btn_Cancelar_Modificar_Empleado":
@@ -238,7 +245,15 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Eliminar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok10.5");
+                //Llama al metodo eliminarProyecto() pasandole como parametro el id del proyecto seleccionado.Si lo elimina correctamente se informa y se actualiza el modelo de la tabla. En caso de dar error la eliminacion, se informa. 
+                try {
+                    modelo.eliminarProyecto(Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()));
+                    JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
+                    this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
+                    
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                }
                 break;
                 
             case "accion_Btn_Cancelar_Modificar_Proyecto":
@@ -310,60 +325,40 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
     }
     
     @Override
-    public void windowClosed(WindowEvent e) {
-        
+    public void windowClosing(WindowEvent e) {
+        System.out.println("closing");
         this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.setText(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 4).toString());
     }
+    
+    @Override
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-        
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-        
-    }
+    public void mouseExited(MouseEvent e) {}
+    
+    @Override
+    public void windowClosed(WindowEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-        
-    }
+    public void windowOpened(WindowEvent e) {}
 
     @Override
-    public void windowOpened(WindowEvent e) {
-        
-    }
+    public void windowIconified(WindowEvent e) {}
 
     @Override
-    public void windowClosing(WindowEvent e) {
-        
-    }
+    public void windowDeiconified(WindowEvent e) {}
 
     @Override
-    public void windowIconified(WindowEvent e) {
-        
-    }
+    public void windowActivated(WindowEvent e) {}
 
     @Override
-    public void windowDeiconified(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        
-    }
+    public void windowDeactivated(WindowEvent e) {}
     
     
     

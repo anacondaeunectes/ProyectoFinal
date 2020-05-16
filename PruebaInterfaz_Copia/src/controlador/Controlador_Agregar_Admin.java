@@ -6,15 +6,12 @@
 package controlador;
 
 import com.TextPrompt;
-import com.sun.org.apache.xerces.internal.impl.dv.xs.YearMonthDV;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Year;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 import modelo.Modelo;
@@ -82,17 +79,21 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
                 
                 try {
                     
-                    this.modelo.agregarEmpleado(this.vista.Txt_Nombre_Agregar_Empleado.getText(),
+                    if(this.modelo.agregarEmpleado(this.vista.Txt_Nombre_Agregar_Empleado.getText(),
                         this.vista.Txt_Apellido_Agregar_Empleado.getText(),
-                        Integer.parseInt(Year.parse(this.vista.Txt_Nacimiento_Agregar_Empleado.getText()).toString()),
-                        this.vista.Txt_Nif_Agregar_Empleado.getText());
-                    
-                    JOptionPane.showMessageDialog(null, "Registro de empleado introducido correctamente");
-                    
-                    this.vista.Txt_Nombre_Agregar_Empleado.setText("");
-                    this.vista.Txt_Apellido_Agregar_Empleado.setText("");
-                    this.vista.Txt_Nacimiento_Agregar_Empleado.setText("");
-                    this.vista.Txt_Nif_Agregar_Empleado.setText("");
+                        Year.parse(this.vista.Txt_Nacimiento_Agregar_Empleado.getText()),
+                        this.vista.Txt_Nif_Agregar_Empleado.getText()))
+                    {
+                        JOptionPane.showMessageDialog(null, "Registro de empleado introducido correctamente");
+                        
+                        this.vista.Txt_Nombre_Agregar_Empleado.setText("");
+                        this.vista.Txt_Apellido_Agregar_Empleado.setText("");
+                        this.vista.Txt_Nacimiento_Agregar_Empleado.setText("");
+                        this.vista.Txt_Nif_Agregar_Empleado.setText("");
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - Los campos 'Nombre' y 'Apellido' no pueden estar vacios.\n \t - Revise el patrón del NIF.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
@@ -116,15 +117,22 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
             case "accion_Btn_Agregar_Agregar_Proyecto":
                 
                 try {
-                    this.modelo.agregarProyecto(LocalDate.parse(this.vista.Txt_FechaInicio_Agregar_Proyecto.getText()),
+                    
+                    if (this.modelo.agregarProyecto(LocalDate.parse(this.vista.Txt_FechaInicio_Agregar_Proyecto.getText()),
                             LocalDate.parse(this.vista.Txt_FechaFin_Agregar_Proyecto.getText()),
                             this.vista.Txt_Titulo_Agregar_Proyecto.getText(),
-                            this.vista.Txt_Descripcion_Agregar_Proyecto.getText());
-                    JOptionPane.showMessageDialog(vista, "Registro de proyecto introducido correctamente");
-                    this.vista.Txt_FechaInicio_Agregar_Proyecto.setText("");
-                    this.vista.Txt_FechaFin_Agregar_Proyecto.setText("");
-                    this.vista.Txt_Titulo_Agregar_Proyecto.setText("");
-                    vista.Txt_Descripcion_Agregar_Proyecto.setText("");
+                            this.vista.Txt_Descripcion_Agregar_Proyecto.getText())
+                    ){
+                        JOptionPane.showMessageDialog(vista, "Registro de proyecto introducido correctamente");
+                        this.vista.Txt_FechaInicio_Agregar_Proyecto.setText("");
+                        this.vista.Txt_FechaFin_Agregar_Proyecto.setText("");
+                        this.vista.Txt_Titulo_Agregar_Proyecto.setText("");
+                        vista.Txt_Descripcion_Agregar_Proyecto.setText("");
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - El campo 'Titulo' no puede estar vacio.\n \t - La fecha de inicio no puede ser posterior a la fecha de fin.\n \t - La descripcion no puede superar los 500 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                     
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);

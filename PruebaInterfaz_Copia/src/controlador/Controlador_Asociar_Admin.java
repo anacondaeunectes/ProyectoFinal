@@ -17,8 +17,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 import modelo.Modelo;
@@ -170,9 +168,30 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                     
                 }
                 
-                listEmpleados.stream().forEach(System.out::println);
+                List <String> listEmpleadosRepes = new ArrayList<>();
+
+                listEmpleados.stream().forEach(x -> {
+                    try{
+                        modelo.asociarEmpleadoProyecto(x, (Proyecto) this.vista.ComboBox_Asociar.getSelectedItem());
+                    }catch(SQLException ex){
+                        listEmpleadosRepes.add(x);
+                    }
+                });
                 
-                String[] empleadosSeleccionados = new String[listEmpleados.size()];
+                if (!listEmpleadosRepes.isEmpty()) {
+                    String msg = "<html>No se han podido asociar los siguientes empleados: <br><ol>";
+                    for (String NIFs : listEmpleadosRepes) {
+                        msg = msg + "<li>" + NIFs + "</li>";
+                    }
+                    JOptionPane.showMessageDialog(vista, msg + "</ol>", "Adventencia", JOptionPane.WARNING_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(vista, "Empleados asociados correctamente");
+                }
+                
+                
+                
+                
+                /*String[] empleadosSeleccionados = new String[listEmpleados.size()];
                 
                 for (int i = 0; i < empleadosSeleccionados.length; i++) {
                     empleadosSeleccionados[i] = listEmpleados.get(i);
@@ -184,14 +203,9 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                     modelo.asociarEmpleadoProyecto(empleadosSeleccionados, (Proyecto) this.vista.ComboBox_Asociar.getSelectedItem());
                 } catch (SQLException ex) {
                    JOptionPane.showMessageDialog(null, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
-                   /*this.modelo = new Modelo();
-                    try {
-                        modelo.asociarEmpleadoProyecto(empleadosSeleccionados, (Proyecto) this.vista.ComboBox_Asociar.getSelectedItem());
-                    } catch (SQLException ex1) {
-                        JOptionPane.showMessageDialog(null, "sql: " + ex1.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
-                    }*/
+                  
                    
-                }
+                }*/
         
                 break;
                 

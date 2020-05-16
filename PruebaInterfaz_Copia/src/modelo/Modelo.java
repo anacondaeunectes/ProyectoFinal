@@ -5,20 +5,18 @@
  */
 package modelo;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
-import java.io.Reader;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.time.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -42,30 +40,52 @@ public class Modelo extends database{
         this.min_Ano_Nacimiento = min_Ano_Nacimiento;
     }
     
-    public boolean agregarEmpleado(String nombre, String apellido, int ano_nacimiento, String NIF) throws SQLException{
+    public boolean agregarEmpleado(String nombre, String apellido, Year ano_nacimiento, String NIF) throws SQLException{
+        
+        //Primero llama al metodo trim() con todos los datos para despues pasarlo al metodo validarDatos
+        nombre = nombre.trim();
+        apellido = apellido.trim();
+        NIF = NIF.trim();
+        
+        if (!validarDatosEmpleado(nombre, apellido, ano_nacimiento, NIF)) {
+            return false;
+        }
         
         String query = "INSERT INTO empleado VALUES (?, ?, ?, ?)";
         PreparedStatement pstm = this.getConexion().prepareStatement(query);
         pstm.setString(1, nombre);
         pstm.setString(2, apellido);
-        pstm.setInt(3, ano_nacimiento);
+        pstm.setInt(3, Integer.parseInt(ano_nacimiento.toString()));
         pstm.setString(4, NIF);
         pstm.execute();
         pstm.close();
-        /*PreparedStatement statement = this.getConexion().prepareStatement(query);
-        statement.setString(1, nombre);
-        statement.setString(2, apellido);
-        statement.setInt(3, Integer.parseInt(ano_nacimiento.toString()));
-        statement.setString(4, NIF);*/
-
-        //statement.executeQuery();
+        
         return true;
         
         
     }
     
+    private boolean validarDatosEmpleado(String nombre, String apellido, Year ano_nacimiento, String NIF){
+        boolean flag = true;
+
+        if (nombre.equals("")|| apellido.equals("") || !comprobarDNI(NIF)) {
+            flag = false;
+        }
+    return flag;
+    }
+        
+    private boolean comprobarDNI(String a) {
+        return a.matches("[0-9]{8}[a-zA-Z]");
+    }
+    
     public boolean agregarProyecto(LocalDate fecha_inicio, LocalDate fecha_fin, String titulo, String descripcion) throws SQLException{
         
+        titulo = titulo.trim();
+        
+        if (!validarDatosProyecto(titulo, fecha_inicio, fecha_fin, descripcion)) {
+            return false;
+        }
+
         PreparedStatement pstm = this.getConexion().prepareCall("{call insertProyecto (?, ?, ?, ?)}");
         pstm.setString(1, titulo);
         pstm.setString(2, fecha_inicio.toString());
@@ -78,22 +98,45 @@ public class Modelo extends database{
         
     }
     
-    public void asociarEmpleadoProyecto(String[] NifEmpleados, Proyecto proyecto) throws SQLException{
+    private boolean validarDatosProyecto(String titulo, LocalDate fecha_inicio, LocalDate fecha_fin, String descripcion){
         
-        String query = "";
+        return (titulo.equals("") || fecha_fin.isBefore(fecha_inicio) || descripcion.length() > 500) ? false: true;
         
-            PreparedStatement pstm = null;
-            
-            for(String empNif : NifEmpleados){
-            
-                query = "INSERT INTO trabaja VALUES (?, ?)";
-                pstm = this.getConexion().prepareStatement(query);
-                pstm.setString(1, empNif);
-                pstm.setInt(2, proyecto.getId_Proyecto());
-                pstm.execute();
-            }
-            pstm.close();
+//        if (titulo.equals("") || fecha_fin.isBefore(fecha_inicio) || descripcion.length() > 500){
+//            return false;
+//        }else{
+//            return true;
+//        }
         
+    }
+    
+    public void asociarEmpleadoProyecto(String NifEmpleado, Proyecto proyecto) throws SQLException{
+
+        String query = "INSERT INTO trabaja VALUES (?, ?)";
+        PreparedStatement pstm = this.getConexion().prepareStatement(query);
+        pstm.setString(1, NifEmpleado);
+        pstm.setInt(2, proyecto.getId_Proyecto());
+        pstm.execute();
+
+
+        pstm.close();
+        
+    }
+    
+    public void eliminarEmpleado(String NifEmpleado) throws SQLException{
+        
+        PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM empleado WHERE NIF = ?");
+        pstm.setString(1, NifEmpleado);
+        pstm.execute();
+        pstm.close();
+    }
+    
+    public void eliminarProyecto(int idProy) throws SQLException{
+        
+        PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM proyecto WHERE id_proyecto = ?");
+        pstm.setInt(1, idProy);
+        pstm.execute();
+        pstm.close();
     }
     
     public boolean isProyectoEmpty(){
@@ -163,12 +206,14 @@ public class Modelo extends database{
     
     public boolean modificarProyecto(String titulo, String fechaInicio, String fechaFin, int id, String descripcion) throws SQLException{
     
+        System.out.println(descripcion);
         PreparedStatement pstm = this.getConexion().prepareCall("{call doUpdateProyecto(?, ?, ?, ?, ?)}");
         pstm.setString(1, titulo);
         pstm.setString(2, fechaInicio);
         pstm.setString(3, fechaFin);
         pstm.setInt(4, id);
         pstm.setString(5, descripcion);
+        
         
         pstm.execute();
         pstm.close();
@@ -304,21 +349,32 @@ public class Modelo extends database{
                 String[] fila = new String[listNombreColumnas.size()];
                 while (rSet.next()){
                     if (listNombreColumnas.size() >= 1) {
-                        System.out.println(rSet.getString(1));
-                        fila[0] = rSet.getString(1);
-                        
+                        if (listNombreColumnas.get(0).equals("ano_nacimiento")) {
+                            fila[0] = String.valueOf(LocalDate.parse(rSet.getString(1)).getYear());
+                        }else{
+                            fila[0] = rSet.getString(1);
+                        }
                     }
                     if (listNombreColumnas.size() >= 2) {
-                        System.out.println(rSet.getString(2));
-                        fila[1] = rSet.getString(2);
+                        if (listNombreColumnas.get(1).equals("ano_nacimiento")) {
+                            fila[1] = String.valueOf(LocalDate.parse(rSet.getString(2)).getYear());
+                        }else{
+                            fila[1] = rSet.getString(2);
+                        }
                     }
                     if (listNombreColumnas.size() >= 3) {
-                        System.out.println(rSet.getString(3));
-                        fila[2] = rSet.getString(3);
+                        if (listNombreColumnas.get(2).equals("ano_nacimiento")) {
+                            fila[2] = String.valueOf(LocalDate.parse(rSet.getString(3)).getYear());
+                        }else{
+                            fila[2] = rSet.getString(3);
+                        }
                     }
                     if (listNombreColumnas.size() >= 4) {
-                        System.out.println(rSet.getString(4));
-                        fila[3] = rSet.getString(4);
+                        if (listNombreColumnas.get(3).equals("ano_nacimiento")) {
+                            fila[3] = String.valueOf(LocalDate.parse(rSet.getString(4)).getYear());
+                        }else{
+                            fila[3] = rSet.getString(4);
+                        }
                     }
                     tableModel.addRow(fila);
                 }
@@ -495,6 +551,66 @@ public class Modelo extends database{
         return tableModel;
     }
     
+   public DefaultTableModel getProyectosAsocidos(String id) throws SQLException{
+   
+       String query = "SELECT titulo, fecha_inicio, fecha_fin, id_proyecto, descripcion FROM proyecto WHERE id_proyecto IN (SELECT ref_proyecto FROM trabaja WHERE ref_empleado = ?)";
+       PreparedStatement pstm = this.getConexion().prepareCall(query);
+       pstm.setString(1, id);
+       ResultSet rSet = pstm.executeQuery();
+       DefaultTableModel tableModel = new DefaultTableModel(null, new String[]{"Titulo", "Fecha inicio", "Fecha fin", "ID", "Descripcion"});
+       String[] fila = new String[tableModel.getColumnCount()];
+       while (rSet.next()) {           
+           fila[0] = rSet.getString(1);
+           fila[1] = rSet.getString(2);
+           fila[2] = rSet.getString(3);
+           fila[3] = rSet.getString(4);
+           fila[4] = rSet.getString(5);
+           tableModel.addRow(fila);
+       }
+       
+       return tableModel;
+   }
+   
+   public DefaultTableModel getEmpleadosAsocidos(int id) throws SQLException{
+   
+       String query = "SELECT * FROM empleado WHERE NIF IN (SELECT ref_empleado FROM trabaja WHERE ref_proyecto = ?)";
+       PreparedStatement pstm = this.getConexion().prepareCall(query);
+       pstm.setInt(1, id);
+       ResultSet rSet = pstm.executeQuery();
+       DefaultTableModel tableModel = new DefaultTableModel(null, new String[]{"Nombre", "Apellido", "Año nacimiento", "NIF"});
+       String[] fila = new String[tableModel.getColumnCount()];
+       while (rSet.next()) {           
+           fila[0] = rSet.getString(1);
+           fila[1] = rSet.getString(2);
+           fila[2] = String.valueOf(LocalDate.parse(rSet.getString(3)).getYear());
+           fila[3] = rSet.getString(4);
+           tableModel.addRow(fila);
+       }
+       
+       return tableModel;
+   }
+   
+   public String[] datosEdadProyectos()throws SQLException{
+       
+       String[] resultado = new String[2];
+       
+       CallableStatement pstm = this.getConexion().prepareCall("{call edad(?, ?)}");
+       pstm.registerOutParameter(1, Types.VARCHAR);
+       pstm.registerOutParameter(2, Types.VARCHAR);
+       pstm.execute();
+       ResultSet rSet = pstm.getResultSet();
+       
+       while (rSet.next()) {           
+           System.out.println(rSet.toString());
+       }
+       
+       resultado[0] = pstm.getString(1);
+       resultado[1] = pstm.getString(2);
+       
+       return resultado;
+       
+   }
+    
     public static Year leerCfg_MinAnoNacimiento(){
         Year yyyy = null;
         
@@ -546,6 +662,8 @@ public class Modelo extends database{
         
     }
     
+
+    
     public static void main(String args[]) {
             
             //getTablaEmpleado(true, false, false, true, "Pepe", "", "1970", "123");
@@ -553,7 +671,8 @@ public class Modelo extends database{
             a = Year.of(1990);
             final Year MIN_ANO_NACIMIENTO = a;
             System.out.println(MIN_ANO_NACIMIENTO.toString());*/
-            sobreescribirCFG_MinAnoNacimiento(Year.of(1999));
+//            sobreescribirCFG_MinAnoNacimiento(Year.of(1999));
+//            System.out.println(comprobarDNI("1234578A"));
         
     }
     

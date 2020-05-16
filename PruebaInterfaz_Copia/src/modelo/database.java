@@ -20,7 +20,9 @@ public class database {
     public database(){
        try{
          //conn = DriverManager.getConnection( this.url, this.user , this.password );     
-         conex = DriverManager.getConnection( "jdbc:mysql://localhost:3306/test", "root" , "Nervion1**" );    
+         conex = DriverManager.getConnection( "jdbc:mysql://localhost:3306/test", "root" , "Nervion1**" );   
+         /*ELIMINAR*/
+//         conex = DriverManager.getConnection( "jdbc:mysql://79.148.236.236:3306/pgutierrez_UD6", "pgutierrez" , "Nervion1**" );    
       }catch(SQLException e){
          System.err.println( e.getMessage() );
       }
