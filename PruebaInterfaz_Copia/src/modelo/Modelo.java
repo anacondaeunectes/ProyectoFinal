@@ -52,17 +52,17 @@ public class Modelo extends database{
         }
         
         String query = "INSERT INTO empleado VALUES (?, ?, ?, ?)";
-        PreparedStatement pstm = this.getConexion().prepareStatement(query);
-        pstm.setString(1, nombre);
-        pstm.setString(2, apellido);
-        pstm.setInt(3, Integer.parseInt(ano_nacimiento.toString()));
-        pstm.setString(4, NIF);
-        pstm.execute();
-        pstm.close();
+        //Try-with-resources que se encarga de cerrar el PreparedStatement, ya que implementa la interfaz AutoClosable, se lance o no una excepcion 
+        try (PreparedStatement pstm = this.getConexion().prepareStatement(query)) {
+            pstm.setString(1, nombre);
+            pstm.setString(2, apellido);
+            pstm.setInt(3, Integer.parseInt(ano_nacimiento.toString()));
+            pstm.setString(4, NIF);
+            pstm.execute();
+        }
         
         return true;
-        
-        
+     
     }
     
     private boolean validarDatosEmpleado(String nombre, String apellido, Year ano_nacimiento, String NIF){
@@ -85,14 +85,14 @@ public class Modelo extends database{
         if (!validarDatosProyecto(titulo, fecha_inicio, fecha_fin, descripcion)) {
             return false;
         }
-
-        PreparedStatement pstm = this.getConexion().prepareCall("{call insertProyecto (?, ?, ?, ?)}");
-        pstm.setString(1, titulo);
-        pstm.setString(2, fecha_inicio.toString());
-        pstm.setString(3, fecha_fin.toString());
-        pstm.setString(4, descripcion);
-        pstm.execute();
-        pstm.close();
+        //Try-with-resources que se encarga de cerrar el CallableStatement se lance o no una excepcion
+        try(CallableStatement pstm = this.getConexion().prepareCall("{call insertProyecto (?, ?, ?, ?)}")){
+            pstm.setString(1, titulo);
+            pstm.setString(2, fecha_inicio.toString());
+            pstm.setString(3, fecha_fin.toString());
+            pstm.setString(4, descripcion);
+            pstm.execute();
+        }
 
         return true;
         
@@ -110,53 +110,78 @@ public class Modelo extends database{
         
     }
     
+    /**
+     * Este metodo permite asociar un unico empleado con un proyecto. La idea es que desde el controlador se llame en bucle a este metodo por cada empleado seleccionado ya que es posible que alguno de ellos ya esté asociado a ese mismo proyecto
+     * @param NifEmpleado NIF del empleado seleccionado
+     * @param proyecto Objeto proyecto seleccionado
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
     public void asociarEmpleadoProyecto(String NifEmpleado, Proyecto proyecto) throws SQLException{
 
         String query = "INSERT INTO trabaja VALUES (?, ?)";
-        PreparedStatement pstm = this.getConexion().prepareStatement(query);
-        pstm.setString(1, NifEmpleado);
-        pstm.setInt(2, proyecto.getId_Proyecto());
-        pstm.execute();
-
-
-        pstm.close();
+        //Try-with-resources que se encarga de cerrar el PreparedStatement se lance o no una excepcion
+        try(PreparedStatement pstm = this.getConexion().prepareStatement(query)){
+            pstm.setString(1, NifEmpleado);
+            pstm.setInt(2, proyecto.getId_Proyecto());
+            pstm.execute();
+        }
+        
+    }
+    
+    /**
+     * Este metodo permite disociar varios empleadosde un mismo proyecto. Debido a que en este caso no existe la posibilidad de que se trate de disociar empleados no asociados, ya que solo es posible seleccionar empleados sí asociados, este metodo puede disociar todos de una vez.
+     * @param NifEmpleado Array de empleados a disociar
+     * @param idProy Id del proyecto seleccionado
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
+    public void disociarEmpleadoProyecto(String[] NifEmpleado, int idProy)throws SQLException{
+    
+        String query;
+        
+        for (String emp : NifEmpleado) {
+            
+            query = "DELETE FROM trabaja WHERE ref_empleado = ? AND ref_proyecto  = ?";
+            //Try-with-resources que se encarga de cerrar el PreparedStatement se lance o no una excepcion
+            try(PreparedStatement pstm = this.getConexion().prepareStatement(query)){
+                pstm.setString(1, emp);
+                pstm.setInt(2, idProy);
+                pstm.execute();
+            }
+        }
         
     }
     
     public void eliminarEmpleado(String NifEmpleado) throws SQLException{
         
-        PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM empleado WHERE NIF = ?");
-        pstm.setString(1, NifEmpleado);
-        pstm.execute();
-        pstm.close();
+        //Try-with-resources que se encarga de cerrar el PreparedStatement se lance o no una excepcion
+        try(PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM empleado WHERE NIF = ?")){
+            pstm.setString(1, NifEmpleado);
+            pstm.execute();
+        }
+       
     }
     
     public void eliminarProyecto(int idProy) throws SQLException{
         
-        PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM proyecto WHERE id_proyecto = ?");
-        pstm.setInt(1, idProy);
-        pstm.execute();
-        pstm.close();
+        try(PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM proyecto WHERE id_proyecto = ?")){
+            pstm.setInt(1, idProy);
+            pstm.execute();
+        }
     }
     
     public boolean isProyectoEmpty(){
         
-        PreparedStatement pstm = null;
-        
-        try {
-            String query = "SELECT titulo FROM proyecto";
-            pstm = this.getConexion().prepareStatement(query);
-            ResultSet rset = pstm.executeQuery();
-            if (rset.first()) {
-                return false;
-            }else {
-                pstm.close();
-                return true;
-            }
+        //Llama a la vista "comprobarProyectoVacio"
+        try(PreparedStatement pstm = this.getConexion().prepareStatement("SELECT * FROM comprobarProyectoVacio");
+            ResultSet rset = pstm.executeQuery()){
+                if (rset.first()) {
+                    return false;
+                }else {
+                    return true;
+                }
                     
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            
             return true;
         }
     
@@ -190,38 +215,36 @@ public class Modelo extends database{
        return arrLi;
     }
     
-    public boolean modificarEmpleado(String nombre, String apellido, int anoNacimiento, String Nif) throws SQLException{
+    public void modificarEmpleado(String nombre, String apellido, int anoNacimiento, String Nif) throws SQLException{
         
-        PreparedStatement pstm = this.getConexion().prepareCall("{call doUpdateEmpleado (?, ?, ?, ?)}");
-        pstm.setString(1, nombre);
-        pstm.setString(2, apellido);
-        pstm.setInt(3, anoNacimiento);
-        pstm.setString(4, Nif);
+        //Try-with-resources que se encarga de cerrar el CallableStatement, ya que implementa la interfaz AutoClosable, se lance o no una excepcion
+        try(CallableStatement pstm = this.getConexion().prepareCall("{call doUpdateEmpleado (?, ?, ?, ?)}")){
+            pstm.setString(1, nombre);
+            pstm.setString(2, apellido);
+            pstm.setInt(3, anoNacimiento);
+            pstm.setString(4, Nif);
 
-        pstm.execute();
-        pstm.close();
-        
-        return true;
+            pstm.execute();
+        }
+
     }
     
-    public boolean modificarProyecto(String titulo, String fechaInicio, String fechaFin, int id, String descripcion) throws SQLException{
+    public void modificarProyecto(String titulo, String fechaInicio, String fechaFin, int id, String descripcion) throws SQLException{
     
-        System.out.println(descripcion);
-        PreparedStatement pstm = this.getConexion().prepareCall("{call doUpdateProyecto(?, ?, ?, ?, ?)}");
-        pstm.setString(1, titulo);
-        pstm.setString(2, fechaInicio);
-        pstm.setString(3, fechaFin);
-        pstm.setInt(4, id);
-        pstm.setString(5, descripcion);
-        
-        
-        pstm.execute();
-        pstm.close();
-        
-        return true;
+        //Try-with-resources que se encarga de cerrar el CallableStatement se lance o no una excepcion
+        try(CallableStatement pstm = this.getConexion().prepareCall("{call doUpdateProyecto(?, ?, ?, ?, ?)}")){
+            pstm.setString(1, titulo);
+            pstm.setString(2, fechaInicio);
+            pstm.setString(3, fechaFin);
+            pstm.setInt(4, id);
+            pstm.setString(5, descripcion);
+
+            pstm.execute();
+        }
+
     }
 
-    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
+   public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
         
         DefaultTableModel tableModel;
         ResultSet rSet;
@@ -342,8 +365,10 @@ public class Modelo extends database{
 
             System.out.println(query);
             
+            PreparedStatement pstm = null;
+            
             try {
-                PreparedStatement pstm = this.getConexion().prepareStatement(query);
+                pstm = this.getConexion().prepareStatement(query);
                 rSet = pstm.executeQuery(query);
                 
                 String[] fila = new String[listNombreColumnas.size()];
@@ -380,6 +405,12 @@ public class Modelo extends database{
                 }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
+            }finally{
+                try {
+                    pstm.close();
+                } catch (SQLException e) {
+                }
+                
             }
              
         }
@@ -387,7 +418,7 @@ public class Modelo extends database{
         return tableModel;
     }
     
-    public DefaultTableModel getTablaProyecto(boolean tituloChecked, boolean fechaInicioChecked, boolean fechaFinChecked, boolean idChecked, boolean descripcionChecked, String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
+   public DefaultTableModel getTablaProyecto(boolean tituloChecked, boolean fechaInicioChecked, boolean fechaFinChecked, boolean idChecked, boolean descripcionChecked, String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
         DefaultTableModel tableModel;
         ResultSet rSet;
         String query = "";
@@ -552,40 +583,51 @@ public class Modelo extends database{
     }
     
    public DefaultTableModel getProyectosAsocidos(String id) throws SQLException{
-   
-       String query = "SELECT titulo, fecha_inicio, fecha_fin, id_proyecto, descripcion FROM proyecto WHERE id_proyecto IN (SELECT ref_proyecto FROM trabaja WHERE ref_empleado = ?)";
-       PreparedStatement pstm = this.getConexion().prepareCall(query);
-       pstm.setString(1, id);
-       ResultSet rSet = pstm.executeQuery();
-       DefaultTableModel tableModel = new DefaultTableModel(null, new String[]{"Titulo", "Fecha inicio", "Fecha fin", "ID", "Descripcion"});
-       String[] fila = new String[tableModel.getColumnCount()];
-       while (rSet.next()) {           
-           fila[0] = rSet.getString(1);
-           fila[1] = rSet.getString(2);
-           fila[2] = rSet.getString(3);
-           fila[3] = rSet.getString(4);
-           fila[4] = rSet.getString(5);
-           tableModel.addRow(fila);
-       }
        
+        DefaultTableModel tableModel = null;
+        String query = "SELECT titulo, fecha_inicio, fecha_fin, id_proyecto, descripcion FROM proyecto WHERE id_proyecto IN (SELECT ref_proyecto FROM trabaja WHERE ref_empleado = ?)";
+       
+        try(PreparedStatement pstm = this.getConexion().prepareCall(query)){
+            pstm.setString(1, id);
+            try(ResultSet rSet = pstm.executeQuery()){
+                tableModel = new DefaultTableModel(null, new String[]{"Titulo", "Fecha inicio", "Fecha fin", "ID", "Descripcion"});
+                String[] fila = new String[tableModel.getColumnCount()];
+                while (rSet.next()) {           
+                    fila[0] = rSet.getString(1);
+                    fila[1] = rSet.getString(2);
+                    fila[2] = rSet.getString(3);
+                    fila[3] = rSet.getString(4);
+                    fila[4] = rSet.getString(5);
+                    tableModel.addRow(fila);
+                }
+            }
+        }
        return tableModel;
    }
    
    public DefaultTableModel getEmpleadosAsocidos(int id) throws SQLException{
-   
+       
+       DefaultTableModel tableModel = null;
        String query = "SELECT * FROM empleado WHERE NIF IN (SELECT ref_empleado FROM trabaja WHERE ref_proyecto = ?)";
-       PreparedStatement pstm = this.getConexion().prepareCall(query);
-       pstm.setInt(1, id);
-       ResultSet rSet = pstm.executeQuery();
-       DefaultTableModel tableModel = new DefaultTableModel(null, new String[]{"Nombre", "Apellido", "Año nacimiento", "NIF"});
-       String[] fila = new String[tableModel.getColumnCount()];
-       while (rSet.next()) {           
-           fila[0] = rSet.getString(1);
-           fila[1] = rSet.getString(2);
-           fila[2] = String.valueOf(LocalDate.parse(rSet.getString(3)).getYear());
-           fila[3] = rSet.getString(4);
-           tableModel.addRow(fila);
-       }
+       
+       try(PreparedStatement pstm = this.getConexion().prepareCall(query)){
+            pstm.setInt(1, id);
+            try(ResultSet rSet = pstm.executeQuery()){
+
+                tableModel = new DefaultTableModel(null, new String[]{"Nombre", "Apellido", "Año nacimiento", "NIF"}){
+                     @Override
+                     public boolean isCellEditable(int row, int column){return false;}};
+
+                String[] fila = new String[tableModel.getColumnCount()];
+                while (rSet.next()) {           
+                    fila[0] = rSet.getString(1);
+                    fila[1] = rSet.getString(2);
+                    fila[2] = String.valueOf(LocalDate.parse(rSet.getString(3)).getYear());
+                    fila[3] = rSet.getString(4);
+                    tableModel.addRow(fila);
+                }
+            }
+        }
        
        return tableModel;
    }
@@ -594,19 +636,21 @@ public class Modelo extends database{
        
        String[] resultado = new String[2];
        
-       CallableStatement pstm = this.getConexion().prepareCall("{call edad(?, ?)}");
-       pstm.registerOutParameter(1, Types.VARCHAR);
-       pstm.registerOutParameter(2, Types.VARCHAR);
-       pstm.execute();
-       ResultSet rSet = pstm.getResultSet();
-       
-       while (rSet.next()) {           
-           System.out.println(rSet.toString());
+       try(CallableStatement pstm = this.getConexion().prepareCall("{call edad(?, ?)}")){
+            pstm.registerOutParameter(1, Types.VARCHAR);
+            pstm.registerOutParameter(2, Types.VARCHAR);
+            pstm.execute();
+
+            try(ResultSet rSet = pstm.getResultSet()){
+
+                while (rSet.next()) {           
+                    System.out.println(rSet.toString());
+                }
+
+                resultado[0] = pstm.getString(1);
+                resultado[1] = pstm.getString(2);
+            }
        }
-       
-       resultado[0] = pstm.getString(1);
-       resultado[1] = pstm.getString(2);
-       
        return resultado;
        
    }

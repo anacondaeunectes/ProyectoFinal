@@ -73,6 +73,9 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
         this.vista.btn_Filtrar_EmpleadoEnProyecto_Consultar.setActionCommand("accion_Btn_Filtrar_EmpleadoEnProyecto_Consultar");
         this.vista.btn_Filtrar_EmpleadoEnProyecto_Consultar.addActionListener(this);
         
+        this.vista.btn_Disociar_EmpleadoEnProyecto_Consultar.setActionCommand("accion_Btn_Disociar_EmpleadoEnProyecto_Consultar");
+        this.vista.btn_Disociar_EmpleadoEnProyecto_Consultar.addActionListener(this);
+        
         this.vista.placeHolder_FiltrarTitulo_EmpleadoEnProyecto_Consultar = new TextPrompt("Titulo", this.vista.txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar, TextPrompt.Show.FOCUS_LOST);
         this.vista.placeHolder_FiltrarTitulo_EmpleadoEnProyecto_Consultar.changeAlpha(0.5f);
         this.vista.placeHolder_FiltrarTitulo_EmpleadoEnProyecto_Consultar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
@@ -237,6 +240,24 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
                         this.vista.txt_FiltrarId_EmpleadoEnProyecto_Consultar.getText(),
                         this.vista.txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar.getText()));
                 break;
+            
+            case "accion_Btn_Disociar_EmpleadoEnProyecto_Consultar":
+                
+                String[] NifEmpleados = new String[this.vista.tabla_Asociados_EmpleadoEnProyecto_Consultar.getSelectedRowCount()];
+                int cont = 0;
+                for (int selectedRow : this.vista.tabla_Asociados_EmpleadoEnProyecto_Consultar.getSelectedRows()) {
+                    NifEmpleados[cont] = this.vista.tabla_Asociados_EmpleadoEnProyecto_Consultar.getValueAt(selectedRow, 3).toString();
+                    cont++;
+                }
+                try{
+                    modelo.disociarEmpleadoProyecto(NifEmpleados, Integer.parseInt(this.vista.tabla_EmpleadoEnProyecto_Consultar.getValueAt(this.vista.tabla_EmpleadoEnProyecto_Consultar.getSelectedRow(), 3).toString()));
+                    JOptionPane.showMessageDialog(vista, "Empleados disociados correctamente");
+                    this.vista.tabla_Asociados_EmpleadoEnProyecto_Consultar.setModel(modelo.getEmpleadosAsocidos(Integer.parseInt(this.vista.tabla_EmpleadoEnProyecto_Consultar.getValueAt(this.vista.tabla_EmpleadoEnProyecto_Consultar.getSelectedRow(), 3).toString())));
+                }catch (SQLException ex){
+                    JOptionPane.showMessageDialog(this.vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+                break;
                 
                 /*------------------------------ Consultar ListaEmpleado ------------------------------*/
                 
@@ -289,6 +310,16 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
                         this.vista.txt_FiltrarFechaFin_ListaProyecto_Consultar.getText(),
                         this.vista.txt_FiltrarID_ListaProyecto_Consultar.getText(),
                         this.vista.txt_FiltrarDescripcion_ListaProyecto_Consultar.getText()));
+                
+//                int dataSize = 1024 * 1024;
+//        
+//                Runtime runtime = Runtime.getRuntime();
+//
+//                System.out.println ("Memoria máxima: " + runtime.maxMemory() / dataSize + "MB");
+//                System.out.println ("Memoria total: " + runtime.totalMemory() / dataSize + "MB");
+//                System.out.println ("Memoria libre: " + runtime.freeMemory() / dataSize + "MB");
+//                System.out.println ("Memoria usada: " + (runtime.totalMemory() - runtime.freeMemory()) / dataSize + "MB");
+                
                 break;
                 
             case "accion_CheckBox_Titulo_ListaProyecto_Consultar":
@@ -354,14 +385,19 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
     @Override
     public void mouseEntered(MouseEvent e) {
         ToolTipManager.sharedInstance().setInitialDelay(0);
-        try {
+        if (!modelo.isProyectoEmpty()) {
+            try {
             String[] resultado = modelo.datosEdadProyectos();
             
             this.vista.btn_Info_ListaProyecto_Consultar.setToolTipText("<html><ul><li>El proyecto con mayor media de edad es: <i>" + resultado[0]
                 + "</i></li><br><li>El proyecto con menor media de edad es: <i>" + resultado[1] + "</i></li></ul></html>");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }else{
+            this.vista.btn_Info_ListaProyecto_Consultar.setToolTipText("No se han encontrado proyectos");
         }
+        
         
         
         

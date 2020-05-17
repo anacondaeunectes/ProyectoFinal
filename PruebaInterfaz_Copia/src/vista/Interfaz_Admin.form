@@ -1838,10 +1838,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSeparator6" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane13" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane10" alignment="0" pref="501" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
@@ -1852,21 +1851,22 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" min="-2" pref="102" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" min="-2" pref="98" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" min="-2" pref="97" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" pref="150" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane13" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btn_Disociar_EmpleadoEnProyecto_Consultar" min="-2" pref="77" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" min="-2" pref="102" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" min="-2" pref="98" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" min="-2" pref="97" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" pref="153" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1874,13 +1874,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane10" min="-2" pref="125" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="jScrollPane10" min="-2" pref="106" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_Filtrar_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
@@ -1888,21 +1895,11 @@
                           </Group>
                           <Component id="jScrollPane13" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_Disociar_EmpleadoEnProyecto_Consultar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarFechaFin_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_FiltrarId_EmpleadoEnProyecto_Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="247" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2017,17 +2014,28 @@
                 <Component class="javax.swing.JTable" name="tabla_Asociados_EmpleadoEnProyecto_Consultar">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        &#xa;    },&#xa;    new String [] {&#xa;        &quot;Nombre&quot;, &quot;Apellido&quot;, &quot;A&#xf1;o nacimiento&quot;, &quot;NIF&quot;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Nombre&quot;, &quot;Apellido&quot;, &quot;A&#xf1;o nacimiento&quot;, &quot;NIF&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tabla_Asociados_EmpleadoEnProyecto_Consultar.getTableHeader().setReorderingAllowed(false);"/>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JTextField" name="txt_FiltrarDescripcion_EmpleadoEnProyecto_Consultar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="btn_Disociar_EmpleadoEnProyecto_Consultar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Disociar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Disociar_EmpleadoEnProyecto_ConsultarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -2064,27 +2072,27 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane9" alignment="0" pref="501" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       <Component id="txt_FiltrarNombre_ListaEmpleado_Consultar" min="-2" pref="106" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarApellido_ListaEmpleado_Consultar" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarApellido_ListaEmpleado_Consultar" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarNacimiento_ListaEmpleado_Consultar" min="-2" pref="101" max="-2" attributes="0"/>
+                                      <Component id="txt_FiltrarNacimiento_ListaEmpleado_Consultar" min="-2" pref="100" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txt_FiltrarNIF_ListaEmpleado_Consultar" max="32767" attributes="0"/>
+                                      <Component id="txt_FiltrarNIF_ListaEmpleado_Consultar" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="checkBox_Nombre_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                                       <Component id="checkBox_Apellido_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Component id="btn_Filtrar_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                       <Component id="checkBox_Nacimiento_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                       <Component id="checkBox_NIF_ListaEmpleado_Consultar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                                   </Group>
@@ -2261,11 +2269,11 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                               <Component id="checkBox_Titulo_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                                               <Component id="checkBox_FechaInicio_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                               <Component id="checkBox_FechaFin_ListaProyecto_Consultar" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">

@@ -153,15 +153,14 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
         
                 try {
-                    if (modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
-                            this.vista.txt_Apellido_Modificar_Empleado.getText(),
-                            Integer.parseInt(this.vista.txt_Nacimiento_Modificar_Empleado.getText()),
-                            this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString())
-                        )
-                    {
-                        JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
-                        this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
-                    }
+                    modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
+                        this.vista.txt_Apellido_Modificar_Empleado.getText(),
+                        Integer.parseInt(this.vista.txt_Nacimiento_Modificar_Empleado.getText()),
+                        this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString());
+                    
+                    JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                    this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+                    
                     
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
@@ -171,12 +170,14 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
             case "accion_Btn_Eliminar_Modificar_Empleado":
                 //Llama al metodo eliminarEmpleado() pasandole como parametro el NIF del registro seleccionado.Si lo elimina correctamente se informa y se actualiza el modelo de la tabla En caso de dar error la eliminacion, se informa. 
-                try {
-                    modelo.eliminarEmpleado(this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString());
-                    JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
-                    this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                if (JOptionPane.showConfirmDialog(vista, "¿Está seguro que desea eliminar este empleado?", "Advertencia", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE) == 0){
+                    try {
+                        modelo.eliminarEmpleado(this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString());
+                        JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
+                        this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 break;
                 
@@ -230,6 +231,8 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                         Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()),
                         this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText());
                     
+                    JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                    
                     this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true,
                         this.vista.txt_FiltrarTitulo_Modificar_Proyecto.getText(),
                         this.vista.txt_FiltrarFechaInicio_Modificar_Proyecto.getText(), 
@@ -246,14 +249,19 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
             case "accion_Btn_Eliminar_Modificar_Proyecto":
                 //Llama al metodo eliminarProyecto() pasandole como parametro el id del proyecto seleccionado.Si lo elimina correctamente se informa y se actualiza el modelo de la tabla. En caso de dar error la eliminacion, se informa. 
-                try {
-                    modelo.eliminarProyecto(Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()));
-                    JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
-                    this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
-                    
-                } catch (SQLException ex) {
-                    JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                if (JOptionPane.showConfirmDialog(vista, "Eliminar un proyecto con empleados asociados, eliminará también estas relaciones. ¿Está seguro que desea eliminar este proyecto?", "Advertencia", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE) == 0){
+                
+                    try {
+                        modelo.eliminarProyecto(Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()));
+                        JOptionPane.showMessageDialog(vista, "Se ha eliminado el registro con éxito");
+                        this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
+
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(vista, "sql: " + ex.getMessage(), "SQL Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+                
+                    
                 break;
                 
             case "accion_Btn_Cancelar_Modificar_Proyecto":

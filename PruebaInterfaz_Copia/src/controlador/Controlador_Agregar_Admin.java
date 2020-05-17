@@ -56,6 +56,14 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
         this.vista.btn_Cancelar_Agregar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Agregar_Proyecto" );
         this.vista.btn_Cancelar_Agregar_Proyecto.addActionListener(this);
         
+        this.vista.placeHolder_FechaInicio_Agregar_Proyecto = new TextPrompt("(yyyy-mm-dd)", this.vista.Txt_FechaInicio_Agregar_Proyecto, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FechaInicio_Agregar_Proyecto.changeAlpha(0.3f);
+        this.vista.placeHolder_FechaInicio_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
+        this.vista.placeHolder_FechaFin_Agregar_Proyecto = new TextPrompt("(yyyy-mm-dd)", this.vista.Txt_FechaFin_Agregar_Proyecto, TextPrompt.Show.FOCUS_LOST);
+        this.vista.placeHolder_FechaFin_Agregar_Proyecto.changeAlpha(0.3f);
+        this.vista.placeHolder_FechaFin_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
+        
         Year a;
         
         if ((a = modelo.leerCfg_MinAnoNacimiento()) != null) {

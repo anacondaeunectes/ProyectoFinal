@@ -236,21 +236,25 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         String str = editor.getText();
         System.out.println(str);
         
-        if (str.length() == 0) {
-            System.out.println("vacio");
-            this.vista.ComboBox_Asociar.setSelectedIndex(0);
-        }else if (e.getExtendedKeyCode() == 16){
-            System.out.println("shift");
-        }else if(e.getExtendedKeyCode() == 8){
-            System.out.println("backspace");
-        }else{
-            //es necesario volver a ordenar este Stream para que el metodo findFirst() coja el primero.
-            this.vista.ComboBox_Asociar.setSelectedItem(List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).filter(x-> x.getTitulo().startsWith(str)).findFirst().get());
-            String sel_Item_Text = this.vista.ComboBox_Asociar.getSelectedItem().toString();
-            editor.setText(sel_Item_Text);
-            System.out.println(str);
-            editor.setSelectionStart(str.length());
-            editor.setSelectionEnd(sel_Item_Text.length());
+        //Si se pulsa "Shift" o "Backspace" no se tiene en cuenta. Para el resto de teclas, sí que se lleva acabo el autocompletado y
+        switch (e.getExtendedKeyCode()) {
+            case 16:
+                //Evita que al usar shift para escribir mayuscula se autoseleccione.
+                System.out.println("shift");
+                break;
+            case 8:
+                //Evita que se produzca el autoseleccione.
+                System.out.println("backspace");
+                break;
+            default:
+                //es necesario volver a ordenar este Stream para que el metodo findFirst() coja el primero.
+                this.vista.ComboBox_Asociar.setSelectedItem(List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).filter(x-> x.getTitulo().startsWith(str)).findFirst().get());
+                String sel_Item_Text = this.vista.ComboBox_Asociar.getSelectedItem().toString();
+                editor.setText(sel_Item_Text);
+                System.out.println(str);
+                editor.setSelectionStart(str.length());
+                editor.setSelectionEnd(sel_Item_Text.length());
+                break;
         }
     }
 
@@ -264,6 +268,7 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         //Muestra el listado de items de este ComboBox
         System.out.println("Llega Mouse");
        this.vista.ComboBox_Asociar.showPopup();
+       editor.select(0, editor.getText().length());
     }
 
     @Override
