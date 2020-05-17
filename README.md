@@ -1,6 +1,6 @@
 # ProyectoFinal
 
-Este repositorio contiene el proyecto final de la asignatura de Programación del curso 2019-2020 en el grado superior de Desarrollo de Aplicaciones Multiplataforma.
+Este repositorio contiene el proyecto final del módulo de Programación en el grado superior de Desarrollo de Aplicaciones Multiplataforma, curso 2019-2020 .
 
 Se trata de un proyecto realizado en el IDE NetBeans, en su versión 8.2.
 
