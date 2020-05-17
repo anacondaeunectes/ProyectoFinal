@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author anaco
  */
-public class Modelo extends database{
+public class Modelo extends Database{
     
     //Por defecto estipula 1920 como el minimo ano de nacimiento .
     private Year min_Ano_Nacimiento = Year.of(1920);
@@ -100,13 +100,8 @@ public class Modelo extends database{
     
     private boolean validarDatosProyecto(String titulo, LocalDate fecha_inicio, LocalDate fecha_fin, String descripcion){
         
-        return (titulo.equals("") || fecha_fin.isBefore(fecha_inicio) || descripcion.length() > 500) ? false: true;
-        
-//        if (titulo.equals("") || fecha_fin.isBefore(fecha_inicio) || descripcion.length() > 500){
-//            return false;
-//        }else{
-//            return true;
-//        }
+        return (titulo.equals("") || /*fecha_fin.isBefore(fecha_inicio) ||*/ descripcion.length() > 500) ? false: true;
+
         
     }
     
@@ -229,19 +224,24 @@ public class Modelo extends database{
 
     }
     
-    public void modificarProyecto(String titulo, String fechaInicio, String fechaFin, int id, String descripcion) throws SQLException{
+    public boolean modificarProyecto(String titulo, LocalDate fechaInicio, LocalDate fechaFin, int id, String descripcion) throws SQLException{
+        
+        if (!validarDatosProyecto(titulo, fechaInicio, fechaFin, descripcion)) {
+            return false;
+        }
     
         //Try-with-resources que se encarga de cerrar el CallableStatement se lance o no una excepcion
         try(CallableStatement pstm = this.getConexion().prepareCall("{call doUpdateProyecto(?, ?, ?, ?, ?)}")){
             pstm.setString(1, titulo);
-            pstm.setString(2, fechaInicio);
-            pstm.setString(3, fechaFin);
+            pstm.setString(2, fechaInicio.toString());
+            pstm.setString(3, fechaFin.toString());
             pstm.setInt(4, id);
             pstm.setString(5, descripcion);
 
             pstm.execute();
         }
 
+        return true;
     }
 
    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
@@ -655,56 +655,56 @@ public class Modelo extends database{
        
    }
     
-    public static Year leerCfg_MinAnoNacimiento(){
-        Year yyyy = null;
-        
-        BufferedReader br;
-        
-        try {
-            br = new BufferedReader(new FileReader("cfg/cfg.txt"));
-            
-            System.out.println(br.readLine());
-
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        return yyyy;
-    }
+//    public static Year leerCfg_MinAnoNacimiento(){
+//        Year yyyy = null;
+//        
+//        BufferedReader br;
+//        
+//        try {
+//            br = new BufferedReader(new FileReader("cfg/cfg.txt"));
+//            
+//            System.out.println(br.readLine());
+//
+//            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        
+//        return yyyy;
+//    }
     
-    public static boolean sobreescribirCFG_MinAnoNacimiento(Year yyyy){
-        
-        File file;
-    
-        BufferedReader br;
-        
-        FileOutputStream fos;
-        
-        ObjectOutputStream oos;
-        
-        try {
-            
-            file = new File("cfg/cfg.txt");
-            
-            br = new BufferedReader(new FileReader(file));
-            
-            fos = new FileOutputStream(file);
-            
-            oos = new ObjectOutputStream(fos);
-            
-            oos.writeObject(yyyy);
-            
-            System.out.println(br.readLine());
-
-            
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        
-    }
+//    public static boolean sobreescribirCFG_MinAnoNacimiento(Year yyyy){
+//        
+//        File file;
+//    
+//        BufferedReader br;
+//        
+//        FileOutputStream fos;
+//        
+//        ObjectOutputStream oos;
+//        
+//        try {
+//            
+//            file = new File("cfg/cfg.txt");
+//            
+//            br = new BufferedReader(new FileReader(file));
+//            
+//            fos = new FileOutputStream(file);
+//            
+//            oos = new ObjectOutputStream(fos);
+//            
+//            oos.writeObject(yyyy);
+//            
+//            System.out.println(br.readLine());
+//
+//            
+//            return true;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
+//        
+//    }
     
 
     

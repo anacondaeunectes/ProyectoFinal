@@ -39,6 +39,8 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
         
             /*------------------------------ Consultar ProyectodeEmpleado ------------------------------*/
             
+        this.vista.tabla_ProyectoDeEmpleado_Consultar.setModel(this.modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+            
         this.vista.menuItem_ProyectoDeEmpleado_Consultar.setActionCommand("vista_ProyectoDeEmpleado_Consultar");
         this.vista.menuItem_ProyectoDeEmpleado_Consultar.addActionListener(this);
         
@@ -64,6 +66,8 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
         this.vista.placeHolder_FiltrarNIF_ProyectoDeEmpleado_Consultar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
         
             /*------------------------------ Consultar EmpleadoEnProyecto------------------------------*/
+            
+        this.vista.tabla_EmpleadoEnProyecto_Consultar.setModel(this.modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
             
         this.vista.menuItem_EmpleadoEnProyecto_Consultar.setActionCommand("vista_EmpleadoEnProyecto_Consultar");
         this.vista.menuItem_EmpleadoEnProyecto_Consultar.addActionListener(this);
@@ -97,6 +101,8 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
         this.vista.placeHolder_FiltrarDescripcion_EmpleadoEnProyecto_Consultar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
         
             /*------------------------------ Consultar ListaEmpleado ------------------------------*/
+            
+        this.vista.tabla_ListaEmpleado_Consultar.setModel(this.modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
             
         this.vista.menuItem_ListaEmpleado_Consultar.setActionCommand("vista_ListaEmpleado_Consultar");
         this.vista.menuItem_ListaEmpleado_Consultar.addActionListener(this);
@@ -133,6 +139,8 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
         this.vista.placeHolder_FiltrarNIF_ListaEmpleado_Consultar.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
         
             /*------------------------------ Consultar ListaProyecto ------------------------------*/
+            
+        this.vista.tabla_ListaProyecto_Consultar.setModel(this.modelo.getTablaProyecto(true, true, true, true, true, "", "", "", "", ""));
             
         this.vista.menuItem_ListaProyecto_Consultar.setActionCommand("vista_ListaProyecto_Consultar");
         this.vista.menuItem_ListaProyecto_Consultar.addActionListener(this);
@@ -215,6 +223,7 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
                 
             case "vista_ProyectoDeEmpleado_Consultar":
                 switchPanels(this.vista.panel_ProyectoDeEmpleado_Consultar);
+                
                 break;
                 
             case "accion_Btn_Filtrar_ProyectoDeEmpleado_Consultar":

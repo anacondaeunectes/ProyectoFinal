@@ -14,6 +14,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -51,9 +52,6 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         
         this.vista.btn_Eliminar_Modificar_Empleado.setActionCommand( "accion_Btn_Eliminar_Modificar_Empleado" );
         this.vista.btn_Eliminar_Modificar_Empleado.addActionListener(this);
-        
-        this.vista.btn_Cancelar_Modificar_Empleado.setActionCommand( "accion_Btn_Cancelar_Modificar_Empleado" );
-        this.vista.btn_Cancelar_Modificar_Empleado.addActionListener(this);
         
         //Coloca unos placeHolder a los jTextField del filtrado
         this.vista.placeHolder_FiltrarNombre_Modificar_Empleado = new TextPrompt("Nombre", this.vista.txt_FiltrarNombre_Modificar_Empleado, TextPrompt.Show.FOCUS_LOST);
@@ -93,9 +91,6 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
         
         this.vista.btn_Eliminar_Modificar_Proyecto.setActionCommand( "accion_Btn_Eliminar_Modificar_Proyecto" );
         this.vista.btn_Eliminar_Modificar_Proyecto.addActionListener(this);
-        
-        this.vista.btn_Cancelar_Modificar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Modificar_Proyecto" );
-        this.vista.btn_Cancelar_Modificar_Proyecto.addActionListener(this);
         
         //Botones del jDialog "dialog_ModificarDescripcion_Modificar_Proyecto" asociado al boton "Modificar Descripcion" de este panel
         this.vista.btn_Guardar_ModificarDescripcion_Modificar_Proyecto.setActionCommand("accion_Btn_Guardar_ModificarDescripcion_Modificar_Proyecto");
@@ -181,9 +176,6 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 }
                 break;
                 
-            case "accion_Btn_Cancelar_Modificar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok7");
-                break;
                 
                 /*------------------------------ Modificar Proyecto ------------------------------*/
                 
@@ -225,20 +217,24 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
             case "accion_Btn_Modificar_Modificar_Proyecto":
                 try {
-                    modelo.modificarProyecto(this.vista.txt_Titulo_Modificar_Proyecto.getText(),
-                        this.vista.txt_FechaInicio_Modificar_Proyecto.getText(),
-                        this.vista.txt_FechaFin_Modificar_Proyecto.getText(),
+                    
+                    if(modelo.modificarProyecto(this.vista.txt_Titulo_Modificar_Proyecto.getText(),
+                        LocalDate.parse(this.vista.txt_FechaInicio_Modificar_Proyecto.getText()),
+                        LocalDate.parse(this.vista.txt_FechaFin_Modificar_Proyecto.getText()),
                         Integer.parseInt(this.vista.tabla_Modificar_Proyecto.getValueAt(this.vista.tabla_Modificar_Proyecto.getSelectedRow(), 3).toString()),
-                        this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText());
+                        this.vista.txtArea_ModificarDescripcion_Modificar_Proyecto.getText())){
                     
-                    JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true,
-                        this.vista.txt_FiltrarTitulo_Modificar_Proyecto.getText(),
-                        this.vista.txt_FiltrarFechaInicio_Modificar_Proyecto.getText(), 
-                        this.vista.txt_FiltrarFechaFin_Modificar_Proyecto.getText(),
-                        this.vista.txt_FiltrarId_Modificar_Proyecto.getText(),
-                        this.vista.txt_FiltrarDescripcion_Modificar_Proyecto.getText()));
+                        JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+
+                        this.vista.tabla_Modificar_Proyecto.setModel(modelo.getTablaProyecto(true, true, true, true, true,
+                            this.vista.txt_FiltrarTitulo_Modificar_Proyecto.getText(),
+                            this.vista.txt_FiltrarFechaInicio_Modificar_Proyecto.getText(), 
+                            this.vista.txt_FiltrarFechaFin_Modificar_Proyecto.getText(),
+                            this.vista.txt_FiltrarId_Modificar_Proyecto.getText(),
+                            this.vista.txt_FiltrarDescripcion_Modificar_Proyecto.getText()));
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - El campo 'Titulo' no puede estar vacio.\n \t - La descripcion no puede superar los 500 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     
                     
                 
@@ -264,9 +260,6 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                     
                 break;
                 
-            case "accion_Btn_Cancelar_Modificar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok11");
-                break;
         }
                 
     }

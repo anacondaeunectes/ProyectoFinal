@@ -44,9 +44,6 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         
         this.vista.btn_Asociar_Asociar.setActionCommand( "accion_Btn_Asociar_Asociar" );
         this.vista.btn_Asociar_Asociar.addActionListener(this);
-       
-        this.vista.btn_Cancelar_Asociar.setActionCommand( "accion_Btn_Cancelar_Asociar" );
-        this.vista.btn_Cancelar_Asociar.addActionListener(this);
         
         /*------------------------------ Parte superior - Empleado ------------------------------*/
         
@@ -209,11 +206,6 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         
                 break;
                 
-            //Accion btn_Asociar_Asociar
-            case "accion_Btn_Cancelar_Asociar":
-                JOptionPane.showMessageDialog(null, "ok15");
-                break;
-        
         }
         
     }

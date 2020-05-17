@@ -41,7 +41,17 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
             SwingUtilities.updateComponentTreeUI(this.vista);
             SwingUtilities.updateComponentTreeUI(this.vista.dialog_ModificarDescripcion_Modificar_Proyecto);
             this.vista.setVisible(true);
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {}
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            System.err.println(ex.getMessage());
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                SwingUtilities.updateComponentTreeUI(this.vista);
+                SwingUtilities.updateComponentTreeUI(this.vista.dialog_ModificarDescripcion_Modificar_Proyecto);
+                this.vista.setVisible(true);
+            } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex2) {
+                System.err.println(ex2.getMessage());
+            }
+        }
         
         control_Agregar_Admin.iniciar();
         control_Modificar_Componentes.iniciar();

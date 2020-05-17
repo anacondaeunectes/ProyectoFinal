@@ -9,6 +9,8 @@ import com.TextPrompt;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Year;
@@ -21,7 +23,7 @@ import vista.Interfaz_Admin;
  *
  * @author anaco
  */
-public class Controlador_Agregar_Admin extends Controlador implements ControladorInterfaz, ActionListener{
+public class Controlador_Agregar_Admin extends Controlador implements ControladorInterfaz, ActionListener, WindowListener{
     
     public Controlador_Agregar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);
@@ -38,9 +40,6 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
         this.vista.btn_Agregar_Agregar_Empleado.setActionCommand( "accion_Btn_Agregar_Agregar_Empleado" );
         this.vista.btn_Agregar_Agregar_Empleado.addActionListener(this);
         
-        this.vista.btn_Cancelar_Agregar_Empleado.setActionCommand( "accion_Btn_Cancelar_Agregar_Empleado" );
-        this.vista.btn_Cancelar_Agregar_Empleado.addActionListener(this);
-        
         this.vista.placeHolder_Nacimiento_Agregar_Empleado = new TextPrompt("(yyyy)", this.vista.Txt_Nacimiento_Agregar_Empleado, TextPrompt.Show.FOCUS_LOST);
         this.vista.placeHolder_Nacimiento_Agregar_Empleado.changeAlpha(0.3f);
         this.vista.placeHolder_Nacimiento_Agregar_Empleado.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
@@ -53,9 +52,6 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
         this.vista.btn_Agregar_Agregar_Proyecto.setActionCommand( "accion_Btn_Agregar_Agregar_Proyecto" );
         this.vista.btn_Agregar_Agregar_Proyecto.addActionListener(this);
         
-        this.vista.btn_Cancelar_Agregar_Proyecto.setActionCommand( "accion_Btn_Cancelar_Agregar_Proyecto" );
-        this.vista.btn_Cancelar_Agregar_Proyecto.addActionListener(this);
-        
         this.vista.placeHolder_FechaInicio_Agregar_Proyecto = new TextPrompt("(yyyy-mm-dd)", this.vista.Txt_FechaInicio_Agregar_Proyecto, TextPrompt.Show.FOCUS_LOST);
         this.vista.placeHolder_FechaInicio_Agregar_Proyecto.changeAlpha(0.3f);
         this.vista.placeHolder_FechaInicio_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
@@ -64,11 +60,13 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
         this.vista.placeHolder_FechaFin_Agregar_Proyecto.changeAlpha(0.3f);
         this.vista.placeHolder_FechaFin_Agregar_Proyecto.setFont(new java.awt.Font("Tahoma", Font.ITALIC, 11));
         
-        Year a;
+        this.vista.addWindowListener(this);
         
-        if ((a = modelo.leerCfg_MinAnoNacimiento()) != null) {
-            modelo.setMin_Ano_Nacimiento(a);
-        }
+//        Year a;
+//        
+//        if ((a = modelo.leerCfg_MinAnoNacimiento()) != null) {
+//            modelo.setMin_Ano_Nacimiento(a);
+//        }
         
     }
     
@@ -111,10 +109,6 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
                 
                 break;
                 
-            case "accion_Btn_Cancelar_Agregar_Empleado":
-                JOptionPane.showMessageDialog(null, "ok2");
-                break;
-                
                 
                 /*------------------------------ Agregar Empleado ------------------------------*/  
                 
@@ -138,7 +132,7 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
                         vista.Txt_Descripcion_Agregar_Proyecto.setText("");
                         
                     }else{
-                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - El campo 'Titulo' no puede estar vacio.\n \t - La fecha de inicio no puede ser posterior a la fecha de fin.\n \t - La descripcion no puede superar los 500 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - El campo 'Titulo' no puede estar vacio.\n \t - La descripcion no puede superar los 500 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                     
                     
@@ -149,10 +143,29 @@ public class Controlador_Agregar_Admin extends Controlador implements Controlado
                 }
                     
                 break;
-                
-            case "accion_Btn_Cancelar_Agregar_Proyecto":
-                JOptionPane.showMessageDialog(null, "ok4");
-                break;
+
         }
     }
+    
+    /**
+     * Este listener lo único que busca es cerrar la conexion con la Base de Datos al cerrar la ventana principal de la aplicacion.
+     * @param e 
+     */
+    @Override
+    public void windowClosing(WindowEvent e) {
+        modelo.closeConexion();
+    } 
+    
+    @Override
+    public void windowClosed(WindowEvent e) {}
+    @Override
+    public void windowOpened(WindowEvent e) {}
+    @Override
+    public void windowIconified(WindowEvent e) {}
+    @Override
+    public void windowDeiconified(WindowEvent e) {}
+    @Override
+    public void windowActivated(WindowEvent e) {}
+    @Override
+    public void windowDeactivated(WindowEvent e) {}
 }
