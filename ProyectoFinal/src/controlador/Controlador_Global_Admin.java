@@ -21,6 +21,7 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
     Controlador_Modificar_Admin control_Modificar_Componentes;
     Controlador_Asociar_Admin control_Asociar_Componentes;
     Controlador_Consultar_Admin control_Consultar_Componentes;
+    Controlador_Conexion control_Conexion;
 
     public Controlador_Global_Admin(Interfaz_Admin vista, Modelo modelo) {
         
@@ -29,10 +30,14 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
         this.control_Modificar_Componentes = new Controlador_Modificar_Admin(vista, modelo);
         this.control_Asociar_Componentes = new Controlador_Asociar_Admin(vista, modelo);   
         this.control_Consultar_Componentes = new Controlador_Consultar_Admin(vista, modelo);
+        this.control_Conexion = new Controlador_Conexion(vista, modelo);
     }
     
     @Override
     public void iniciar() {
+        
+        control_Conexion.iniciar();
+
         
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -40,7 +45,12 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
             //com.sun.java.swing.plaf.windows.WindowsLookAndFeel
             SwingUtilities.updateComponentTreeUI(this.vista);
             SwingUtilities.updateComponentTreeUI(this.vista.dialog_ModificarDescripcion_Modificar_Proyecto);
+            SwingUtilities.updateComponentTreeUI(this.vista.dialog_Conexion);
             this.vista.setVisible(true);
+            this.vista.dialog_Conexion.setVisible(true);
+//            this.vista.dialog_Conexion.setModal(true);
+
+            
         } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             System.err.println(ex.getMessage());
             try {

@@ -45,6 +45,17 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        dialog_Conexion = new javax.swing.JDialog();
+        panel_Conexion = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_Ip_Conexion = new javax.swing.JTextField();
+        txt_BaseDatos_Conexion = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_Usuario_Conexion = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txt_Contrasena_Conexion = new javax.swing.JPasswordField();
+        btn_Conectar_Conexion = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         panel_Agregar_Empleado = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -286,7 +297,103 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        dialog_Conexion.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        dialog_Conexion.setTitle("Conexión");
+        dialog_Conexion.setMinimumSize(new java.awt.Dimension(395, 282));
+        dialog_Conexion.setModal(true);
+        dialog_Conexion.setPreferredSize(new java.awt.Dimension(500, 277));
+        dialog_Conexion.setResizable(false);
+        dialog_Conexion.setLocationRelativeTo(this);
+
+        panel_Conexion.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><strong>Propiedades de la conexión:</strong></html>"));
+
+        jLabel6.setText("IP y puerto:");
+
+        jLabel7.setText("Base de datos:");
+
+        jLabel8.setText("Usuario:");
+
+        jLabel23.setText("Contraseña:");
+
+        btn_Conectar_Conexion.setText("Conectar");
+        btn_Conectar_Conexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Conectar_ConexionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_ConexionLayout = new javax.swing.GroupLayout(panel_Conexion);
+        panel_Conexion.setLayout(panel_ConexionLayout);
+        panel_ConexionLayout.setHorizontalGroup(
+            panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_ConexionLayout.createSequentialGroup()
+                        .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_Ip_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_BaseDatos_Conexion))
+                            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(36, 36, 36)
+                                .addComponent(txt_Usuario_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_Contrasena_Conexion)))
+                        .addGap(93, 93, 93))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ConexionLayout.createSequentialGroup()
+                        .addComponent(btn_Conectar_Conexion)
+                        .addGap(66, 66, 66))))
+        );
+        panel_ConexionLayout.setVerticalGroup(
+            panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_ConexionLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_Ip_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txt_BaseDatos_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_Usuario_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(txt_Contrasena_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_Conectar_Conexion)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout dialog_ConexionLayout = new javax.swing.GroupLayout(dialog_Conexion.getContentPane());
+        dialog_Conexion.getContentPane().setLayout(dialog_ConexionLayout);
+        dialog_ConexionLayout.setHorizontalGroup(
+            dialog_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_ConexionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        dialog_ConexionLayout.setVerticalGroup(
+            dialog_ConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_ConexionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel_Conexion, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
         setPreferredSize(new java.awt.Dimension(548, 433));
         setResizable(false);
@@ -1580,6 +1687,10 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Eliminar_Modificar_ProyectoActionPerformed
 
+    private void btn_Conectar_ConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Conectar_ConexionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Conectar_ConexionActionPerformed
+
     /*private void switchPanels (JPanel panel){
         jLayeredPane1.removeAll();
         jLayeredPane1.add(panel);
@@ -1618,7 +1729,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new Interfaz_Admin().setVisible(true);
+                new Interfaz_Admin().dialog_Conexion.setVisible(true);
             }
         });
     }
@@ -1637,6 +1748,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JButton btn_Agregar_Agregar_Proyecto;
     public javax.swing.JButton btn_Asociar_Asociar;
     public javax.swing.JButton btn_Cancelar_ModificarDescripcion_Modificar_Proyecto;
+    public javax.swing.JButton btn_Conectar_Conexion;
     public javax.swing.JButton btn_Disociar_EmpleadoEnProyecto_Consultar;
     public javax.swing.JButton btn_Eliminar_Modificar_Empleado;
     public javax.swing.JButton btn_Eliminar_Modificar_Proyecto;
@@ -1662,6 +1774,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JCheckBox checkBox_Nacimiento_ListaEmpleado_Consultar;
     public javax.swing.JCheckBox checkBox_Nombre_ListaEmpleado_Consultar;
     public javax.swing.JCheckBox checkBox_Titulo_ListaProyecto_Consultar;
+    public javax.swing.JDialog dialog_Conexion;
     public javax.swing.JDialog dialog_ModificarDescripcion_Modificar_Proyecto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1678,6 +1791,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -1685,6 +1799,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JMenuBar jMenuBar;
@@ -1722,6 +1839,7 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JPanel panel_Agregar_Empleado;
     public javax.swing.JPanel panel_Agregar_Proyecto;
     public javax.swing.JPanel panel_Asociar;
+    public javax.swing.JPanel panel_Conexion;
     public javax.swing.JPanel panel_EmpleadoEnProyecto_Consultar;
     public javax.swing.JPanel panel_ListaEmpleado_Consultar;
     public javax.swing.JPanel panel_ListaProyecto_Consultar;
@@ -1741,6 +1859,8 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JTable tabla_ProyectoDeEmpleado_Consultar;
     public javax.swing.JTextArea txtArea_ModificarDescripcion_Modificar_Proyecto;
     public javax.swing.JTextField txt_Apellido_Modificar_Empleado;
+    public javax.swing.JTextField txt_BaseDatos_Conexion;
+    public javax.swing.JPasswordField txt_Contrasena_Conexion;
     public javax.swing.JTextField txt_FechaFin_Modificar_Proyecto;
     public javax.swing.JTextField txt_FechaInicio_Modificar_Proyecto;
     public javax.swing.JTextField txt_FiltrarApellido_Empleado_Asociar;
@@ -1779,9 +1899,11 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     public javax.swing.JTextField txt_FiltrarTitulo_ListaProyecto_Consultar;
     public javax.swing.JTextField txt_FiltrarTitulo_Modificar_Proyecto;
     public javax.swing.JTextField txt_FiltrarTitulo_Proyecto_Asociar;
+    public javax.swing.JTextField txt_Ip_Conexion;
     public javax.swing.JTextField txt_Nacimiento_Modificar_Empleado;
     public javax.swing.JTextField txt_Nombre_Modificar_Empleado;
     public javax.swing.JTextField txt_Titulo_Modificar_Proyecto;
+    public javax.swing.JTextField txt_Usuario_Conexion;
     // End of variables declaration//GEN-END:variables
    
     public TextPrompt placeHolder_Nacimiento_Agregar_Empleado;

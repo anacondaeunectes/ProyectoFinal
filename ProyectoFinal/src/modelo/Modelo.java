@@ -6,8 +6,10 @@
 package modelo;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
@@ -19,6 +21,7 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -654,6 +657,93 @@ public class Modelo extends Database{
        return resultado;
        
    }
+   
+   /**
+    * Este metodo se encarga de leer las propiedades del archivo cfg y asignarlas al objeto al objeto database. La contrasena no se almacena en el archivo. La ha de introducir el usuario.
+    * @param ip 
+    * @param db
+    * @param usuario
+    * @param pw
+    * @return <ul>
+    *   <li>True: en caso de leer correctamente el archivo</li>
+    *   <li>False: en caso de errar al leer el archivo</li>
+    * </ul>
+    */
+    public boolean loadConexion(String ip, String db, String usuario, String pw){
+        
+            boolean flag = false;
+
+            Properties cfg = new Properties();
+
+            FileInputStream fis = null;
+
+        try{
+            fis = new FileInputStream("lib/cfg/conexion.properties");
+
+            cfg.load(fis);
+
+            this.setUrl(ip);
+            this.setDb(db);
+            this.setUser(usuario);
+            this.setPassword(pw);
+
+            flag = true;
+        }catch (IOException ex){
+            System.out.println("No se podido leer la configuracion de la conexion");
+            System.err.println(ex.getMessage());
+            return  false;
+        }finally{
+            try {
+                fis.close();
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        
+        return flag;
+    }
+    
+    /**
+     * Este metodo modifica las propiedades del archivo cfg segun los parametros pasado al metodo. La idea tras este metodo es que en caso de establecer correctamente una conexion, se modiquen las propiedades de conexion a las nuevas. Solo en caso de una correcta conexion.
+     * @param ip
+     * @param db
+     * @param usuario
+     * @return <ul>
+    *   <li>True: en caso de escribir correctamente el archivo</li>
+    *   <li>False: en caso de errar al escribir el archivo</li>
+    * </ul>
+     */
+    public boolean storeConexion(String ip, String db, String usuario){
+        
+                    
+        FileOutputStream fos = null;
+        
+        Properties cfg = new Properties();
+        
+        try {
+            fos = new FileOutputStream("lib/cfg/conexion.properties");
+            
+            cfg.setProperty("ip", ip);
+            cfg.setProperty("db", db);
+            cfg.setProperty("user", usuario);
+            
+            cfg.store(fos, "Cambio valores cfg");
+            
+            return true;
+            
+        } catch (IOException ex) {
+            System.out.println("No se podido leer la configuracion de la conexion");
+            System.err.println(ex.getMessage());
+            return  false;
+        }finally{
+            try {
+                fos.close();
+            } catch (IOException exc) {
+                System.err.println(exc.getMessage());
+            }
+        }
+        
+    }
     
 //    public static Year leerCfg_MinAnoNacimiento(){
 //        Year yyyy = null;
