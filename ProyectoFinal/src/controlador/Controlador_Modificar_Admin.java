@@ -15,6 +15,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.Year;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -148,13 +149,18 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
                 
         
                 try {
-                    modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
+                    if(modelo.modificarEmpleado(this.vista.txt_Nombre_Modificar_Empleado.getText(),
                         this.vista.txt_Apellido_Modificar_Empleado.getText(),
-                        Integer.parseInt(this.vista.txt_Nacimiento_Modificar_Empleado.getText()),
-                        this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString());
+                        Year.parse(this.vista.txt_Nacimiento_Modificar_Empleado.getText()),
+                        this.vista.tabla_Modificar_Empleado.getValueAt(this.vista.tabla_Modificar_Empleado.getSelectedRow(), 3).toString())
+                    ){
+                        JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
+                        this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Fallo al validar los datos introducidos. Por favor, revíselos: \n \t - Los campos 'Nombre' y 'Apellido' no pueden estar vacios.\n \t - Revise el patrón del NIF.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     
-                    JOptionPane.showMessageDialog(vista, "Modificación exitosa", "Modificar", JOptionPane.INFORMATION_MESSAGE);
-                    this.vista.tabla_Modificar_Empleado.setModel(modelo.getTablaEmpleado(true, true, true, true, "", "", "", ""));
+                    
                     
                     
                 } catch (SQLException ex) {

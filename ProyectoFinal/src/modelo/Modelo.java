@@ -213,21 +213,32 @@ public class Modelo extends Database{
        return arrLi;
     }
     
-    public void modificarEmpleado(String nombre, String apellido, int anoNacimiento, String Nif) throws SQLException{
+    public boolean modificarEmpleado(String nombre, String apellido, Year anoNacimiento, String Nif) throws SQLException{
+        
+        nombre = nombre.trim();
+        apellido = apellido.trim();
+        Nif = Nif.trim();
+        
+        if (!validarDatosEmpleado(nombre, apellido, anoNacimiento, Nif)) {
+            return false;
+        }
         
         //Try-with-resources que se encarga de cerrar el CallableStatement, ya que implementa la interfaz AutoClosable, se lance o no una excepcion
         try(CallableStatement pstm = this.getConexion().prepareCall("{call doUpdateEmpleado (?, ?, ?, ?)}")){
             pstm.setString(1, nombre);
             pstm.setString(2, apellido);
-            pstm.setInt(3, anoNacimiento);
+            pstm.setInt(3, Integer.parseInt(anoNacimiento.toString()));
             pstm.setString(4, Nif);
 
             pstm.execute();
         }
-
+        
+        return true;
     }
     
     public boolean modificarProyecto(String titulo, LocalDate fechaInicio, LocalDate fechaFin, int id, String descripcion) throws SQLException{
+        
+        titulo = titulo.trim();
         
         if (!validarDatosProyecto(titulo, fechaInicio, fechaFin, descripcion)) {
             return false;
@@ -660,16 +671,12 @@ public class Modelo extends Database{
    
    /**
     * Este metodo se encarga de leer las propiedades del archivo cfg y asignarlas al objeto al objeto database. La contrasena no se almacena en el archivo. La ha de introducir el usuario.
-    * @param ip 
-    * @param db
-    * @param usuario
-    * @param pw
     * @return <ul>
     *   <li>True: en caso de leer correctamente el archivo</li>
     *   <li>False: en caso de errar al leer el archivo</li>
     * </ul>
     */
-    public boolean loadConexion(String ip, String db, String usuario, String pw){
+    public boolean loadConexionDefault(){
         
             boolean flag = false;
 
@@ -682,10 +689,9 @@ public class Modelo extends Database{
 
             cfg.load(fis);
 
-            this.setUrl(ip);
-            this.setDb(db);
-            this.setUser(usuario);
-            this.setPassword(pw);
+            this.setUrl(cfg.getProperty("ip"));
+            this.setDb(cfg.getProperty("db"));
+            this.setUser(cfg.getProperty("user"));
 
             flag = true;
         }catch (IOException ex){
@@ -713,7 +719,7 @@ public class Modelo extends Database{
     *   <li>False: en caso de errar al escribir el archivo</li>
     * </ul>
      */
-    public boolean storeConexion(String ip, String db, String usuario){
+    public boolean storeConexionDefault(String ip, String db, String usuario){
         
                     
         FileOutputStream fos = null;
@@ -744,73 +750,5 @@ public class Modelo extends Database{
         }
         
     }
-    
-//    public static Year leerCfg_MinAnoNacimiento(){
-//        Year yyyy = null;
-//        
-//        BufferedReader br;
-//        
-//        try {
-//            br = new BufferedReader(new FileReader("cfg/cfg.txt"));
-//            
-//            System.out.println(br.readLine());
-//
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        
-//        return yyyy;
-//    }
-    
-//    public static boolean sobreescribirCFG_MinAnoNacimiento(Year yyyy){
-//        
-//        File file;
-//    
-//        BufferedReader br;
-//        
-//        FileOutputStream fos;
-//        
-//        ObjectOutputStream oos;
-//        
-//        try {
-//            
-//            file = new File("cfg/cfg.txt");
-//            
-//            br = new BufferedReader(new FileReader(file));
-//            
-//            fos = new FileOutputStream(file);
-//            
-//            oos = new ObjectOutputStream(fos);
-//            
-//            oos.writeObject(yyyy);
-//            
-//            System.out.println(br.readLine());
-//
-//            
-//            return true;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        
-//    }
-    
-
-    
-    public static void main(String args[]) {
-            
-            //getTablaEmpleado(true, false, false, true, "Pepe", "", "1970", "123");
-            /*Year a = Year.now();
-            a = Year.of(1990);
-            final Year MIN_ANO_NACIMIENTO = a;
-            System.out.println(MIN_ANO_NACIMIENTO.toString());*/
-//            sobreescribirCFG_MinAnoNacimiento(Year.of(1999));
-//            System.out.println(comprobarDNI("1234578A"));
-        
-    }
-    
-    
-    
     
 }

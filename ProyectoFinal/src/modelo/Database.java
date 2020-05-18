@@ -22,28 +22,6 @@ public class Database {
     private String url = null;
     private String db = null;
     private String user = null;
-    private String password = null;
- 
-    
-    public Database(){
-        
-        Properties cfg = new Properties();
-        
-        FileInputStream fis = null;
-       try{
-           
-            fis = new FileInputStream("lib/cfg/conexion.properties");
-           
-            cfg.load(fis);
-           
-            this.url = cfg.getProperty("ip");
-            this.db = cfg.getProperty("db");
-            this.user = cfg.getProperty("user");
-           
-      }catch (IOException ex){
-           System.out.println("No se podido leer la configuracion de la conexion");
-      }
-   }
 
     //Getters y Setters
     public String getUrl() {
@@ -69,28 +47,27 @@ public class Database {
     public void setUser(String user) {
         this.user = user;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
     public Connection getConexion(){
         return this.conex;
     }
     
     
-    //Metodos para abrir y cerrar la conexion
-    public void openConexion()throws SQLException{
+    /**
+     * Este metodo conecta la aplicacion a la bbdd. Asigna al objecto Connection "conex" la conexion referente a los campos de este objeto. Notese que la contrasena en nigun momento se almacena durante el proceso. Unicamente es leida desde el campo de texto al establecer la conexion.
+     * @param password 
+     * @throws SQLException 
+     */
+    public void openConexion(String password)throws SQLException{
         
-        System.out.println("jdbc:mysql://" + this.url+ "/" + this.db + this.user + this.password);
-        conex = DriverManager.getConnection( "jdbc:mysql://" + this.url+ "/" + this.db, this.user , this.password );
+        System.out.println("jdbc:mysql://" + this.url+ "/" + this.db + this.user + password);
+        conex = DriverManager.getConnection( "jdbc:mysql://" + this.url+ "/" + this.db, this.user , password );
     }
     
     
+    /**
+     * Este metodo se encarga de cerrar la conexion asignada al objeto "conex" se esta clase.
+     */
     public void closeConexion(){
         try {
             System.out.println("Conex cerrada");
