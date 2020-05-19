@@ -24,10 +24,10 @@ import modelo.Proyecto;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Controlador de la funcionalidad Modificar. Al igual que los demas hereda de la clase "Controlador" y, por tanto, implementa la interfaz "ControladorInterfaz"
  * @author anaco
  */
-public class Controlador_Asociar_Admin extends Controlador implements ControladorInterfaz, ActionListener, KeyListener, MouseListener{
+public class Controlador_Asociar_Admin extends Controlador implements ActionListener, KeyListener, MouseListener{
     
     ArrayList <Proyecto> List_ComboBox_Asociar = null;
     JTextComponent editor = null;
@@ -36,6 +36,9 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         super(vista, modelo);
     }
 
+    /**
+     * Inicia los componentes y anade los Listeners
+     */
     @Override
     public void iniciar() {
             /*------------------------------ Vista y comun ------------------------------*/
@@ -120,7 +123,6 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                     List_ComboBox_Asociar = modelo.cargarProyectos("", "", "", "", "");
                     //Primero ordena todos los proyectos y luego los inserta conservando ese orden.
                     List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).forEach(x -> this.vista.ComboBox_Asociar.addItem(x));
-                    System.out.println("finish");
                 }else{
                     JOptionPane.showMessageDialog(null, "No se ha encontrado ningun proyecto");
                 }
@@ -226,7 +228,6 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
         
         System.out.println("llega");
         String str = editor.getText();
-        System.out.println(str);
         
         //Si se pulsa "Shift" o "Backspace" no se tiene en cuenta. Para el resto de teclas, sí que se lleva acabo el autocompletado y
         switch (e.getExtendedKeyCode()) {
@@ -243,7 +244,6 @@ public class Controlador_Asociar_Admin extends Controlador implements Controlado
                 this.vista.ComboBox_Asociar.setSelectedItem(List_ComboBox_Asociar.stream().sorted(Comparator.comparing(Proyecto::getTitulo)).filter(x-> x.getTitulo().startsWith(str)).findFirst().get());
                 String sel_Item_Text = this.vista.ComboBox_Asociar.getSelectedItem().toString();
                 editor.setText(sel_Item_Text);
-                System.out.println(str);
                 editor.setSelectionStart(str.length());
                 editor.setSelectionEnd(sel_Item_Text.length());
                 break;

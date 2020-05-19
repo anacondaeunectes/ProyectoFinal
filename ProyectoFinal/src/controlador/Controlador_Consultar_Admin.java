@@ -25,15 +25,18 @@ import modelo.Modelo;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Controlador de la funcionalidad Modificar. Al igual que los demas hereda de la clase "Controlador" y, por tanto, implementa la interfaz "ControladorInterfaz"
  * @author anaco
  */
-public class Controlador_Consultar_Admin extends Controlador implements ControladorInterfaz, ActionListener, MouseListener{
+public class Controlador_Consultar_Admin extends Controlador implements ActionListener, MouseListener{
 
     public Controlador_Consultar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);
     }
 
+    /**
+     * Inicia los componentes y anade los Listeners
+     */
     @Override
     public void iniciar() {
         
@@ -241,7 +244,6 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Filtrar_EmpleadoEnProyecto_Consultar":
-                System.out.println("hhhh");
                 this.vista.tabla_EmpleadoEnProyecto_Consultar.setModel(modelo.getTablaProyecto(true, true, true, true, true,
                         this.vista.txt_FiltrarTitulo_EmpleadoEnProyecto_Consultar.getText(),
                         this.vista.txt_FiltrarFechaInicio_EmpleadoEnProyecto_Consultar.getText(),
@@ -275,7 +277,6 @@ public class Controlador_Consultar_Admin extends Controlador implements Controla
                 break;
                 
             case "accion_Btn_Filtrar_ListaEmpleado_Consultar":
-            System.out.println("hhhh");
             this.vista.tabla_ListaEmpleado_Consultar.setModel(modelo.getTablaEmpleado(this.vista.checkBox_Nombre_ListaEmpleado_Consultar.isSelected(),
                     this.vista.checkBox_Apellido_ListaEmpleado_Consultar.isSelected(),
                     this.vista.checkBox_Nacimiento_ListaEmpleado_Consultar.isSelected(),

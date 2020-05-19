@@ -301,7 +301,6 @@ public class Interfaz_Admin extends javax.swing.JFrame {
         dialog_Conexion.setTitle("Conexión");
         dialog_Conexion.setMinimumSize(new java.awt.Dimension(395, 282));
         dialog_Conexion.setModal(true);
-        dialog_Conexion.setPreferredSize(new java.awt.Dimension(500, 277));
         dialog_Conexion.setResizable(false);
         dialog_Conexion.setLocationRelativeTo(this);
 
@@ -1907,10 +1906,9 @@ public class Interfaz_Admin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
    
     public TextPrompt placeHolder_Nacimiento_Agregar_Empleado;
-    
     public TextPrompt placeHolder_FechaInicio_Agregar_Proyecto;
     public TextPrompt placeHolder_FechaFin_Agregar_Proyecto;
-    
+
     public TextPrompt placeHolder_FiltrarNombre_Modificar_Empleado;
     public TextPrompt placeHolder_FiltrarApellido_Modificar_Empleado;
     public TextPrompt placeHolder_FiltrarNacimiento_Modificar_Empleado;

@@ -5,12 +5,9 @@
  */
 package modelo;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 /**
  *
@@ -24,6 +21,7 @@ public class Database {
     private String user = null;
 
     //Getters y Setters
+
     public String getUrl() {
         return url;
     }
@@ -59,8 +57,6 @@ public class Database {
      * @throws SQLException 
      */
     public void openConexion(String password)throws SQLException{
-        
-        System.out.println("jdbc:mysql://" + this.url+ "/" + this.db + this.user + password);
         conex = DriverManager.getConnection( "jdbc:mysql://" + this.url+ "/" + this.db, this.user , password );
     }
     

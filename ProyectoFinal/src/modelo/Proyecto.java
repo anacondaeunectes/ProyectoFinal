@@ -12,13 +12,14 @@ import java.time.LocalDate;
  *
  * @author anaco
  */
-public class Proyecto /*implements Comparator<String>*/{
+public class Proyecto {
     
     private String titulo;
     private LocalDate fecha_Inicio;
     private LocalDate fecha_Fin;
     private String descripcion;
     private int id_Proyecto;
+
 
     public Proyecto(String titulo, LocalDate fecha_Inicio, LocalDate fecha_Fin, String descripcion, int id_Proyecto) {
         this.titulo = titulo;
@@ -57,11 +58,6 @@ public class Proyecto /*implements Comparator<String>*/{
     public String toString() {
         return titulo;
     }
-
-//    @Override
-//    public int compare(String o1, String o2) {
-//        return o1.compareToIgnoreCase(o2);
-//    }
     
     
 }

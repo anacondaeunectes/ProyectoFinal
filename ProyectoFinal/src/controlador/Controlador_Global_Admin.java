@@ -12,10 +12,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 import modelo.Modelo;
 import vista.Interfaz_Admin;
 /**
- *
+ * Clase nexo de todos los controladores. Al igual que los demas, implementa la Interfaz "ControladorInterfaz" y hereda de la clase "Controlador"
  * @author anaco
  */
-public class Controlador_Global_Admin extends Controlador implements ControladorInterfaz{
+public class Controlador_Global_Admin extends Controlador {
     
     Controlador_Agregar_Admin control_Agregar_Admin;
     Controlador_Modificar_Admin control_Modificar_Componentes;
@@ -23,6 +23,11 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
     Controlador_Consultar_Admin control_Consultar_Componentes;
     Controlador_Conexion control_Conexion;
 
+    /**
+     *
+     * @param vista
+     * @param modelo
+     */
     public Controlador_Global_Admin(Interfaz_Admin vista, Modelo modelo) {
         
         super(vista, modelo);
@@ -33,6 +38,9 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
         this.control_Conexion = new Controlador_Conexion(vista, modelo);
     }
     
+    /**
+     * Inicia todos los controladores y muestra las vistas. En caso de no cargar el LAF "com.sun.java.swing.plaf.windows.WindowsLookAndFeel", cargara el que tenga el sistema por defecto
+     */
     @Override
     public void iniciar() {
         
@@ -48,7 +56,6 @@ public class Controlador_Global_Admin extends Controlador implements Controlador
             SwingUtilities.updateComponentTreeUI(this.vista.dialog_Conexion);
             this.vista.setVisible(true);
             this.vista.dialog_Conexion.setVisible(true);
-//            this.vista.dialog_Conexion.setModal(true);
 
             
         } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {

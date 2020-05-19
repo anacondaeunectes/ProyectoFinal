@@ -5,18 +5,13 @@ import modelo.Modelo;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Clase abstracta que sirve como modelo para los controladores.
  * @author anaco
  */
-public class Controlador {
-    /**
-     * 
-     */
+public abstract  class Controlador implements ControladorInterfaz{
+
     Interfaz_Admin vista;
     
-    /**
-     * 
-     */
     Modelo modelo;
 
     /**

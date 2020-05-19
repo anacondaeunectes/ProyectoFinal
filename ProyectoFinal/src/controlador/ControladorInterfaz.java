@@ -6,12 +6,14 @@
 package controlador;
 
 /**
- *
+ * Interfaz que implementan todos los controladores. 
  * @author anaco
  */
 public interface ControladorInterfaz {
     
-    //Inicia los controladores
+    /**
+     * Inicia los controladores
+     */
     public void iniciar();
     
 }

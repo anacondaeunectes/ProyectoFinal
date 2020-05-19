@@ -15,7 +15,7 @@ import modelo.Modelo;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Controlador de la funcionalidad Modificar. Al igual que los demas hereda de la clase "Controlador" y, por tanto, implementa la interfaz "ControladorInterfaz"
  * @author anaco
  */
 public class Controlador_Conexion extends Controlador implements ActionListener, WindowListener{
@@ -24,6 +24,9 @@ public class Controlador_Conexion extends Controlador implements ActionListener,
         super(vista, modelo);
     }
     
+    /**
+     * Inicia los componentes y anade los Listeners
+     */
     public void iniciar(){
         
         if(this.modelo.loadConexionDefault()){
@@ -48,6 +51,10 @@ public class Controlador_Conexion extends Controlador implements ActionListener,
          * En caso de se active el boton "Conectar", se tratara de establecer la conexion al SGBD con las especificaciones dispuesta. En caso de acceder correctamente, se sobreescribira sobre el archivo "conexion.properties" las 
          * propiedades usadas de cara a que la proxima vez que se ejecute la aplicacion, estas se cargen por defecto. En caso de no establecer correctamente la conexion, no se sobreescribira.
          */
+        modelo.setUrl(this.vista.txt_Ip_Conexion.getText());
+        modelo.setDb(this.vista.txt_BaseDatos_Conexion.getText());
+        modelo.setUser(this.vista.txt_Usuario_Conexion.getText());
+        
         try {
             modelo.openConexion(String.valueOf(this.vista.txt_Contrasena_Conexion.getPassword()));
             //En caso de que se establezca correctamente la conexion, se llama al metodo storeConexion() para intentar renovar las propiedades de la configuracion y que aparezcan por defecto esas la proxima vez que se ejecute la aplicacion

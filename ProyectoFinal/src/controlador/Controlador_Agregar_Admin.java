@@ -20,10 +20,10 @@ import modelo.Modelo;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Controlador de la funcionalidad Modificar. Al igual que los demas hereda de la clase "Controlador" y, por tanto, implementa la interfaz "ControladorInterfaz"
  * @author anaco
  */
-public class Controlador_Agregar_Admin extends Controlador implements ControladorInterfaz, ActionListener, WindowListener{
+public class Controlador_Agregar_Admin extends Controlador implements ActionListener, WindowListener{
     
     public Controlador_Agregar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);

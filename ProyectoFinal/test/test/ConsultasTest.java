@@ -8,15 +8,12 @@ package test;
 import java.sql.CallableStatement;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import controlador.Controlador;
 import modelo.*;
 import vista.Interfaz_Admin;
 import controlador.*;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import org.junit.Before;
 
 /**
  *
@@ -28,6 +25,9 @@ public class ConsultasTest extends Database{
     private Modelo modelo;
     private Controlador_Global_Admin globalController;
 
+    /**
+     *
+     */
     public ConsultasTest() {
         this.vista = new Interfaz_Admin();
         this.modelo = new Modelo();
@@ -35,6 +35,10 @@ public class ConsultasTest extends Database{
         globalController.iniciar();
     }
 
+    /**
+     * Este metodo se trata de una prueba unitaria que busca comprobar que el numero de registros mostrados al iniciar la aplicacion en la tabla de la vista de 
+     * la funcionalidad "Modificar", que por defecto carga todos los empleados, coincide con el contenido de de la tabla empleados en la Base de Datos.
+     */
     @Test
     public void count(){
         
@@ -46,15 +50,16 @@ public class ConsultasTest extends Database{
             CallableStatement cstm = modelo.getConexion().prepareCall("{? = call contarEmpleados()}");
             cstm.registerOutParameter(1, Types.INTEGER);
             ResultSet rSet = cstm.executeQuery();
-            while (rSet.next()) {                
-                countBBDD = rSet.getInt(1);
-            }
+            rSet.first();
+            countBBDD = rSet.getInt(1);
+            
             
             
         }catch (SQLException ex){
             System.err.println(ex.getMessage() + "eeeee");
         }
-        assertEquals(countVista, countBBDD);
+        assertEquals(countBBDD, countVista);
+        System.out.println("Expected: " + countVista + "\nObtained: " + countBBDD);
     }
 
 

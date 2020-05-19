@@ -4,13 +4,9 @@
  * and open the template in the editor.
  */
 package modelo;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,25 +20,20 @@ import java.util.List;
 import java.util.Properties;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author anaco
- */
 public class Modelo extends Database{
     
-    //Por defecto estipula 1920 como el minimo ano de nacimiento .
-    private Year min_Ano_Nacimiento = Year.of(1920);
-    
-    public Modelo(){}
-
-    public Year getMin_Ano_Nacimiento() {
-        return min_Ano_Nacimiento;
-    }
-
-    public void setMin_Ano_Nacimiento(Year min_Ano_Nacimiento) {
-        this.min_Ano_Nacimiento = min_Ano_Nacimiento;
-    }
-    
+    /**
+     * Metodo encargado de insertar nuevos empleados en la Base de Datos. Ademas, llama al metodo validarDatosEmpleado() para que, en caso de que estos no sean correctos, se cancele la operacion.
+     * @param nombre 
+     * @param apellido
+     * @param ano_nacimiento
+     * @param NIF
+     * @return <ul>
+    *   <li>True: en caso de agregar correctamente al empleado</li>
+    *   <li>False: en caso de no agregar correctamente al empleado, ya sea por que no ha validado bien los datos o por un error al introducirlo</li>
+    * </ul>
+     * @throws SQLException En caso de error por parte de la Base de Datos, se manejara desde el controlador buscando informar desde la vista.
+     */
     public boolean agregarEmpleado(String nombre, String apellido, Year ano_nacimiento, String NIF) throws SQLException{
         
         //Primero llama al metodo trim() con todos los datos para despues pasarlo al metodo validarDatos
@@ -68,6 +59,17 @@ public class Modelo extends Database{
      
     }
     
+    /**
+     * Este metodo valida los datos de un empleado. LLama al metodo comprobarDNI() para validar el NIF.
+     * @param nombre
+     * @param apellido
+     * @param ano_nacimiento
+     * @param NIF
+     * @return <ul>
+    *   <li>True: en caso de validar correctamente los datos</li>
+    *   <li>False: en caso de errar al validar los datos</li>
+    * </ul>
+     */
     private boolean validarDatosEmpleado(String nombre, String apellido, Year ano_nacimiento, String NIF){
         boolean flag = true;
 
@@ -76,11 +78,31 @@ public class Modelo extends Database{
         }
     return flag;
     }
-        
+       
+    /**
+     * Metodo que valida un String en funcion del patron que sigue un NIF
+     * @param a
+     * @return <ul>
+    *   <li>True: en caso de SI validar el String</li>
+    *   <li>False: en caso de NO validar el String</li>
+    * </ul>
+     */
     private boolean comprobarDNI(String a) {
         return a.matches("[0-9]{8}[a-zA-Z]");
     }
     
+    /**
+     * Metodo encargado de insertar nuevos proyectos en la Base de Datos. Ademas, llama al metodo validarDatosProyecto() para que, en caso de que estos no sean correctos, se cancele la operacion.
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param titulo
+     * @param descripcion
+     * @return <ul>
+    *   <li>True: en caso de leer correctamente el archivo</li>
+    *   <li>False: en caso de errar al leer el archivo</li>
+    * </ul>
+     * @throws SQLException En caso de error por parte de la Base de Datos, se manejara desde el controlador buscando informar desde la vista.
+     */
     public boolean agregarProyecto(LocalDate fecha_inicio, LocalDate fecha_fin, String titulo, String descripcion) throws SQLException{
         
         titulo = titulo.trim();
@@ -101,9 +123,20 @@ public class Modelo extends Database{
         
     }
     
+    /**
+     * Este metodo valida los datos de un proyecto.
+     * @param titulo
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param descripcion
+     * @return <ul>
+    *   <li>True: en caso de validar correctamente los datos</li>
+    *   <li>False: en caso de errar al validar los datos</li>
+    * </ul>
+     */
     private boolean validarDatosProyecto(String titulo, LocalDate fecha_inicio, LocalDate fecha_fin, String descripcion){
         
-        return (titulo.equals("") || /*fecha_fin.isBefore(fecha_inicio) ||*/ descripcion.length() > 500) ? false: true;
+        return (titulo.equals("") ||  descripcion.length() > 500) ? false: true;
 
         
     }
@@ -149,6 +182,11 @@ public class Modelo extends Database{
         
     }
     
+    /**
+     * Este metodo se encarga de eliminar un empleado en funcion de su NIF.
+     * @param NifEmpleado
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
     public void eliminarEmpleado(String NifEmpleado) throws SQLException{
         
         //Try-with-resources que se encarga de cerrar el PreparedStatement se lance o no una excepcion
@@ -159,6 +197,11 @@ public class Modelo extends Database{
        
     }
     
+    /**
+     * Este metodo se encarga de eliminar un empleado en funcion de su id.
+     * @param idProy
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
     public void eliminarProyecto(int idProy) throws SQLException{
         
         try(PreparedStatement pstm = this.getConexion().prepareStatement("DELETE FROM proyecto WHERE id_proyecto = ?")){
@@ -167,6 +210,13 @@ public class Modelo extends Database{
         }
     }
     
+    /**
+     * Metodo que comprueba si hay registros de proyectos en la Base de Datos.
+     * @return <ul>
+    *   <li>True: en caso de que el resultSet este vacio, es decir, NO haya registros</li>
+    *   <li>False: en caso de que el resultSet SI encuentre registros</li>
+    * </ul>
+     */
     public boolean isProyectoEmpty(){
         
         //Llama a la vista "comprobarProyectoVacio"
@@ -185,6 +235,15 @@ public class Modelo extends Database{
     
     }
     
+    /**
+     * Este metodo lee todos los proyectos de la Base de Datos y devuelve una lista a servir como modelo del comboBox de la vista "Asociar"
+     * @param titulo
+     * @param fechaInicio
+     * @param fechaFin
+     * @param id
+     * @param descripcion
+     * @return ArrayList de proyectos donde cada uno representa un registro proyecto de la Base de Datos.
+     */
     public ArrayList<Proyecto> cargarProyectos(String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
         
         ArrayList <Proyecto> arrLi = new ArrayList<>();
@@ -198,7 +257,6 @@ public class Modelo extends Database{
             pstm.setString(3, fechaFin + "%");
             pstm.setString(4, id + "%");
             pstm.setString(5, "%" + descripcion + "%");
-            System.out.println(query);
             ResultSet rset = pstm.executeQuery();
             
             while(rset.next()){
@@ -213,6 +271,18 @@ public class Modelo extends Database{
        return arrLi;
     }
     
+    /**
+     * Se encarga de realizar "updates" sobre empleados en funcion de su NIF.
+     * @param nombre
+     * @param apellido
+     * @param anoNacimiento
+     * @param Nif
+     * @return <ul>
+    *   <li>True: en caso de que se haya realizado correctamente la modificacion</li>
+    *   <li>False: en caso de error, ya sea al validar datos o al introducirlos en la Base de Datos</li>
+    * </ul>
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
     public boolean modificarEmpleado(String nombre, String apellido, Year anoNacimiento, String Nif) throws SQLException{
         
         nombre = nombre.trim();
@@ -236,6 +306,19 @@ public class Modelo extends Database{
         return true;
     }
     
+    /**
+     * Se encarga de realizar "updates" sobre proyectos en funcion de su id.
+     * @param titulo
+     * @param fechaInicio
+     * @param fechaFin
+     * @param id
+     * @param descripcion
+     * @return <ul>
+    *   <li>True: en caso de que se haya realizado correctamente la modificacion</li>
+    *   <li>False: en caso de error, ya sea al validar datos o al introducirlos en la Base de Datos</li>
+    * </ul>
+     * @throws SQLException La posible excepcion se controla desde el controlador
+     */
     public boolean modificarProyecto(String titulo, LocalDate fechaInicio, LocalDate fechaFin, int id, String descripcion) throws SQLException{
         
         titulo = titulo.trim();
@@ -258,6 +341,18 @@ public class Modelo extends Database{
         return true;
     }
 
+    /**
+     * Este metodo devuelve el modelo de una tabla fruto de la consulta a la tabla con los empleados de la Base de Datos en funcion de los parametros. En caso de que todos los "checks" sean "false", el resultado sera el mismo a que todos fueran "true"
+     * @param nombreChecked Si es "true", se omitirá esta columna
+     * @param apellidoChecked Si es "true", se omitirá esta columna
+     * @param ano_NacimientoChecked Si es "true", se omitirá esta columna
+     * @param NIFChecked Si es "true", se omitirá esta columna
+     * @param nombre Si no esta vacio, filtra segun este parametro en la respectiva columna 
+     * @param apellido Si no esta vacio, filtra segun este parametro en la respectiva columna
+     * @param ano_nacimiento Si no esta vacio, filtra segun este parametro en la respectiva columna
+     * @param NIF Si no esta vacio, filtra segun este parametro en la respectiva columna
+     * @return Devuelve un DefaultTableModel segun la info introducida en los parametros
+     */
    public DefaultTableModel getTablaEmpleado(boolean nombreChecked, boolean apellidoChecked, boolean ano_NacimientoChecked, boolean NIFChecked, String nombre, String apellido, String ano_nacimiento, String NIF){
         
         DefaultTableModel tableModel;
@@ -269,7 +364,6 @@ public class Modelo extends Database{
             /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
         if ((nombreChecked == true && apellidoChecked == true && ano_NacimientoChecked == true && NIFChecked == true) || (nombreChecked == false && apellidoChecked == false && ano_NacimientoChecked == false && NIFChecked == false)) {
             nombreColumnas = new String[] {"nombre", "apellido", "ano_nacimiento", "NIF"};
-            System.out.println("if");
             //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
             tableModel = new DefaultTableModel(null, nombreColumnas){
             @Override
@@ -294,8 +388,6 @@ public class Modelo extends Database{
                 
             }
             
-            System.out.println(query);
-            
             try {
                 
                 Statement sentencia = this.getConexion().createStatement();
@@ -307,7 +399,6 @@ public class Modelo extends Database{
                     fila[0] = rSet.getString(1);
                     fila[1] = rSet.getString(2);
                     fila[2] = String.valueOf(LocalDate.parse(rSet.getString(3)).getYear());
-                    System.out.println(LocalDate.parse(rSet.getString(3)).toString());
                     fila[3] = rSet.getString(4);
                     tableModel.addRow(fila);
                 }
@@ -317,7 +408,6 @@ public class Modelo extends Database{
  
         }else{
            
-            System.out.println("else");
             
             List <String> listNombreColumnas = new ArrayList<>();
             List <String> listVariables = new ArrayList<>();
@@ -362,12 +452,10 @@ public class Modelo extends Database{
                     select = select + ",";
                     if (itVariables.hasNext()) {
                         whr = whr + "AND " + a + " LIKE '" + itVariables.next() + "%'";
-                        System.out.println(whr);
                     }
                    
                 }else{
                     whr = whr + " WHERE " + a + " LIKE '" + itVariables.next() + "%'" ;
-                    System.out.println(whr);
                 }
  
                 select = select + a;
@@ -377,7 +465,6 @@ public class Modelo extends Database{
             
             query = select + " FROM empleado " + whr;
 
-            System.out.println(query);
             
             PreparedStatement pstm = null;
             
@@ -432,6 +519,20 @@ public class Modelo extends Database{
         return tableModel;
     }
     
+   /**
+    * Este metodo devuelve el modelo de una tabla fruto de la consulta a la tabla con los proyectos de la Base de Datos en funcion de los parametros. En caso de que todos los "checks" sean "false", el resultado sera el mismo a que todos fueran "true"
+    * @param tituloChecked Si es "true", se omitirá esta columna
+    * @param fechaInicioChecked Si es "true", se omitirá esta columna
+    * @param fechaFinChecked Si es "true", se omitirá esta columna
+    * @param idChecked Si es "true", se omitirá esta columna
+    * @param descripcionChecked Si es "true", se omitirá esta columna
+    * @param titulo Si no esta vacio, filtra segun este parametro en la respectiva columna
+    * @param fechaInicio Si no esta vacio, filtra segun este parametro en la respectiva columna
+    * @param fechaFin Si no esta vacio, filtra segun este parametro en la respectiva columna
+    * @param id Si no esta vacio, filtra segun este parametro en la respectiva columna
+    * @param descripcion Si no esta vacio, filtra segun este parametro en la respectiva columna
+    * @return Devuelve un DefaultTableModel segun la info introducida en los parametros
+    */
    public DefaultTableModel getTablaProyecto(boolean tituloChecked, boolean fechaInicioChecked, boolean fechaFinChecked, boolean idChecked, boolean descripcionChecked, String titulo, String fechaInicio, String fechaFin, String id, String descripcion){
         DefaultTableModel tableModel;
         ResultSet rSet;
@@ -442,7 +543,6 @@ public class Modelo extends Database{
             /*------------------------ Columnas a obtener - ColumnNames del TableModel ------------------------*/
         if ((tituloChecked == true && fechaInicioChecked == true && fechaFinChecked == true && idChecked == true && descripcionChecked == true) || (tituloChecked == false && fechaInicioChecked == false && fechaFinChecked == false && idChecked == false && descripcionChecked == false)) {
             nombreColumnas = new String[] {"titulo", "fecha_inicio", "fecha_fin", "id_proyecto", "descripcion"};
-            System.out.println("if");
             //Crea el nuevo modelo para la tabla con el nombre de las columnas y ademas, SOBREESCRIBE el metodo "isCellEditable" de la clase para hacer que siempre sea "false" y, por tanto, ineditable.
             tableModel = new DefaultTableModel(null, nombreColumnas){
             @Override
@@ -469,7 +569,6 @@ public class Modelo extends Database{
                 
             }
             
-            System.out.println(query);
             
             try {
                 
@@ -492,8 +591,6 @@ public class Modelo extends Database{
  
         }else{
            
-            System.out.println("else");
-            
             List <String> listNombreColumnas = new ArrayList<>();
             List <String> listVariables = new ArrayList<>();
             //Si los CheckBox estan marcados, se buscara tambien esa columna
@@ -541,12 +638,10 @@ public class Modelo extends Database{
                     select = select + ",";
                     if (itVariables.hasNext()) {
                         whr = whr + "AND " + a + " LIKE '" + itVariables.next() + "%'";
-                        System.out.println(whr);
                     }
                    
                 }else{
                     whr = whr + " WHERE " + a + " LIKE '" + itVariables.next() + "%'" ;
-                    System.out.println(whr);
                 }
  
                 select = select + a;
@@ -556,7 +651,6 @@ public class Modelo extends Database{
             
             query = select + " FROM proyecto " + whr;
 
-            System.out.println(query);
             
             try {
                 PreparedStatement pstm = this.getConexion().prepareStatement(query);
@@ -596,6 +690,12 @@ public class Modelo extends Database{
         return tableModel;
     }
     
+   /**
+    * Este metodo devuelve el modelo de una tabla que contiene los proyectos asociados a un empleado.
+    * @param id Clave del empleado
+    * @return Un DefaultTableModel con la informacion de todos los proyectos asociados a un empleado
+    * @throws SQLException La posible excepcion se controla desde el controlador
+    */
    public DefaultTableModel getProyectosAsocidos(String id) throws SQLException{
        
         DefaultTableModel tableModel = null;
@@ -619,6 +719,12 @@ public class Modelo extends Database{
        return tableModel;
    }
    
+   /**
+    * Este metodo devuelve el modelo de una tabla que contiene los empleados asociados a un proyecto.
+    * @param id Clave del proyecto
+    * @return Un DefaultTableModel con la informacion de todos los empleados asociados a un proyecto
+    * @throws SQLException La posible excepcion se controla desde el controlador
+    */
    public DefaultTableModel getEmpleadosAsocidos(int id) throws SQLException{
        
        DefaultTableModel tableModel = null;
@@ -646,6 +752,11 @@ public class Modelo extends Database{
        return tableModel;
    }
    
+   /**
+    * Este metodo se encarga de llamar al procedimiento "edad" dela Base de Datos para conseguir los titulos proyectos con la mayor y menor media de edad
+    * @return Devuelve un Array de tipo String de longitud dos. El primer String es el titulo del proyecto con mayor media de edad y el segundo el titulo del proyecto con menor media
+    * @throws SQLException La posible excepcion se controla desde el controlador
+    */
    public String[] datosEdadProyectos()throws SQLException{
        
        String[] resultado = new String[2];

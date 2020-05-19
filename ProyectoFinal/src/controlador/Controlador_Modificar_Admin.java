@@ -23,15 +23,18 @@ import modelo.Modelo;
 import vista.Interfaz_Admin;
 
 /**
- *
+ * Controlador de la funcionalidad Modificar. Al igual que los demas hereda de la clase "Controlador" y, por tanto, implementa la interfaz "ControladorInterfaz"
  * @author anaco
  */
-public class Controlador_Modificar_Admin extends Controlador implements ControladorInterfaz, ActionListener, ListSelectionListener, MouseListener, WindowListener{
+public class Controlador_Modificar_Admin extends Controlador implements ActionListener, ListSelectionListener, MouseListener, WindowListener{
 
     public Controlador_Modificar_Admin(Interfaz_Admin vista, Modelo modelo) {
         super(vista, modelo);
     }
 
+    /**
+     * Inicia los componentes y anade los Listeners
+     */
     @Override
     public void iniciar() {
         
@@ -274,7 +277,7 @@ public class Controlador_Modificar_Admin extends Controlador implements Controla
     /**
      * Listener que es invocado al seleccionar algun registro en una de las tablas de los dos paneles asociados a la funcionalidad "Modificar"
      * @param e Evento producido
-     * @deprecated Debido a que, pese a funcionar bie, lanzaba IndexOutOfBoundsException -> Listener mouseClicked misma implementacion.
+     * @deprecated Debido a que, pese a funcionar bien, lanzaba IndexOutOfBoundsException y no se ha encontrado el motivo  -> Listener mouseClicked misma implementacion.
      */
     @Override
     public void valueChanged(ListSelectionEvent e) {
