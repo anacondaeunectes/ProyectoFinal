@@ -64,7 +64,9 @@ public class Controlador_Global_Admin extends Controlador {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 SwingUtilities.updateComponentTreeUI(this.vista);
                 SwingUtilities.updateComponentTreeUI(this.vista.dialog_ModificarDescripcion_Modificar_Proyecto);
+                SwingUtilities.updateComponentTreeUI(this.vista.dialog_Conexion);
                 this.vista.setVisible(true);
+                this.vista.dialog_Conexion.setVisible(true);
             } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException ex2) {
                 System.err.println(ex2.getMessage());
             }

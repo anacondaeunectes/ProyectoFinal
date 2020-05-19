@@ -6,9 +6,11 @@
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/lib/cfg/conexion.properties</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/modelo/Empleado.java</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/vista/Interfaz_Admin.java</file>
+            <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/controlador/Controlador_Global_Admin.java</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/modelo/Proyecto.java</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/controlador/Controlador_Modificar_Admin.java</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/modelo/Modelo.java</file>
+            <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/controlador/Main.java</file>
             <file>file:/C:/Users/anaco/git/ProyectoFinal/ProyectoFinal/src/modelo/Database.java</file>
         </group>
     </open-files>
