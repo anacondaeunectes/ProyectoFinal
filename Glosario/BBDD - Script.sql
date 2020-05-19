@@ -101,6 +101,20 @@ CREATE VIEW comprobarProyectoVacio AS
  SELECT titulo FROM proyecto;
 $$
 
+/*Esta funcion devuelve el numero de registros de la tabla empleado*/
+DELIMITER $$
+DROP FUNCTION IF EXISTS contarEmpleados;
+CREATE FUNCTION contarEmpleados()
+RETURNS INT
+
+BEGIN
+	DECLARE resultado INT;
+	SET resultado = (SELECT COUNT(*) FROM empleado);
+	RETURN(resultado);
+END;
+$$
+
+
 /*Procedimiento con dos cursores, uno recorre cada proyecto y otro cada empleado asociado a cada proyecto, que devuelve el título del proyecto con una mayor media de edad y el título del proyecto con menor media de edad*/
 DELIMITER $$
 DROP PROCEDURE IF EXISTS edad;
